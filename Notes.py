@@ -15,7 +15,7 @@ print(15 % 12 )
 # this "%" sign is a module. It find the reamander
 
 
-car_named = print("red")
+car_named = "red"
 car_type = "BMW"
 car_cylinder = 8
 car_mpg = 5000.9
@@ -28,4 +28,7 @@ name = input(">_")
 print("Hello %s." % name)
 
 age = input("How old are you?")
+
 print("%s?! That's really old ." % age)
+
+print("what in the world are we doing in here")
