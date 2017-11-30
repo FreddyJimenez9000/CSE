@@ -91,9 +91,32 @@ def grad_calc(percentage):
         return "F"
 
 
-print( grade_calc(92))
+print('grade_calc(59)')
 
 
+def happy_bday(name):
+    print("happy birthday to you" + ",")
+    print("happy birthday to you" + ",")
+    print("happy birthday dear" + name + ",")
+    print("happy birthday to you" + ",")
 
+happy_bday("Bob")
 
+# Loops
+
+for num in range(10):
+    print(num + 1)
+
+    # While loops (beware!!!!!!!)
+
+    # This is the condition,
+    # it must be true to execute
+
+a = 1
+
+a +=1 # This iterates so that we can break the loop
+
+# Random Numbers
+import random # this should be on line 1
+print(random.randint(0, 10))
 
