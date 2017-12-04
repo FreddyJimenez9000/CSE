@@ -30,6 +30,7 @@
 # name = input(">_")
 # print("Hello %s." % name)
 #
+#
 # age = input("How old are you?")
 #
 # print("%s?! That's really old ." % age)
@@ -100,7 +101,9 @@ def happy_bday(name):
     print("happy birthday dear" + name + ",")
     print("happy birthday to you" + ",")
 
+
 happy_bday("Bob")
+
 
 # Loops
 
@@ -114,9 +117,22 @@ for num in range(10):
 
 a = 1
 
-a +=1 # This iterates so that we can break the loop
+a +=1    # This iterates so that we can break the loop
 
 # Random Numbers
-import random # this should be on line 1
+import random   # this should be on line 1
 print(random.randint(0, 10))
+
+# Recasting
+c = '1'
+print(c == 1)  # we have a string and an int
+print(int(c) == 1)
+print(c == str(1))
+
+# comparisons
+
+print(1 == 1)  # use a double equal sign
+print(1 != 2)  # 1 is not equal to 2
+print(not False)
+
 
