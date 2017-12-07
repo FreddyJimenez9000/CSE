@@ -16,6 +16,16 @@ add(9000)
 add(100)
 
 
+def repeat(lol):
+    print(lol)
+    print(lol)
+    print(lol)
+
+   # print(lol + "/n" lol + "/n" lol + "/n" lol + "/n" lol + "/n" lol + "/n")
+    for x in range(3):
+        print(lol)
+
+
 
 
 
