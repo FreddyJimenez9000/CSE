@@ -12,12 +12,20 @@ while insert < D1:
     print("just spend a dollar to gamble your money on this rigged game.")
     insert = int(input())
 
-    print(D1)
-    print(D2)
+print(D1)
+print(D2)
 
-    if win != win:
-    print("you lost want to play again" )
-    if win == win:
+print(D1 + D2)
+
+if (D1 + D2) == 7:
     print("you win here 4 dollars, want to play again")
+if (D1 + D2) != win:
+    print("you lost want to play again")
+
+
+if money == 0:
+    money = str(0)
+    print("the amount of round you played" + 100)
+
 
 
