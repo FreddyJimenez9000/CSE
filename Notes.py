@@ -136,3 +136,30 @@ print(1 != 2)  # 1 is not equal to 2
 print(not False)
 
 
+...
+
+
+# lists
+
+the_count = [1, 2, 3, 4, 5]
+cheeseburger_ingredients = ['cheese', 'beef', 'lettuce', 'sauce', 'tomatoes', 'fake bread', 'onions']
+print(cheeseburger_ingredients[0])
+print(cheeseburger_ingredients[4])
+print(len(cheeseburger_ingredients))
+print(len(cheeseburger_ingredients[4]))
+
+# Going through lists
+
+for make_with_stuff in cheeseburger_ingredients:
+    print(make_with_stuff)
+
+for the in the_count:
+    print(the * 2)
+
+length = len(cheeseburger_ingredients)
+range(5)    # A list of the number 0 through 4
+range(len(cheeseburger_ingredients))    # Generates a list of all indices
+
+for num in range(len(cheeseburger_ingredients)):
+    item = cheeseburger_ingredients[num]
+    print("the item at index %d is %s" % (num, item))
