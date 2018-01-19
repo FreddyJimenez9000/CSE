@@ -1,7 +1,6 @@
 import random
 number = 0
 money = 15
-insert = -1
 win = 7
 print("so do you want to play a game of lucky 7")
 print("you start off with $15 just spend a $1 to gamble your money to play this game.")
@@ -22,9 +21,6 @@ while money > 0:
     elif (D1 + D2) != win:
         print("you lost want to play again, just insert $1")
         print("money =",money)
-
-
-
     elif money == 0:
         print("the amount of round you played")
         print("round =", number)

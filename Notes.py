@@ -163,3 +163,36 @@ range(len(cheeseburger_ingredients))    # Generates a list of all indices
 for num in range(len(cheeseburger_ingredients)):
     item = cheeseburger_ingredients[num]
     print("the item at index %d is %s" % (num, item))
+
+# Recasting into a list
+strOne = "Hello world!"
+listOne = list(strOne)
+print(listOne)
+listOne[11] = '.'
+print(listOne)
+print(listOne[-1])
+
+# Adding thing to list
+cheeseburger_ingredients.append("Fries")
+cheeseburger_ingredients.append("Another cheese burger")
+# Remove thing from a list
+cheeseburger_ingredients.pop(1)
+print(cheeseburger_ingredients)
+cheeseburger_ingredients.remove("cheese")
+print(cheeseburger_ingredients)
+
+# getting the alphabet
+
+import string
+print(string.ascii_letters)
+print(string.ascii_lowercase)
+print(string.punctuation)
+
+# Making thing lowercase
+
+strTwo = "This Is a VerY oDD SENTENCe"
+lowercase = strTwo.lower()
+print(lowercase)
+
+
+
