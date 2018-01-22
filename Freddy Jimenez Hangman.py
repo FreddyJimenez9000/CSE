@@ -8,3 +8,6 @@ this is a guide of how to make hangman
 5. create win/lose condition
 """
 word = "death", "math", "homework", "money", "games", "stuff", "Family Guy", "school is fun", "Edison Tigers", "Gaston"
+print(len(word))
+
+
