@@ -9,18 +9,19 @@ import string
 # 5. create win/lose condition
 
 word = ['death', 'math', 'homework', 'money', 'games', 'stuff', 'Family Guy', 'school is fun', 'Edison Tigers', 'Gaston']
-
 choice = random.choice(word)
 guess = 10
 strOne = choice
 listOne = list(strOne)
-if guess != 0:
+while 0 < guess:
     print("let's play a game of hangman")
-    print("there are going to be 10 word that you're going to guess. You will only have 10 tries to guess the word.")
+    print("you're are going to have 10 guess to guess the word.")
     print(listOne)
     print(choice)
-    stuff = string.ascii_letters
-    stuff = input(int())
+    thing = string.ascii_letters
+    thing = input(int())
+print(string.ascii_letters)
+print(string.ascii_lowercase)
 
 
 
