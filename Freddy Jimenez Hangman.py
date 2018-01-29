@@ -13,19 +13,15 @@ choice = random.choice(word)
 guess = 10
 strOne = choice
 listOne = list(strOne)
-while 0 < guess:
+while guess != 0:
     print("let's play a game of hangman")
     print("you're are going to have 10 guess to guess the word.")
     print(listOne)
-    print(choice)
-    thing = string.ascii_letters
-    thing = input(int())
+    break
 print(string.ascii_letters)
 print(string.ascii_lowercase)
-
-
-
-
-
+print(listOne)
+l1 = ['d', 'e', 'a', 't', 'h']
+print("". join(l1))
 
 
