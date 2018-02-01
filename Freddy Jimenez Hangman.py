@@ -1,5 +1,6 @@
 import random
 import string
+
 # this is a guide of how to make hangman
 # 1. make a word bank - 10 items
 # 2. Select a random guess
@@ -27,7 +28,7 @@ while guess != 0:
     print(listOne)
     print(listTwo)
     stuff = input("letter >")
-    if listTwo in guess:
+    if guess in listTwo:
         
 
 
@@ -35,8 +36,11 @@ while guess != 0:
 
 
 
-# print(string.ascii_letters)
-# print(string.ascii_lowercase)
-# print(listOne)
-# l1 = ['d', 'e', 'a', 't', 'h']
-# print("". join(l1))
+
+
+
+        # print(string.ascii_letters)
+        # print(string.ascii_lowercase)
+        # print(listOne)
+        # l1 = ['d', 'e', 'a', 't', 'h']
+        # print("". join(l1))
