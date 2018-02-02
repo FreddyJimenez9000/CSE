@@ -29,7 +29,8 @@ while guess != 0:
     print(listTwo)
     stuff = input("letter >")
     if guess in listTwo:
-        
+        print(stuff == listTwo)
+
 
 
 
