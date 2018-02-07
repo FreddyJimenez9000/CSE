@@ -29,7 +29,12 @@ while guess != 0:
     print(listTwo)
     stuff = input("letter >")
     if guess in listTwo:
-        print(stuff = string.ascii_letter)
+        if stuff != letter in listTwo:
+            print(listTwo.append(string.ascii_letters))
+        if stuff == letter in listTwo:
+            print(listTwo.append(string.ascii_letters))
+
+
 
 
 

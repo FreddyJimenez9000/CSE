@@ -88,5 +88,3 @@ print(current_node['POPULATION'])
 
 
 
-
-
