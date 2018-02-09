@@ -1,5 +1,5 @@
 import random
-import string
+
 
 # this is a guide of how to make hangman
 # 1. make a word bank - 10 items
@@ -20,19 +20,35 @@ for letter in strOne:
     else:
         listTwo.append(" ")
 
-print(strOne)
-print(listTwo)
+count = 0
 print("let's play a game of hangman")
 print("you're going to have 10 guess to guess the word.")
-while guess != 0:
-    print(listOne)
+while count < len(listOne):
     print(listTwo)
     stuff = input("letter >")
-    if guess in listTwo:
-        if stuff != letter in listTwo:
-            print(listTwo.append(string.ascii_letters))
-        if stuff == letter in listTwo:
-            print(listTwo.append(string.ascii_letters))
+    stuff = stuff.lower()
+    guess = guess - 1
+    print(guess)
+
+    for i in range(len(listOne)):
+        if listOne[i] == stuff in stuff in listTwo:
+            listTwo[i] = stuff
+            stuff.append = listTwo[i]
+            count = count + 1
+            print(guess)
+            print(count)
+            listTwo.remove(stuff)
+            print("you guess the word")
+
+        if guess == 0:
+            print("your man is dead")
+
+
+
+    # if stuff in listTwo:
+    #     if stuff != listTwo in word:
+    #         print(guess - 1)
+
 
 
 

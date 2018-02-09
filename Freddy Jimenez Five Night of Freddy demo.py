@@ -26,6 +26,13 @@
 
 Five_Night_Freddy = {
     'ENTRANCE': {
-        'NAME': 'The Entrance of Five Night at Freddy'
+        'NAME': 'Freddy Fazbear Entrance',
+        'DESCRIPTION': 'Your at the, and your started your fist day of work',
+        #'LETTER': 'This is the first day of your job hope you enjoy. Your first job is to search the whole place'
+        'PATHS': {
+            'EAST': 'Security Puppet Room',
+            'NORTH': 'Waiting room'
+        }
     }
-}
+},
+
