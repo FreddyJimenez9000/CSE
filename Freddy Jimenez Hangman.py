@@ -8,8 +8,8 @@ import random
 # 4. reveal letters based on input
 # 5. create win/lose condition
 
-word = ['death', 'math', 'homework', 'money', 'games', 'stuff', 'Family Guy', 'school is fun', 'Edison Tigers', 'Gaston']
-guess = 10
+word = ['death', 'math', 'homework', 'money', 'games', 'stuff', 'Family', 'school', 'Edison', 'Gaston']
+guesses = 10
 strOne = random.choice(word)
 strOne = strOne.lower()
 listOne = list(strOne)
@@ -20,28 +20,20 @@ for letter in strOne:
     else:
         listTwo.append(" ")
 
-count = 0
 print("let's play a game of hangman")
 print("you're going to have 10 guess to guess the word.")
-while count < len(listOne):
+while 0 < len(listOne):
     print(listTwo)
-    stuff = input("letter >")
-    stuff = stuff.lower()
-    guess = guess - 1
+    guess = input("letter >")
+    guess = guess.lower()
+    guesses -= 1
     print(guess)
 
     for i in range(len(listOne)):
-        if listOne[i] == stuff in stuff in listTwo:
-            listTwo[i] = stuff
-            stuff.append = listTwo[i]
-            count = count + 1
-            print(guess)
-            print(count)
-            listTwo.remove(stuff)
-            print("you guess the word")
+        if listOne[i] in listOne:
+            # listTwo[i] = guess
+            # guess.append = listTwo[i]
 
-        if guess == 0:
-            print("your man is dead")
 
 
 
@@ -65,5 +57,3 @@ while count < len(listOne):
         # print(string.ascii_letters)
         # print(string.ascii_lowercase)
         # print(listOne)
-        # l1 = ['d', 'e', 'a', 't', 'h']
-        # print("". join(l1))

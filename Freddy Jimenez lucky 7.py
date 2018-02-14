@@ -17,10 +17,10 @@ while money > 0:
         print("you win here 4 dollars, want to play again")
         print(" your money is")
         money += 5
-        print("money =",money)
+        print("money =", money)
     elif (D1 + D2) != win:
         print("you lost want to play again, just insert $1")
-        print("money =",money)
+        print("money =", money)
     if money == number:
         print("the amount of round you played")
         print("round =", number)
