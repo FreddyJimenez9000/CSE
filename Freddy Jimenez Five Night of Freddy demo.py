@@ -42,25 +42,25 @@ Five_Night_Freddy = {
         }
     },
     'WAITING ROOM': {
-        'NAME': 'WAITING ROOM',
+        'NAME': 'Waiting Room',
         'DESCRIPTION': 'This place is were people will wait until they could get a bracelet.',
         'PATHS': {
             'NORTH': 'DINNING ROOM',
-            'WEST': 'WAITING ROOM',
-            'EAST': 'BATHROOM'
+            'WEST': 'BATHROOM',
+            'EAST': 'OFFICE'
         }
     },
     'OFFICE ROOM': {
-        'NAME': 'OFFICE ROOM',
-        'DESCRIPTION': 'This place is were people will wait until they could get a bracelet.',
+        'NAME': 'Office Room',
+        'DESCRIPTION': 'This place is were the manger will work. maybe',
         'PATHS': {
             'WEST': 'WAITING ROOM',
             'EAST': 'DATA BASE'
         }
     },
     'BATHROOM': {
-        'NAME': 'BATHROOM',
-        'DESCRIPTION': 'LOL',
+        'NAME': 'Bathroom',
+        'DESCRIPTION': "You know why you're here.",
         'PATHS': {
             'EAST': 'WAITING ROOM',
             'DOWN': 'BELOW BUILDING'
@@ -68,8 +68,8 @@ Five_Night_Freddy = {
     },
 
     'DINNING ROOM': {
-        'NAME': 'DINNING ROOM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Dinning Room',
+        'DESCRIPTION': 'Here were your going to eat after or before you go into the buffet.',
         'PATHS': {
             'NORTH': 'STAGE ',
             'WEST': 'GAME ROOM',
@@ -78,30 +78,30 @@ Five_Night_Freddy = {
         }
     },
     'GAME ROOM': {
-        'NAME': 'GAME ROOM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Game Room',
+        'DESCRIPTION': 'This place is were your children going to play games.',
         'PATHS': {
             'WEST': 'FOXY ROOM',
             'EAST': 'DINNING ROOM'
         }
     },
     'FOXY ROOM': {
-        'NAME': 'FOXY ROOM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Foxy Room',
+        'DESCRIPTION': 'Foxy is the most lovable character',
         'PATHS': {
             'EAST': 'GAME ROOM'
         }
     },
     ' FOOD ROOM': {
-        'NAME': 'FOOD ROOM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Food Room',
+        'DESCRIPTION': 'Do you not known why we use this place.',
         'PATHS': {
             'WEST': 'DINNING ROOM'
         }
     },
     'STAGE': {
-        'NAME': 'STAGE',
-        # 'DESCRIPTION': '',
+        'NAME': 'Stage',
+        'DESCRIPTION': 'This is were the animatronic is going to perform',
         'PATHS': {
             'NORTH': 'BACK OF THE BUILDING',
             'WEST': 'STORAGE ROOM',
@@ -109,16 +109,16 @@ Five_Night_Freddy = {
         }
     },
     'STORAGE ROOM': {
-        'NAME': 'STORAGE ROOM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Storage Room',
+        'DESCRIPTION': 'This is were we keep extras stuff. Like a dead bo- dead battery.',
         'PATHS': {
             'NORTH': 'BACK OF THE BUILDING ',
             'EAST': 'STAGE'
         }
     },
     'BACK OF THE BUILDING': {
-        'NAME': 'BACK OF THE BUILDING',
-        # 'DESCRIPTION': '',
+        'NAME': 'Back of the building',
+        'DESCRIPTION': 'There nothing here but blo- balloons',
         'PATHS': {
             'NORTH': 'SECURITY ROOM',
             'WEST': 'STORAGE ROOM',
@@ -127,23 +127,23 @@ Five_Night_Freddy = {
         }
     },
     'SECURITY ROOM': {
-        'NAME': 'SECURITY ROOM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Security Room',
+        'DESCRIPTION': 'This is were your going to work',
         'PATHS': {
             'SOUTH': 'BACK OF THE BUILDING'
         }
     },
     'STAFF ROOM': {
-        'NAME': 'STAFF ROOM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Staff Room',
+        'DESCRIPTION': 'Other staff will take a break in here',
         'PATHS': {
             'NORTH': 'BACK OF THE BUILDING',
             'EAST': 'ANIMATRONICS ROOM'
         }
     },
     'ANIMATRONICS': {
-        'NAME': 'ANIMATRONICS',
-        # 'DESCRIPTION': '',
+        'NAME': 'Animatronics room',
+        'DESCRIPTION': "There are 4 animatronics that are a 'work in progress'.",
         'PATHS': {
             'NORTH': 'CLOSED OF ROOM',
             'WEST': 'STAFF ROOM',
@@ -151,87 +151,81 @@ Five_Night_Freddy = {
         }
     },
     'DATA BASE': {
-        'NAME': 'DATA BASE',
-        # 'DESCRIPTION': '',
+        'NAME': 'Data base',
+        'DESCRIPTION': 'This is were we controlled the animatronics',
         'PATHS': {
             'NORTH': 'ANIMATRONICS ROOM',
             'SOUTH': 'OFFICE'
         }
     },
     'BELOW BUILDING': {
-        'NAME': 'BELOW BUILDING',
-        # 'DESCRIPTION': '',
+        'NAME': 'Below building',
+        'DESCRIPTION': 'You fell and found a strange place',
         'PATHS': {
             'UP': 'BATHROOM',
             'EAST': 'ELEVATOR'
         }
     },
     'ELEVATOR': {
-        'NAME': 'ELEVATOR',
-        # 'DESCRIPTION': '',
+        'NAME': 'Elevator',
+        'DESCRIPTION': 'It seem the elevator take you you below. Would you like to go up or down?',
         'PATHS': {
             'NORTH': 'CONTROL ROOM',
             'WEST': 'BELOW BUILDING',
             'EAST': 'NOTHING',
-            'SOUTH': 'WINDOW'
-        }
-    },
-    'WINDOW': {
-        'NAME': 'WINDOW',
-        # 'DESCRIPTION': '',
-        'PATHS': {
-            'NORTH': 'ELEVATOR'
+            'up': 'BATHROOM',
+            'down': 'CONTROL PANEL'
         }
     },
     'NOTHING': {
-        'NAME': 'NOTHING',
-        # 'DESCRIPTION': '',
+        'NAME': 'Nothing',
+        'DESCRIPTION': 'There nothing here but rocks.',
         'PATHS': {
             'WEST': 'ELEVATOR'
         }
     },
     'CONTROL PANEL': {
-        'NAME': 'CONTROL PANEL',
-        # 'DESCRIPTION': '',
+        'NAME': 'Control panel',
+        'DESCRIPTION': 'There seem to be button that does something.',
         'PATHS': {
-            'NORTH': 'CONTROL PANEL 2',
+            'NORTH': 'Control panel 2',
             'EAST': 'BALLORA AUDITORIUM',
             'SOUTH': 'ELEVATOR'
         }
     },
     'BALLORA AUDITORIUM': {
-        'NAME': 'BALLORA AUDITORIUM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Ballora Auditorium',
+        'DESCRIPTION': "'There seem to be something there but can't make out what it is.",
         'PATHS': {
             'NORTH': 'FUNTIME AUDITORIUM',
             'WEST': 'CONTROL PANEL'
         }
     },
     'FUNTIME AUDITORIUM': {
-        'NAME': 'FUNTIME AUDITORIUM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Fun time Auditorium',
+        'DESCRIPTION': "There also something there but can't make out what it is",
         'PATHS': {
             'WEST': 'FOXY AUDITORIUM',
             'SOUTH': 'BALLORA AUDITORIUM'
         }
     },
     'FOXY AUDITORIUM': {
-        'NAME': 'ELEVATOR',
-        # 'DESCRIPTION': '',
+        'NAME': 'Foxy Auditorium',
+        'DESCRIPTION': 'You hear something but was to fainted to figure out',
         'PATHS': {
             'EAST': 'FUNTIME AUDITORIUM'
         }
     },
     'CONTROL PANEL 2': {
-        'NAME': 'CONTROL PANEL FOR BABY',
-        # 'DESCRIPTION': '',
+        'NAME': 'Control Panel for Baby',
+        'DESCRIPTION': 'There are a lot of button that does something. but what?',
         'PATHS': {
             'SOUTH': 'CONTROL PANEL'
         }
     },
     'BABY AUDITORIUM': {
-        'NAME': 'BABY AUDITORIUM',
-        # 'DESCRIPTION': '',
+        'NAME': 'Baby Auditorium',
+        'DESCRIPTION': 'you find something very odd, familiar, but    there something     very     disturbing. ',
         'PATHS': {
             'SOUTH': 'CONTROL PANEL 2'
         }
@@ -248,7 +242,7 @@ while True:
     if command == 'quit':
         quit(0)
 
-    if command in direction:
+    if command in direction and other_direction:
         try:
             name_of_node = current_node['PATHS'][command]
             print(name_of_node)
