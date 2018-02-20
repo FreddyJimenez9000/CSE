@@ -13,6 +13,8 @@ guesses = 10
 strOne = random.choice(word)
 strOne = strOne.lower()
 listOne = list(strOne)
+letter = ("abcdefghijklmnopqrstuvwxyz")
+letter_used = []
 listTwo = []
 for letter in strOne:
     if letter != ' ':
@@ -22,19 +24,31 @@ for letter in strOne:
 
 print("let's play a game of hangman")
 print("you're going to have 10 guess to guess the word.")
-while 0 < len(listOne):
+while len(strOne) != 0:
     print(listTwo)
     guess = input("letter >")
     guess = guess.lower()
     guesses -= 1
     print(guess)
 
-    for i in range(len(listOne)):
-        if listOne[i] in listOne:
-            # listTwo[i] = guess
-            # guess.append = listTwo[i]
+    for guess in range(len(word)):
+        if guess != strOne in word:
+            print("guess again")
+            print(guesses)
+        else:
+            print("you found a letter")
+        if guess == listOne:
+            letter_used.append(guess)
+        if guess == strOne in letter:
+            print(listTwo.remove(guess))
+        if guesses == 0:
+            print("you lost")
+        else:
+            break
 
 
+
+"""
 
 
     # if stuff in listTwo:
@@ -42,6 +56,10 @@ while 0 < len(listOne):
     #         print(guess - 1)
 
 
+    # listTwo[i] = guess
+    # guess.append = listTwo[i]
+
+"""
 
 
 
@@ -52,8 +70,6 @@ while 0 < len(listOne):
 
 
 
-
-
-        # print(string.ascii_letters)
+    # print(string.ascii_letters)
         # print(string.ascii_lowercase)
         # print(listOne)
