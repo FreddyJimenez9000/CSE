@@ -1,5 +1,5 @@
 import random
-
+import string
 
 # this is a guide of how to make hangman
 # 1. make a word bank - 10 items
@@ -13,38 +13,36 @@ guesses = 10
 strOne = random.choice(word)
 strOne = strOne.lower()
 listOne = list(strOne)
-letter = ("abcdefghijklmnopqrstuvwxyz")
 letter_used = []
-listTwo = []
+display = []
 for letter in strOne:
     if letter != ' ':
-        listTwo.append("*")
+        display.append("*")
     else:
-        listTwo.append(" ")
+        display.append(" ")
 
 print("let's play a game of hangman")
 print("you're going to have 10 guess to guess the word.")
-while len(strOne) != 0:
-    print(listTwo)
+while 0 < guesses:
+    print(display)
     guess = input("letter >")
     guess = guess.lower()
     guesses -= 1
     print(guess)
-
     for guess in range(len(word)):
-        if guess != strOne in word:
+        if guess != strOne in string.ascii_letters:
             print("guess again")
-            print(guesses)
         else:
             print("you found a letter")
-        if guess == listOne:
-            letter_used.append(guess)
-        if guess == strOne in letter:
-            print(listTwo.remove(guess))
-        if guesses == 0:
-            print("you lost")
-        else:
-            break
+            print(display.append(guess))
+    if guess == word in listOne:
+        print(display)
+
+
+    if guesses == 0:
+        print("you lost")
+        break
+
 
 
 
