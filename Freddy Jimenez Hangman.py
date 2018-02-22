@@ -37,8 +37,6 @@ while 0 < guesses:
             print(display.append(guess))
     if guess == word in listOne:
         print(display)
-
-
     if guesses == 0:
         print("you lost")
         break
