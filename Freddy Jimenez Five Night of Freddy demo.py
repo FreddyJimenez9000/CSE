@@ -27,8 +27,8 @@
 Five_Night_Freddy = {
     'ENTRANCE': {
         'NAME': 'FreddyFazbear Entrance',
-        'DESCRIPTION': 'Your at the entrance of the new place where your going to work. The place is called Freddy'
-                       'Fazbear pizzaera.',
+        'DESCRIPTION': 'Your at the entrance of the new place where your going to work. The place is called '
+                       'Freddy Fazbear pizzaera',
         'PATHS': {
             'EAST': 'SECURITY PUPPET ROOM',
             'NORTH': 'WAITING ROOM'

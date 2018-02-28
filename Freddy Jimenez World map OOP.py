@@ -1,7 +1,7 @@
 class Room(object):
-    def __init__(self, description, name, north, west, east, south, up, down):
-        self.description = description
+    def __init__(self, name, description, north, west, east, south, up, down):
         self.name = name
+        self.description = description
         self.north = north
         self.south = south
         self.east = east
@@ -13,10 +13,16 @@ class Room(object):
         global current_node
         current_node = globals()[getattr(self, directions)]
 
+ENTRANCE = Room('Freddy Fazbear Entrance',
+                'Your at the entrance of the new place where your going to work. The place is called'
+                'Freddy Fazbear pizzaera',
+                True, False, True, False, False, False)
+               )
+SECURITY_PUPPET_ROOM = Room(('security puppet room',
+                             'This room will protect children who are trying to leave without their parent.'
+)
 
-rooms = Room()
-
-current_node = rooms
+#current_node = rooms
 direction = ['NORTH', 'SOUTH', 'EAST', 'WEST']
 other_direction = ['UP', 'DOWN']
 while True:
