@@ -71,7 +71,7 @@ Five_Night_Freddy = {
         'NAME': 'Dinning Room',
         'DESCRIPTION': 'Here were your going to eat after or before you go into the buffet.',
         'PATHS': {
-            'NORTH': 'STAGE ',
+            'NORTH': 'STAGE',
             'WEST': 'GAME ROOM',
             'EAST': 'FOOD ROOM',
             'SOUTH': 'WAITING ROOM'
@@ -92,7 +92,7 @@ Five_Night_Freddy = {
             'EAST': 'GAME ROOM'
         }
     },
-    ' FOOD ROOM': {
+    'FOOD ROOM': {
         'NAME': 'Food Room',
         'DESCRIPTION': 'Do you not known why we use this place.',
         'PATHS': {
