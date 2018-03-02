@@ -138,12 +138,12 @@ Five_Night_Freddy = {
         'DESCRIPTION': 'Other staff will take a break in here',
         'PATHS': {
             'NORTH': 'BACK OF THE BUILDING',
-            'EAST': 'ANIMATRONICS ROOM'
+            'EAST': 'ANIMATRONICS'
         }
     },
     'ANIMATRONICS': {
         'NAME': 'Animatronics room',
-        'DESCRIPTION': "There are 4 animatronics that are a 'work in progress'.",
+        'DESCRIPTION': "There are 4 animatronics that are a work in progress.",
         'PATHS': {
             'NORTH': 'CLOSED OF ROOM',
             'WEST': 'STAFF ROOM',
@@ -168,7 +168,7 @@ Five_Night_Freddy = {
     },
     'ELEVATOR': {
         'NAME': 'Elevator',
-        'DESCRIPTION': 'It seem the elevator take you you below. Would you like to go up or down?',
+        'DESCRIPTION': 'It seem the elevator take you below or up. Would you like to go up or down?',
         'PATHS': {
             'NORTH': 'CONTROL ROOM',
             'WEST': 'BELOW BUILDING',
@@ -186,7 +186,7 @@ Five_Night_Freddy = {
     },
     'CONTROL PANEL': {
         'NAME': 'Control panel',
-        'DESCRIPTION': 'There seem to be button that does something.',
+        'DESCRIPTION': 'There seem to be a button that does something.',
         'PATHS': {
             'NORTH': 'Control panel 2',
             'EAST': 'BALLORA AUDITORIUM',

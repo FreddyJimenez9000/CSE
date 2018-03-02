@@ -59,6 +59,42 @@ STORAGE_ROOM = Room('Stage',
                      'This is were the animatronic is going to perform.',
              'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None
                      )
+BACK_OF_THE_BUILDING = Room('Back of the building',
+                     'There nothing here but blo- balloons.',
+             'SECURITY_ROOM', 'STORAGE_ROOM', 'STAFF_ROOM', 'STORAGE_ROOM', None, None
+                     )
+SECURITY_ROOM = Room('Security Room',
+                     'This is were your going to work.',
+             None, None, None, 'BACK_THE_BUILDING', None, None
+                     )
+STAFF_ROOM = Room('Staff Room',
+                     'Other staff will take a break in here.',
+                  'BACK_OF_THE_BUILDING', None, 'ANIMATRONICS', None, None, None
+                     )
+ANIMATRONICS = Room('Animatronics room',
+                     "There are 4 animatronics that are a work in progress.",
+                  'CLOSED_OF_ROOM', 'STAFF_ROOM', None, 'DATA_BASE', None, None
+                     )
+DATA_BASE = Room('Data base',
+                     'This is were we controlled the animatronics.',
+                  'ANIMATRONICS', None, None, 'OFFICE', None, None
+                     )
+BELOW_BUILDING = Room('Below building',
+                     'You fell and found a strange place. it dark.',
+                  None, None, 'ELEVATOR', None, 'BATHROOM', None
+                     )
+ELEVATOR = Room('Elevator',
+                     'It seem the elevator take you below or up. Would you like to go up or down?',
+                'CONTROL_ROOM', 'BELOW_BUILDING', 'NOTHING', None, 'BATHROOM', 'CONTROL_PANEL'
+                     )
+NOTHING = Room('Nothing',
+                     'There nothing here but rocks.',
+                None, 'ELEVATOR', None, None, None, None
+                     )
+CONTROL_PANEL = Room('Control panel',
+                     'TThere seem to be a button that does something.',
+                None, 'ELEVATOR', None, None, None, None
+                     )
 
 
 #current_node = rooms
