@@ -25,7 +25,7 @@ SECURITY_PUPPET_ROOM = Room('security puppet room',
                              )
 WAITING_ROOM = Room('Waiting Room',
                      'This place is were people will wait until they could get a bracelet.',
-                    'DINNING_ROOM', 'BATHROOM', 'OFFICE', None, None, None
+                    'DINNING_ROOM', 'BATHROOM', 'OFFICE_ROOM', None, None, None
                      )
 OFFICE_ROOM = Room('Office Room',
                      'This place is were the manger will work. maybe',
@@ -92,24 +92,47 @@ NOTHING = Room('Nothing',
                 None, 'ELEVATOR', None, None, None, None
                      )
 CONTROL_PANEL = Room('Control panel',
-                     'TThere seem to be a button that does something.',
-                None, 'ELEVATOR', None, None, None, None
+                     'There seem to be a button that does something.',
+                     'CONTROL_PANEL_2', None, 'BALLORA_AUDITORIUM', 'ELEVATOR', None, None
+                     )
+BALLORA_AUDITORIUM = Room('Ballora Auditorium',
+                     "'There seem to be something there but can't make out what it is.",
+                     'FUN_TIME_AUDITORIUM', 'CONTROL_PANEL', None, None, None, None
+                     )
+FUN_TIME_AUDITORIUM = Room('Fun time Auditorium',
+                     "There also something there but can't make out what it is",
+                     None, 'FOXY_AUDITORIUM', None, 'BALLORA_AUDITORIUM', None, None
+                     )
+FOXY_AUDITORIUM = Room('Foxy Auditorium',
+                     'You hear something but was to fainted to figure out.',
+                     None, None, 'FUN_TIME_AUDITORIUM', None, None, None
+                     )
+CONTROL_PANEL_2 = Room('Control Panel for Baby',
+                     'There are a lot of button that does something. but what?',
+                     None, None, None, 'CONTROL_PANEL', None, None
+                     )
+BABY_AUDITORIUM = Room('Baby Auditorium',
+                     'you find something very odd, familiar, but    there something     very     disturbing.',
+                     None, None, None, 'CONTROL_PANEL_2', None, None
                      )
 
 
-#current_node = rooms
-direction = ['NORTH', 'SOUTH', 'EAST', 'WEST']
-other_direction = ['UP', 'DOWN']
+direction = ['north', 'south', 'east', 'west']
+other_direction = ['up', 'down']
+short_direction = ['n', 's', 'e', 'w']
+other_short_direction = ['u', 'd']
 while True:
-    print(current_node['NAME']) # change
-    print(current_node['DESCRIPTION']) # change
-    command = input('>_')
+    print(current_node['']) # change
+    print(current_node['']) # change
+    command = input('>_').lower().strip()
     if command == 'quit':
         quit(0)
-
+    elif command in short_direction and other_short_direction:
+        pos = short_direction and other_short_direction.index(command)
+        command = direction[pos]
     if command in direction and other_direction:
-        try:
-           # change
+       try:
+
         except KeyError:
             print("Are you a baka, there is nothing there")
     else:

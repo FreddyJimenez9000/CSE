@@ -47,7 +47,7 @@ Five_Night_Freddy = {
         'PATHS': {
             'NORTH': 'DINNING ROOM',
             'WEST': 'BATHROOM',
-            'EAST': 'OFFICE'
+            'EAST': 'OFFICE ROOM'
         }
     },
     'OFFICE ROOM': {
@@ -188,7 +188,7 @@ Five_Night_Freddy = {
         'NAME': 'Control panel',
         'DESCRIPTION': 'There seem to be a button that does something.',
         'PATHS': {
-            'NORTH': 'Control panel 2',
+            'NORTH': 'CONTROL PANEL 2',
             'EAST': 'BALLORA AUDITORIUM',
             'SOUTH': 'ELEVATOR'
         }
@@ -220,7 +220,8 @@ Five_Night_Freddy = {
         'NAME': 'Control Panel for Baby',
         'DESCRIPTION': 'There are a lot of button that does something. but what?',
         'PATHS': {
-            'SOUTH': 'CONTROL PANEL'
+            'SOUTH': 'CONTROL PANEL',
+            'NORTH': 'BABY AUDITORIUM'
         }
     },
     'BABY AUDITORIUM': {
