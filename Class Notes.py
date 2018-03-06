@@ -1,6 +1,6 @@
 # Defining a class
 class CheeseBurger(object):
-    def __init__(self, patty_type, cheese): # Two underscores before and after
+    def __init__(self, patty_type, cheese):  # Two underscores before and after
         self.patty = patty_type
         self.cheese = cheese
         self.eaten = False

@@ -47,7 +47,8 @@ Five_Night_Freddy = {
         'PATHS': {
             'NORTH': 'DINNING ROOM',
             'WEST': 'BATHROOM',
-            'EAST': 'OFFICE ROOM'
+            'EAST': 'OFFICE ROOM',
+            'SOUTH': 'ENTRANCE'
         }
     },
     'OFFICE ROOM': {
@@ -145,7 +146,6 @@ Five_Night_Freddy = {
         'NAME': 'Animatronics room',
         'DESCRIPTION': "There are 4 animatronics that are a work in progress.",
         'PATHS': {
-            'NORTH': 'CLOSED OF ROOM',
             'WEST': 'STAFF ROOM',
             'SOUTH': 'DATA BASE'
         }
