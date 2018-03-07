@@ -70,3 +70,9 @@ class car(object):
 
 car = car("redkiller9000", "blue", 5, 6000)
 car.go_for_drive()
+
+
+
+
+
+
