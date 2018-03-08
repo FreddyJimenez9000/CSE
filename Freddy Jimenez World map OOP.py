@@ -16,7 +16,7 @@ class Room(object):
 
 
 ENTRANCE = Room('Freddy Fazbear Entrance',
-                'Your at the entrance of the new place where your going to work. The place is called'
+                'Your at the entrance of the new place where your going to work. The place is called '
                 'Freddy Fazbear pizzaera',
                 'WAITING_ROOM', None, 'SECURITY_PUPPET_ROOM', None, None, None,)
 
@@ -24,7 +24,7 @@ SECURITY_PUPPET_ROOM = Room('security puppet room',
                             'This room will protect children who are trying to leave without their parent.',
                             None, 'ENTRANCE', None, None, None, None)
 WAITING_ROOM = Room('Waiting Room',
-                    'This place is were people will wait until they could get a bracelet.',
+                    'This place is were people will wait until they could get a bracelet to enter the playhouse.',
                     'DINNING_ROOM', 'BATHROOM', 'OFFICE_ROOM', 'ENTRANCE', None, None)
 OFFICE_ROOM = Room('Office Room',
                    'This place is were the manger will work. maybe',

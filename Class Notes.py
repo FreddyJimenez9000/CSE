@@ -69,7 +69,7 @@ class car(object):
         self.passengers = 0
 
 car = car("redkiller9000", "blue", 5, 6000)
-car.go_for_drive()
+#car.go_for_drive()
 
 
 
