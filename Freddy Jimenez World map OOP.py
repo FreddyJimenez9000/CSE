@@ -42,13 +42,13 @@ FOXY_ROOM = Room('Foxy Room',
                  'Foxy is the most lovable character.',
                  None, None, 'GAME_ROOM', None, None, None)
 FOOD_ROOM = Room('Food Room',
-                     'Do you not known why we use this place.',
-                    None, 'DINNING_ROOM', None, None, None, None)
+                 'Do you not known why we use this place.',
+                 None, 'DINNING_ROOM', None, None, None, None)
 STAGE = Room('Stage',
-             'This is were the animatronic is going to perform.',
+             'This is were the animatronic is going to perform. We have Freddy, Bonnie, and chika.',
              'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None)
 STORAGE_ROOM = Room('Stage',
-                    'This is were the animatronic is going to perform.',
+                    'This is were we keep extras stuff. Like a dead bo- dead battery.',
                     'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None)
 BACK_OF_THE_BUILDING = Room('Back of the building',
                             'There nothing here but blo- balloons.',
