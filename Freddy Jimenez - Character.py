@@ -22,32 +22,33 @@ class Character(object):
     #     print("you only got a flashlight")
 
 
-person1 = Character('Jeff',
-                    "you took this job because you needed money. Your wife and three kids just wanted to have a better"
+person1 = Character('Henry',
+                    "you took this job because you needed money. Your wife and three kids just wanted to have a better "
                     "life."
-                    "you found this job on ebay? what. What wrong with you ",
+                    "you found this job on ebay? what, What wrong with you ",
                     'Flashlight',
                     ' H = 100, S = 100',
                     None, None, None)
 Bonnie = Character('Bonnie',
-                   "Bonnie is a fun bunny which bring joy around the pizzaria. But then again it smell like a dead bod-"
+                   "Bonnie is a fun bunny which bring joy around the pizzeria. But then again it smell like a dead bod-"
                    "something",
                    None,', H = 100 s = 0', 'guitar',
                    'play the guitar', "you become blind and paralyzed")
 Freddy = Character('Freddy Fazbear',
-                   "Freddy is the most loveable bear in the whole pizzaria. He liked the star of the band. But every"
-                   "time he sing there like a dead man crying trying to get out. but who knows.",
+                   "Freddy is the most lovable bear in the whole pizzeria. He liked the star of the band. But every"
+                   "time he sing it sound like a dead man crying, trying to get out. but who knows.",
                    None,'H = 100, s = 0','Mic', 'Sing', "you become blind and paralyzed")
-Chica = Character('Chica', "Chica is a duck like animatronics who soul purpose is to give out cupcake. but we don't"
+Chica = Character('Chica', "Chica is a duck like animatronic who soul purpose is to give out cupcake. but we don't "
                   "know what inside of those cupcake maybe bloo-. its made organic.;)",
                   None, 'H = 100, S = 0', 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
-Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he's shy. his fur is always red but it"
+Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he's shy. His fur is always red but it"
                          " used to be white. We think that an employee colored it red. But it started to smell.",
-                 None,'H = 100, S = 0',"a Hook", None,"you become blind and paralyzed.")
-
-
-print(Foxy.description,)
-print(Chica.description)
-command = input(":")
+                 None, 'H = 100, S = 0',"a Hook", None,"you become blind and paralyzed.")
+Ballora = Character('Ballora', "She a fun charter, like to sing, dance, and to put on a show",
+                    None, "H = 100 S = 0", None, "dance", "you become blind and paralyzed." )
+# print(person1.description)
+# print(Foxy.items,)
+# print(Chica.description)
+# command = input(":")
 
 
