@@ -13,9 +13,8 @@ class Employee(object):
         self.age = age
         self.job = job
 
-
     def work(self):
-        print("%s started there first day of work." % self.name , "your job is %s" % self.job)
+        print("%s started his first day of work." % self.name, "your job is %s" % self.job)
 
 
 class Programmer(object):
@@ -24,10 +23,13 @@ class Programmer(object):
         self.age = age
         self.job = job
 
-
     def code(self):
         print("%s has finally finish his game" % self.name)
 
 
-person = Employee("Jeff", 23, "food market")
-person2 = Programmer("Tom", 34, "Code Company")
+person = Person("Alfred", 23 )
+person2 = Employee("Jeff", 23, "food market")
+person3 = Programmer("Tom", 34, "Code Company")
+
+
+person2.work()

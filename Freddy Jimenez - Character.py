@@ -8,9 +8,6 @@ class Character(object):
         self.action = action
         self.jump_scare = jump_scare
 
-    def jump_scare(self):
-        print("you become blind and paralyzed")
-
     # def person(self, name):
     #     print("Your name is %s" % name)
     #
@@ -46,6 +43,17 @@ Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he'
                  None, 'H = 100, S = 0',"a Hook", None,"you become blind and paralyzed.")
 Ballora = Character('Ballora', "She a fun charter, like to sing, dance, and to put on a show",
                     None, "H = 100 S = 0", None, "dance", "you become blind and paralyzed." )
+Fun_time_Freddy = Character("Fun time Freddy","He's a lovable character which was used in the last pizzeria but run out"
+                            "business because of a weird smell and a disappearance of children.",
+                            None, "H = 100 S = 0", None, "play with children", "you become blind and paralyzed.")
+Fun_time_Foxy = Character("Fun Time Foxy", "She's the sister of Foxy but have a few improvement over Foxy. But we "
+                          "saw something very strange in the old security camera of a child disappearing and Fun time "
+                          "Foxy came out.", None, "H = 100 S = 0", None, "Dance", "you become blind and paralyzed.")
+Baby = Character("Baby", "Baby was made to take care and make kids happy. But they started to disappear when they go "
+                         "and play with Baby.", None, "H = 100 S = 0", None,
+                 "dance and sing", "you become blind and paralyzed." )
+
+print(Freddy.description)
 # print(person1.description)
 # print(Foxy.items,)
 # print(Chica.description)
