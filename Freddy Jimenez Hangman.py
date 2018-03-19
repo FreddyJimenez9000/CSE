@@ -1,48 +1,56 @@
 import random
-import string
-
-# this is a guide of how to make hangman
-# 1. make a word bank - 10 items
-# 2. Select a random guess
-# 3. take in a letter and add it to a list of letters_guess
-# 4. reveal letters based on input
-# 5. create win/lose condition
 
 word = ['death', 'math', 'homework', 'money', 'games', 'stuff', 'Family', 'school', 'Edison', 'Gaston']
 guesses = 10
-strOne = random.choice(word)
-strOne = strOne.lower()
-listOne = list(strOne)
+random_word = random.choice(word)
+listOne = list(random_word)
 letter_used = []
-display = []
-for letter in strOne:
-    if letter != ' ':
-        display.append("*")
-    else:
-        display.append(" ")
+playing = True
 
 print("let's play a game of hangman")
 print("you're going to have 10 guess to guess the word.")
-while 0 < guesses:
-    print(display)
-    guess = input("letter >")
-    guess = guess.lower()
-    guesses -= 1
-    print(guess)
-    for guess in range(len(word)):
-        if guess != strOne in string.ascii_letters:
-            print("guess again")
+while guesses > 0 and playing:
+    # Create and update display
+    display = []
+    for letter in random_word:
+        if letter.lower() in letter_used:
+            display.append(letter)
         else:
-            print("you found a letter")
-            print(display.append(guess))
-    if guess == word in listOne:
-        print(display)
-    if guesses == 0:
-        print("you lost")
-        break
+            display.append("*")
+    print(''.join(display))
+    print(guesses)
 
+    # Check for win
+    if '*' not in display:
+        print("you win the word was %s" % random_word)
+        playing = False
+        continue
 
+    # Ask for input and add it to letters used
+    guess = input("letter :").lower()
+    letter_used.append(guess)
+    print(letter_used)
 
+    if guess == random_word.lower():
+        print("you win the word was %s" % random_word)
+        playing = False
+        continue
+
+    # Check for loss
+    if guess not in random_word:
+        guesses -= 1
+        if guesses == 0:
+            print("you lost the word was %s" % random_word)
+
+            # print(guess)
+            # for guess in range(len(word)):
+            #     if guess != strOne in string.ascii_letters:
+            #         print("guess again")
+            #     else:
+            #         print("you found a letter")
+            #         print(display.append(guess))
+            # if guess == word in listOne:
+            #     print(display)
 
 """
 
@@ -55,17 +63,17 @@ while 0 < guesses:
     # listTwo[i] = guess
     # guess.append = listTwo[i]
 
+        if guess not in random_word:
+        guesses -= 1
+    for letter in random_word:
+        if letter in guess:
+            display = guess
+        else:
+            listOne.append('*')
+    letter_used = '*'.join(letter_used)
+    if '*' not in display:
+        print("you win the word was %s" % random_word)
+        break
+
+
 """
-
-
-
-
-
-
-
-
-
-
-    # print(string.ascii_letters)
-        # print(string.ascii_lowercase)
-        # print(listOne)
