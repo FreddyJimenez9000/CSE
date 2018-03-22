@@ -1,6 +1,5 @@
 inventory = []
 # print("there a mic on the ground")
-command = input(":").lower()
 # head = False
 # chest = False
 # leg = False
@@ -22,15 +21,14 @@ class Weapon(Item):
 
 
 class Consumable(Item):
-    def __init__(self, name, description, pickup ,room):
-        super(Consumable, self). __init__(name, description, pickup, room)
+    def __init__(self, name, description, pick_up ,room):
+        super(Consumable, self). __init__(name, description, pick_up, room)
         self.eaten = False
 
 
 class Wearable(Item):
-    def __init__(self, name, description, pickup, room, wear):
+    def __init__(self, name, description, pickup, room, ):
         super(Wearable, self). __init__(name, description, pickup, room)
-        self.wear = wear
 
     def wear(self):
         if command == "put on %s" % self.name:
@@ -149,8 +147,8 @@ class Night_vision_potion(Potion):
 
 
 class Bag_of_holding(Wearable):
-    def __init__(self, name, description, pick_up, room, wear):
-        super(Bag_of_holding, self).__init__(name, description, pick_up, room, wear)
+    def __init__(self, name, description, pick_up, room,):
+        super(Bag_of_holding, self).__init__(name, description, pick_up, room,)
 
 
 class Pizza(Consumable):
@@ -173,19 +171,49 @@ class Cup_cake(Consumable):
         self.eaten = True
 
 
+class Water_bottle(Consumable):
+    def __init__(self, name, description, pick_up, room):
+        self.eaten = False
+        super(Water_bottle, self).__init__(name, description, pick_up, room)
+
+    def eat(self):
+        print("You drink a water bottle, nothing happen")
+
+
+class Hat(Wearable):
+    def __init__(self, name, description, pick_up, room,):
+        super(Hat, self).__init__(name, description, pick_up, room,)
+
+
+class Cape(Wearable):
+    def __init__(self, name, description, pick_up, room,):
+        super(Cape, self).__init__(name, description, pick_up, room)
+
+
+class Bloody_shirt(Item):
+    def __init__(self, name, description, room, pick_up):
+        super(Bloody_shirt, self).__init__(name, description, room, pick_up)
+
+
+class Telephone(Item):
+    def __init__(self, name, description, pick_up, room):
+        super(Telephone, self).__init__(name, description, pick_up, room)
 
 
 
+telephone = Telephone('telephone', None, None, None)
+print(telephone.name)
+
+command = input(":").lower()
 
 
-                # def Pick_up(self):
-    #     if command == "pickup %s" % self.name:
-    #         print("you pick up %s" % self.name)
-    #         inventory.append(command)
-    #
-    # if command == "inventory":
-    #    print(inventory)
-#
+if command == "pick up %s" % telephone.name:
+    print("you pick up %s" % telephone.name)
+    inventory.append(command)
+
+    if command == "inventory":
+       print(inventory)
+
 
 
 
