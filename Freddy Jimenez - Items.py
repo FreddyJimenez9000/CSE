@@ -1,3 +1,5 @@
+# import time
+# start_time = time.time()
 inventory = []
 # print("there a mic on the ground")
 # head = False
@@ -29,10 +31,10 @@ class Consumable(Item):
 class Wearable(Item):
     def __init__(self, name, description, pickup, room, ):
         super(Wearable, self). __init__(name, description, pickup, room)
-
-    def wear(self):
-        if command == "put on %s" % self.name:
-            print("You put on the %s" % self.name)
+    # method for wear
+    # def wear(self):
+    #     if command == "put on %s" % self.name:
+    #         print("You put on the %s" % self.name)
 
 
 class Range(Weapon):
@@ -199,20 +201,25 @@ class Telephone(Item):
     def __init__(self, name, description, pick_up, room):
         super(Telephone, self).__init__(name, description, pick_up, room)
 
+    def answer(self):
+        print("you'll die in three hours")
 
-
+'''
+# further code for future testing 
 telephone = Telephone('telephone', None, None, None)
 print(telephone.name)
+while 0 < 10:
+    command = input(":").lower()
 
-command = input(":").lower()
-
-
-if command == "pick up %s" % telephone.name:
-    print("you pick up %s" % telephone.name)
-    inventory.append(command)
-
+    if command == "pick up %s" % telephone.name:
+        print("you picked up %s" % telephone.name)
+        inventory.append(telephone.name)
+    elif command == "drop %s" % telephone.name:
+        print("You drop the %s" % telephone.name)
+        inventory.pop(telephone.name)
     if command == "inventory":
-       print(inventory)
+        print(inventory)
+'''
 
 
 
