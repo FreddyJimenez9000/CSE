@@ -204,6 +204,7 @@ class Telephone(Item):
     def answer(self):
         print("you'll die in three hours")
 
+
 '''
 # further code for future testing 
 telephone = Telephone('telephone', None, None, None)

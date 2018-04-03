@@ -9,7 +9,6 @@ class Room(object):
         self.up = up
         self.down = down
 
-
     def move(self, directions):
         global current_node
         current_node = globals()[getattr(self, directions)]
