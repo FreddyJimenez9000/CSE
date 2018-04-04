@@ -1,26 +1,25 @@
 class Item(object):
-    def __init__(self, name, description, pick_up, room):
+    def __init__(self, name, description, room):
         self.name = name
         self.description = description
-        self.Pickup = pick_up
         self.from_room = room
 
 
 class Weapon(Item):
-    def __init__(self, name, description, damage_ratio, room, pick_up):
-        super(Weapon, self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, damage_ratio, room):
+        super(Weapon, self).__init__(name, description, room)
         self.damage = damage_ratio
 
 
 class Consumable(Item):
-    def __init__(self, name, description, pick_up ,room):
-        super(Consumable, self). __init__(name, description, pick_up, room)
+    def __init__(self, name, description, room):
+        super(Consumable, self). __init__(name, description, room)
         self.eaten = False
 
 
 class Wearable(Item):
-    def __init__(self, name, description, pickup, room, ):
-        super(Wearable, self). __init__(name, description, pickup, room)
+    def __init__(self, name, description, room, ):
+        super(Wearable, self). __init__(name, description, room)
     # method for wear
     # def wear(self):
     #     if command == "put on %s" % self.name:
@@ -28,25 +27,26 @@ class Wearable(Item):
 
 
 class Range(Weapon):
-    def __init__(self, name, description, affect, room, damage_ratio, pick_up):
-        super(Range, self).__init__(name, description, damage_ratio, room, pick_up)
+    def __init__(self, name, description, affect, room, damage_ratio):
+        super(Range, self).__init__(name, description, damage_ratio, room)
         self.affect = affect
 
 
 class Arcade_machine(Item):
     def __init__(self, name, description, room, action):
-        super(Arcade_machine, self).__init__(name, description, None, room)
+        super(Arcade_machine, self).__init__(name, description ,room)
         self.action = action
 
 
+
 class Melee(Weapon):
-    def __init__(self, name, description, room, damage_ratio, pick_up):
-        super(Melee,self).__init__(name, description, damage_ratio, room, pick_up)
+    def __init__(self, name, description, room, damage_ratio):
+        super(Melee,self).__init__(name, description, damage_ratio, room)
 
 
 class Crowbar(Melee):
-    def __init__(self, name, description, room, purpose, damage_ratio, pick_up):
-        super(Crowbar, self).__init__(name, description, room, damage_ratio, pick_up)
+    def __init__(self, name, description, room, purpose, damage_ratio):
+        super(Crowbar, self).__init__(name, description, room, damage_ratio)
         self.purpose = purpose
 
     def open_hatch(self):
@@ -54,37 +54,37 @@ class Crowbar(Melee):
 
 
 class Knife(Melee):
-    def __init__(self, name, description, room, damage_ratio, pick_up):
-        super(Knife, self).__init__(name, description, room, damage_ratio, pick_up)
+    def __init__(self, name, description, room, damage_ratio):
+        super(Knife, self).__init__(name, description, room, damage_ratio)
 
     def action(self):
         print("You use the knife to defend yourself but failed. You lost your will to live.")
 
 
 class Flare_gun(Range):
-    def __init__(self, name, description, room, damage_ratio, pick_up):
-        super(Flare_gun, self).__init__(name, description , 'Fire', room, damage_ratio, pick_up)
+    def __init__(self, name, description, room, damage_ratio):
+        super(Flare_gun, self).__init__(name, description , 'Fire', room, damage_ratio)
 
     def signal(self):
         print("You shot at the sky to get signal your position. You're save")
 
 
 class Flare_ammo(Item):
-    def __init__(self, name, description, pick_up, room):
-        super(Flare_ammo, self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, room):
+        super(Flare_ammo, self).__init__(name, description, room)
 
     def reload(self):
         print("you inputted a shell")
 
 
 class Ball_pit(Item):
-    def __init__(self, name, description, room, pick_up):
-        super(Ball_pit, self).__init__(name, description , room, pick_up)
+    def __init__(self, name, description, room):
+        super(Ball_pit, self).__init__(name, description , room)
 
 
 class Flashlight(Item):
-    def __init__(self, name, description, room, pick_up):
-        super(Flashlight, self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, room):
+        super(Flashlight, self).__init__(name, description, room)
 
     def turn_on(self):
         print("You turn on the flashlight")
@@ -94,59 +94,59 @@ class Flashlight(Item):
 
 
 class Battery(Item):
-    def __init__(self, name, description, room, pick_up):
-        super(Battery, self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, room):
+        super(Battery, self).__init__(name, description, room)
 
     def reload(self):
         print("you use the battery to charge your flashlight")
 
 
 class Mic(Item):
-    def __init__(self, name, description, room, pick_up):
-        super(Mic, self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, room):
+        super(Mic, self).__init__(name, description, room)
 
 
 class Cupcake_fake(Item):
-    def __init__(self, name, description, room, pick_up):
-        super(Cupcake_fake,self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, room):
+        super(Cupcake_fake,self).__init__(name, description, room)
 
 
 class Guitar(Item):
-    def __init__(self, name, description, pick_up, room ):
-        super(Guitar, self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, room ):
+        super(Guitar, self).__init__(name, description, room)
 
 
 class Potion(Item):
-    def __init__(self, name, description, room, pick_up, affect):
-        super(Potion, self).__init__(name, description, room, pick_up)
+    def __init__(self, name, description, room, affect):
+        super(Potion, self).__init__(name, description, room)
         self.affect = affect
 
 
 class Strenth_potion(Potion):
-    def __init__(self, name, description ,room , pick_up, affect):
-        super(Strenth_potion, self).__init__(name, description, room, pick_up, affect)
+    def __init__(self, name, description ,room , affect):
+        super(Strenth_potion, self).__init__(name, description, room, affect)
 
     def drink(self):
         print("Your strength increase dramatically")
 
 
 class Night_vision_potion(Potion):
-    def __init__(self, name, description, room, pick_up, affect):
-        super(Night_vision_potion, self).__init__(name, description, room, pick_up, affect)
+    def __init__(self, name, description, room, affect):
+        super(Night_vision_potion, self).__init__(name, description, room, affect)
 
     def drink(self):
         print("You're able to see the dark for a brief time")
 
 
 class Bag_of_holding(Wearable):
-    def __init__(self, name, description, pick_up, room,):
-        super(Bag_of_holding, self).__init__(name, description, pick_up, room,)
+    def __init__(self, name, description, room,):
+        super(Bag_of_holding, self).__init__(name, description, room,)
 
 
 class Pizza(Consumable):
-    def __init__(self, name, description, pick_up, room):
+    def __init__(self, name, description, room):
         self.eaten = False
-        super(Pizza,self).__init__(name, description, pick_up, room)
+        super(Pizza,self).__init__(name, description, room)
 
     def eat(self):
         print("You ate the pizza")
@@ -154,9 +154,9 @@ class Pizza(Consumable):
 
 
 class Cup_cake(Consumable):
-    def __init__(self, name, description, pick_up, room):
+    def __init__(self, name, description, room):
         self.eaten = False
-        super(Cup_cake, self).__init__(name, description, pick_up, room)
+        super(Cup_cake, self).__init__(name, description, room)
 
     def eat(self):
         print("You ate the cup_cake, nothing happen what did you expected")
@@ -164,32 +164,32 @@ class Cup_cake(Consumable):
 
 
 class Water_bottle(Consumable):
-    def __init__(self, name, description, pick_up, room):
+    def __init__(self, name, description, room):
         self.eaten = False
-        super(Water_bottle, self).__init__(name, description, pick_up, room)
+        super(Water_bottle, self).__init__(name, description, room)
 
     def eat(self):
         print("You drink a water bottle, nothing happen")
 
 
 class Hat(Wearable):
-    def __init__(self, name, description, pick_up, room,):
-        super(Hat, self).__init__(name, description, pick_up, room,)
+    def __init__(self, name, description, room,):
+        super(Hat, self).__init__(name, description, room,)
 
 
 class Cape(Wearable):
-    def __init__(self, name, description, pick_up, room,):
-        super(Cape, self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, room,):
+        super(Cape, self).__init__(name, description, room)
 
 
 class Bloody_shirt(Item):
-    def __init__(self, name, description, room, pick_up):
-        super(Bloody_shirt, self).__init__(name, description, room, pick_up)
+    def __init__(self, name, description, room):
+        super(Bloody_shirt, self).__init__(name, description, room)
 
 
 class Telephone(Item):
-    def __init__(self, name, description, pick_up, room):
-        super(Telephone, self).__init__(name, description, pick_up, room)
+    def __init__(self, name, description, room):
+        super(Telephone, self).__init__(name, description, room)
 
     def answer(self):
         print("you'll die in three hours")
@@ -198,7 +198,7 @@ class Telephone(Item):
 
 
 class Character(object):
-    def __init__(self, name, description, inventory, stats, items, action, jump_scare):
+    def __init__(self, name, description, inventory, stats, items, action, jump_scare,):
         self.name = name
         self.description = description
         self.inventory = inventory
@@ -247,7 +247,7 @@ Baby = Character("Baby",
 
 ####
 class Room(object):
-    def __init__(self, name, description, north, west, east, south, up, down):
+    def __init__(self, name, description, north, west, east, south, up, down, items,):
         self.name = name
         self.description = description
         self.north = north
@@ -256,13 +256,21 @@ class Room(object):
         self.west = west
         self.up = up
         self.down = down
-
+        self.items = items
     def move(self, directions):
         global current_node
         current_node = globals()[getattr(self, directions)]
 
 
 ####
+
+arcade_machine = Arcade_machine("arcade machine", "This machine is out of order", None, "explode" )
+
+crow_bar = Crowbar("crow bar", "You can use this to fight off thing, or open a hatch", None,None,
+                   "you inflicted 25 damage")
+
+
+
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
                 'Freddy Fazbear pizzaera',
@@ -275,7 +283,7 @@ WAITING_ROOM = Room('Waiting Room',
                     'This place is were people will wait until they could get a bracelet to enter the playhouse.',
                     'DINNING_ROOM', 'BATHROOM', 'OFFICE_ROOM', 'ENTRANCE', None, None)
 OFFICE_ROOM = Room('Office Room',
-                   'This place is were the manger will work. maybe',
+                   'This place is were the manger is going work. maybe',
                    None, 'WAITING_ROOM', 'DATA_BASE', None, None, None)
 BATHROOM = Room('Bathroom',
                 "You know why you're here. There seem to be a hatch in one of the stalls. would you like to open it?",
@@ -285,7 +293,7 @@ DINNING_ROOM = Room('Dinning Room',
                     'STAGE', 'GAME_ROOM', 'FOOD_ROOM', 'WAITING_ROOM', None, None)
 GAME_ROOM = Room('Game Room',
                  'This place is were your children going to play games.',
-                 None, 'FOXY_ROOM', 'DINNING_ROOM', None, None, None)
+                 None, 'FOXY_ROOM', 'DINNING_ROOM', None, None, None, arcade_machine)
 FOXY_ROOM = Room('Foxy Room',
                  'Foxy is the most lovable character.',
                  None, None, 'GAME_ROOM', None, None, None)
@@ -295,9 +303,9 @@ FOOD_ROOM = Room('Food Room',
 STAGE = Room('Stage',
              'This is were the animatronic is going to perform. We have Freddy, Bonnie, and chika.',
              'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None)
-STORAGE_ROOM = Room('Stage',
+STORAGE_ROOM = Room('Storage Room',
                     'This is were we keep extras stuff. Like a dead bo- dead battery.',
-                    'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None)
+                    'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, crow_bar)
 BACK_OF_THE_BUILDING = Room('Back of the building',
                             'There nothing here but blo- balloons.',
                             'SECURITY_ROOM', 'STORAGE_ROOM', 'STAFF_ROOM', 'STORAGE_ROOM', None, None)
@@ -312,7 +320,7 @@ ANIMATRONICS = Room('Animatronics room',
                     None, 'STAFF_ROOM', None, 'DATA_BASE', None, None)
 DATA_BASE = Room('Data base',
                  'This is were we controlled the animatronics.',
-                 'ANIMATRONICS', None, None, 'OFFICE', None, None)
+                 'ANIMATRONICS', 'OFFICE', None, None, None, None)
 BELOW_BUILDING = Room('Below building',
                       'You fell and found a strange place. it dark.',
                       None, None, 'ELEVATOR', None, 'BATHROOM', None)
@@ -340,4 +348,26 @@ CONTROL_PANEL_2 = Room('Control Panel for Baby',
 BABY_AUDITORIUM = Room('Baby Auditorium',
                        'you find something very odd, familiar, but    there something     very     disturbing.',
                        None, None, None, 'CONTROL_PANEL_2', None, None)
+
+current_node = ENTRANCE
+direction = ['north', 'south', 'east', 'west', 'up', 'down']
+short_direction = ['n', 's', 'e', 'w', 'u', 'd']
+
+while True:
+    print(current_node.name)
+    print(current_node.description)
+    command = input(':').lower().strip()
+    if command == 'quit':
+        quit(0)
+    elif command in short_direction:
+        pos = short_direction.index(command)
+        command = direction[pos]
+    if command in direction:
+        try:
+            current_node.move(command)
+        except KeyError:
+            print("Are you a baka, there is nothing there")
+    else:
+        print("Command unknown, are you a baka")
+
 
