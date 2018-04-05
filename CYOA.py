@@ -4,12 +4,13 @@ class Item(object):
         self.description = description
         self.from_room = room
 
-
+##
 class Weapon(Item):
-    def __init__(self, name, description, damage_ratio, room):
+    def __init__(self, name, description, damage_ratio, room ,magazine):
         super(Weapon, self).__init__(name, description, room)
         self.damage = damage_ratio
-
+        self.magazine = magazine
+##
 
 class Consumable(Item):
     def __init__(self, name, description, room):
@@ -27,13 +28,13 @@ class Wearable(Item):
 
 
 class Range(Weapon):
-    def __init__(self, name, description, affect, room, damage_ratio):
-        super(Range, self).__init__(name, description, damage_ratio, room)
-        self.affect = affect
+    def __init__(self, name, description, room, damage_ratio, magazine):
+        super(Range, self).__init__(name, description, damage_ratio, room, magazine)
+        self.magazine = magazine
 
 
 class Arcade_machine(Item):
-    def __init__(self, name, description, room, action):
+    def __init__(self, name, description, room, action,):
         super(Arcade_machine, self).__init__(name, description ,room)
         self.action = action
 
@@ -62,15 +63,15 @@ class Knife(Melee):
 
 
 class Flare_gun(Range):
-    def __init__(self, name, description, room, damage_ratio):
-        super(Flare_gun, self).__init__(name, description , 'Fire', room, damage_ratio)
+    def __init__(self, name, description, room, damage_ratio, magazine):
+        super(Flare_gun, self).__init__(name, description, room, damage_ratio, magazine)
 
     def signal(self):
         print("You shot at the sky to get signal your position. You're save")
 
 
 class Flare_ammo(Item):
-    def __init__(self, name, description, room):
+    def __init__(self, name, description, room,):
         super(Flare_ammo, self).__init__(name, description, room)
 
     def reload(self):
@@ -247,7 +248,7 @@ Baby = Character("Baby",
 
 ####
 class Room(object):
-    def __init__(self, name, description, north, west, east, south, up, down, items,):
+    def __init__(self, name, description, north, west, east, south, up, down, items, character):
         self.name = name
         self.description = description
         self.north = north
@@ -257,6 +258,8 @@ class Room(object):
         self.up = up
         self.down = down
         self.items = items
+        self.character = character
+
     def move(self, directions):
         global current_node
         current_node = globals()[getattr(self, directions)]
@@ -264,11 +267,37 @@ class Room(object):
 
 ####
 
-arcade_machine = Arcade_machine("arcade machine", "This machine is out of order", None, "explode" )
+arcade_machine = Arcade_machine("arcade machine", "This machine is out of order", None, "explode")
 
 crow_bar = Crowbar("crow bar", "You can use this to fight off thing, or open a hatch", None,None,
                    "you inflicted 25 damage")
 
+knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", None, "you inflicted 25 damage")
+
+flare_gun = Flare_gun("flare gun", "You can signal for help or light the way up.", None, "You inflicted 15 damage and "
+                      "lit the person up. ", 4)
+
+flare_ammo = Flare_ammo("flare ammo", "You can use this to reload your flare gun, There nothing else you can do woth it"
+                                      ".", None,)
+
+ball_pit = Ball_pit("ball pit", " Kids love this ball pit, but for some reason kids are going missing.", None)
+
+flashlight = Flashlight("Flashlight", "The flashlight is use to light of the wae. It runs out real fast though", None)
+
+battery = Battery("Battery", "It a battery what else can you use it for", None)
+
+mic = Mic("Mic", "Property of Freddy", None)
+
+cupcake_fake= Cupcake_fake("The plastic cupcake", "This is one of the missing cupcake of Chika collection. If you give "
+                                                  "it to her then you get a prized of dea-, of good things.", None)
+
+guitar = Guitar("Guitar", "This guitar have something on it like blo- red paint.", None)
+
+strength_potion = Strenth_potion("Strength potion", "This potion is one of a kind very rare very useless.", None, "you "
+                                 "got stronger. ")
+
+night_vision_potion = Night_vision_potion("Night vision potions", "You will be able to see in the dark once you drank "
+                                                                  "the potion.", None, "you can see in the dark")
 
 
 ENTRANCE = Room('Freddy Fazbear Entrance',
