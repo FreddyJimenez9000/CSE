@@ -204,6 +204,9 @@ class Telephone(Item):
     def answer(self):
         print("you'll die in three hours")
 
+class Hook(Melee):
+    def __init__(self, name, description, damage_ratio):
+        super(Hook, self).__init__(name, description, None, damage_ratio)
 
 '''
 # further code for future testing 
