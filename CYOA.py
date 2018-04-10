@@ -1,8 +1,27 @@
+inventory = []
+invCapacity = 8
+
+
 class Item(object):
     def __init__(self, name, description, room):
         self.name = name
         self.description = description
         self.from_room = room
+        self.isTaken = False
+
+    def take(self):
+        if bag_of_holding in inventory:
+            inventory.append(self)
+            self.isTaken = True
+            print("You took the item")
+        else:
+            if len(inventory) == 8:
+                print("You are holding too much stuff")
+            else:
+                inventory.append(self)
+                self.isTaken = True
+                print("You took the item")
+
 
 ##
 class Weapon(Item):
@@ -21,10 +40,18 @@ class Consumable(Item):
 class Wearable(Item):
     def __init__(self, name, description, room, ):
         super(Wearable, self). __init__(name, description, room)
+        self.Worn = False
     # method for wear
-    # def wear(self):
-    #     if command == "put on %s" % self.name:
-    #         print("You put on the %s" % self.name)
+    def wear(self):
+        if [Hat, Cape] in inventory:
+            print("would you like to wear %s" % self.name)
+        else:
+            if Wearable not in len(inventory):
+                print("You can't wear that, what is wrong is you ")
+
+        if command == "put on %s" % self.name:
+            print("You put on the %s" % self.name)
+            self.Worn = True
 
 
 class Range(Weapon):
@@ -159,7 +186,7 @@ class Cupcake(Consumable):
         super(Cupcake, self).__init__(name, description, room)
 
     def eat(self):
-        print("You ate the cup_cake, nothing happen what did you expected")
+        print("You ate the cupcake, nothing happen what did you expected")
         self.eaten = True
 
 
@@ -250,7 +277,7 @@ Baby = Character("Baby",
 
 ####
 class Room(object):
-    def __init__(self, name, description, north, west, east, south, up, down, items=None,):
+    def __init__(self, name, description, north, west, east, south, up, down, character, items=None):
         if items is None:
             items = []
         self.name = name
@@ -262,6 +289,7 @@ class Room(object):
         self.up = up
         self.down = down
         self.items = items
+        self.character = character
 
 
 
@@ -272,6 +300,15 @@ class Room(object):
 
 
 ####
+person1 = person1
+bonnie = Bonnie
+freddy = Freddy
+chica = Chica
+foxy = Foxy
+ballora = Ballora
+fun_time_freddy = Fun_time_Freddy
+fun_time_foxy = Fun_time_Foxy
+baby = Baby
 
 arcade_machine = Arcade_machine("arcade machine", "This machine is out of order", None, "explode")
 
@@ -286,21 +323,21 @@ flare_ammo = Flare_ammo("flare ammo", "You can use this to reload your flare gun
 
 ball_pit = Ball_pit("ball pit", " Kids love this ball pit, but for some reason kids are going missing.", None)
 
-flashlight = Flashlight("Flashlight", "The flashlight is use to light of the wae. It runs out real fast though", None)
+flashlight = Flashlight("flashlight", "The flashlight is use to light of the wae. It runs out real fast though", None)
 
-battery = Battery("Battery", "It a battery what else can you use it for", None)
+battery = Battery("battery", "It a battery what else can you use it for", None)
 
-mic = Mic("Mic", "Property of Freddy", None)
+mic = Mic("mic", "Property of Freddy", None)
 
-cupcake_fake= Cupcake_fake("The plastic cupcake", "This is one of the missing cupcake of Chika collection. If you give "
+cupcake_fake= Cupcake_fake("the plastic cupcake", "This is one of the missing cupcake of Chika collection. If you give "
                                                   "it to her then you get a prized of dea-, of good things.", None)
 
-guitar = Guitar("Guitar", "This guitar have something on it like blo- red paint.", None)
+guitar = Guitar("guitar", "This guitar have something on it like blo- red paint.", None)
 
-strength_potion = Strenth_potion("Strength potion", "This potion is one of a kind very rare very useless.", None, "you "
+strength_potion = Strenth_potion("strength potion", "This potion is one of a kind very rare very useless.", None, "you "
                                  "got stronger. ")
 
-night_vision_potion = Night_vision_potion("Night vision potions", "You will be able to see in the dark once you drank "
+night_vision_potion = Night_vision_potion("night vision potions", "You will be able to see in the dark once you drank "
                                                                   "the potion.", None, "you can see in the dark")
 
 bag_of_holding = Bag_of_holding("bag of holding", "You could hold endless amount of item but at a cost of 10 health.",
@@ -308,24 +345,24 @@ bag_of_holding = Bag_of_holding("bag of holding", "You could hold endless amount
 
 pizza = Pizza("pizza", "this pizza is made from the top chief in the garbage. *Don't eat it*", None)
 
-cupcake = Cupcake("cupcake", "This is a very treat from the most lovable character in the pizzaeria death", None)
+cupcake = Cupcake("cupcake", "This is a very treat from the most lovable character in the pizzaria death", None)
 
-water_bottle = Water_bottle("Water bottle", "This is the most freshes water bottle you will every see in the world."
+water_bottle = Water_bottle("water bottle", "This is the most freshes water bottle you will every see in the world."
                                             "It's from out very own toilet. ", None)
-hat = Hat("Hat", "This hat said to belong to a child who have gone missing for a month. There even a name. *Run*", None)
+hat = Hat("hat", "This hat said to belong to a child who have gone missing for a month. There even a name. *Run*", None)
 
-cape = Cape("Cape", "This 'cape' said to give you magical power but there just blood.", None)
+cape = Cape("cape", "This 'cape' said to give you magical power but there just blood.", None)
 
-bloody_shirt = Bloody_shirt("Bloody short", "Who knows where the shirt came from.", None)
+bloody_shirt = Bloody_shirt("bloody short", "Who knows where the shirt came from.", None)
 
-telephone = Telephone("Telephone", "This telephone is my only way to escape. There seem to be a battery missing.", None)
+telephone = Telephone("telephone", "This telephone is my only way to escape. There seem to be a battery missing.", None)
 
-hook = Hook("Hook", "The hook was made from the dead bodies of children, what.", 23)
+hook = Hook("hook", "The hook was made from the dead bodies of children, what.", "you deal 25 damage")
 
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
                 'Freddy Fazbear pizzaera',
-                'WAITING_ROOM', None, 'SECURITY_PUPPET_ROOM', None, None, None,None)
+                'WAITING_ROOM', None, 'SECURITY_PUPPET_ROOM', None, None, None, person1 ,None )
 
 SECURITY_PUPPET_ROOM = Room('security puppet room',
                             'This room will protect children who are trying to leave without their parent.',
@@ -407,20 +444,34 @@ short_direction = ['n', 's', 'e', 'w', 'u', 'd']
 while True:
     print(current_node.name)
     print(current_node.description)
+    for list_items in current_node.items:
+        if list_items.isTaken is False:
+            print(list_items.name)
     command = input(':').lower().strip()
     if command == 'quit':
         quit(0)
-    elif command in short_direction:
+    if command in short_direction:
         pos = short_direction.index(command)
         command = direction[pos]
     if command in direction:
         try:
-            current_node.move(command)
+            current_node.move(command.lower())
         except KeyError:
             print("Are you a baka, there is nothing there")
+    elif "pick up" in command:
+        for item in current_node.items:
+            if item.name in command:
+                item.take()
+                break
+            else:
+                print("You can't take that.")
+                break
+    elif command == "inventory":
+        print(inventory)
     else:
         print("Command unknown, are you a baka")
 
+    if "put on" in command:
 
 
 

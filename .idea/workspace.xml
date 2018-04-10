@@ -17,8 +17,8 @@
       <file leaf-file-name="CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4375">
-              <caret line="31" column="83" lean-forward="false" selection-start-line="31" selection-start-column="83" selection-end-line="31" selection-end-column="83" />
+            <state relative-caret-position="1224">
+              <caret line="364" column="88" lean-forward="false" selection-start-line="364" selection-start-column="88" selection-end-line="364" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -27,8 +27,8 @@
       <file leaf-file-name="Freddy Jimenez - Items.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Freddy Jimenez - Items.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3218">
-              <caret line="204" column="3" lean-forward="false" selection-start-line="204" selection-start-column="3" selection-end-line="204" selection-end-column="3" />
+            <state relative-caret-position="3859">
+              <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -37,7 +37,7 @@
       <file leaf-file-name="Freddy Jimenez World map OOP.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Freddy Jimenez World map OOP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-595">
+            <state relative-caret-position="153">
               <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
               <folding />
             </state>
@@ -47,8 +47,8 @@
       <file leaf-file-name="Freddy Jimenez - Character.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Freddy Jimenez - Character.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="54" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -82,15 +82,15 @@
         <option value="$PROJECT_DIR$/Inheritance Notes.py" />
         <option value="$PROJECT_DIR$/Programer.py" />
         <option value="$PROJECT_DIR$/Freddy Jimenez Hangman.py" />
-        <option value="$PROJECT_DIR$/Freddy Jimenez - Character.py" />
         <option value="$PROJECT_DIR$/Freddy Jimenez Five Night of Freddy demo.py" />
         <option value="$PROJECT_DIR$/Freddy Jimenez World map OOP.py" />
         <option value="$PROJECT_DIR$/Freddy Jimenez - Items.py" />
+        <option value="$PROJECT_DIR$/Freddy Jimenez - Character.py" />
         <option value="$PROJECT_DIR$/CYOA.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="48" />
     <option name="y" value="3" />
     <option name="width" value="1382" />
@@ -243,8 +243,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.CYOA" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Freddy Jimenez - Character" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Freddy Jimenez - Character" />
+        <item index="1" class="java.lang.String" itemvalue="Python.CYOA" />
         <item index="2" class="java.lang.String" itemvalue="Python.Freddy Jimenez - Items" />
         <item index="3" class="java.lang.String" itemvalue="Python.Programer" />
         <item index="4" class="java.lang.String" itemvalue="Python.Inheritance Notes" />
@@ -268,14 +268,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24304539" sideWeight="0.4910486" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24304539" sideWeight="0.4910486" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38328075" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38328075" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24304539" sideWeight="0.5089514" order="2" side_tool="true" content_ui="tabs" />
@@ -547,13 +548,6 @@
     <entry file="file://$USER_HOME$/Desktop/Freddy Jimenez World map OOP.py" />
     <entry file="file://$USER_HOME$/Desktop/Programer.py" />
     <entry file="file://$USER_HOME$/Desktop/Freddy Jimenez - Character.py" />
-    <entry file="file://$PROJECT_DIR$/Freddy Jimenez Pythagorean Theorem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Programer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -582,13 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Class Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="44" column="35" lean-forward="false" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Notes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="584">
@@ -603,13 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Inheritance Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Freddy Jimenez Five Night of Freddy demo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -617,34 +597,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Freddy Jimenez - Character.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Freddy Jimenez World map OOP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-595">
+        <state relative-caret-position="153">
           <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Freddy Jimenez Pythagorean Theorem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Class Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="35" lean-forward="false" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Freddy Jimenez - Items.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3218">
-          <caret line="204" column="3" lean-forward="false" selection-start-line="204" selection-start-column="3" selection-end-line="204" selection-end-column="3" />
+        <state relative-caret-position="3859">
+          <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Inheritance Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-289">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Freddy Jimenez - Character.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4375">
-          <caret line="31" column="83" lean-forward="false" selection-start-line="31" selection-start-column="83" selection-end-line="31" selection-end-column="83" />
+        <state relative-caret-position="1224">
+          <caret line="364" column="88" lean-forward="false" selection-start-line="364" selection-start-column="88" selection-end-line="364" selection-end-column="88" />
           <folding />
         </state>
       </provider>

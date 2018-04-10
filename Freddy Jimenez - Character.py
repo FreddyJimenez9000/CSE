@@ -52,6 +52,7 @@ Fun_time_Foxy = Character("Fun Time Foxy", "She's the sister of Foxy but have a 
 Baby = Character("Baby", "Baby was made to take care and make kids happy. But they started to disappear when they go "
                          "and play with Baby.", None, "H = 100", None,
                  "dance and sing", "you become blind and paralyzed." )
+baby = Baby
 
 print(Freddy.description)
 # print(person1.description)
