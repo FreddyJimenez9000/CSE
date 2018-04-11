@@ -17,8 +17,8 @@
       <file leaf-file-name="CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="364" column="88" lean-forward="false" selection-start-line="364" selection-start-column="88" selection-end-line="364" selection-end-column="88" />
+            <state relative-caret-position="221">
+              <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -47,7 +47,7 @@
       <file leaf-file-name="Freddy Jimenez - Character.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Freddy Jimenez - Character.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="935">
               <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
@@ -112,6 +112,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -123,7 +124,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -243,8 +243,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Freddy Jimenez - Character" />
-        <item index="1" class="java.lang.String" itemvalue="Python.CYOA" />
+        <item index="0" class="java.lang.String" itemvalue="Python.CYOA" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Freddy Jimenez - Character" />
         <item index="2" class="java.lang.String" itemvalue="Python.Freddy Jimenez - Items" />
         <item index="3" class="java.lang.String" itemvalue="Python.Programer" />
         <item index="4" class="java.lang.String" itemvalue="Python.Inheritance Notes" />
@@ -555,13 +555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Freddy Jimenez Hangman.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="78" column="3" lean-forward="false" selection-start-line="78" selection-start-column="3" selection-end-line="78" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Notes 3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -636,16 +629,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Freddy Jimenez - Character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="935">
           <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Freddy Jimenez Hangman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="78" column="3" lean-forward="false" selection-start-line="78" selection-start-column="3" selection-end-line="78" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="364" column="88" lean-forward="false" selection-start-line="364" selection-start-column="88" selection-end-line="364" selection-end-column="88" />
+        <state relative-caret-position="221">
+          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding />
         </state>
       </provider>
