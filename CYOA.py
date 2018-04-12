@@ -22,6 +22,12 @@ class Item(object):
                 self.isTaken = True
                 print("You took the item")
 
+    def drop(self):
+        inventory.remove(self)
+        self.isTaken = False
+        print("You drop the item")
+
+
 ##
 class Weapon(Item):
     def __init__(self, name, description, damage_ratio, room ,magazine):
@@ -30,10 +36,20 @@ class Weapon(Item):
         self.magazine = magazine
 ##
 
+
 class Consumable(Item):
     def __init__(self, name, description, room):
         super(Consumable, self). __init__(name, description, room)
         self.eaten = False
+
+    def eaten(self):
+        if Consumable in inventory:
+            print("would you want to eat/drink %s" % item.name)
+
+
+        else:
+            if Consumable not in len(inventory):
+                print("you can't eat that")
 
 
 class Wearable(Item):
@@ -41,6 +57,7 @@ class Wearable(Item):
         super(Wearable, self). __init__(name, description, room)
         self.Worn = False
     # method for wear
+
     def wear(self):
         if Wearable in inventory:
             print("would you like to wear %s" % self.name)
@@ -195,6 +212,7 @@ class Water_bottle(Consumable):
 
     def eat(self):
         print("You drink a water bottle, nothing happen")
+        self.eaten = True
 
 
 class Hat(Wearable):
@@ -418,7 +436,7 @@ ELEVATOR = Room('Elevator',
                 'CONTROL_ROOM', 'BELOW_BUILDING', 'NOTHING', None, 'BATHROOM', 'CONTROL_PANEL', None, None)
 NOTHING = Room('Nothing',
                'There nothing here but rocks.',
-               None,'ELEVATOR', None, None, None, None, None, [bag_of_holding])
+               None, 'ELEVATOR', None, None, None, None, None, [bag_of_holding])
 CONTROL_PANEL = Room('Control panel',
                      'There seem to be a button that does something.',
                      'CONTROL_PANEL_2', None, 'BALLORA_AUDITORIUM', 'ELEVATOR', None, None, None, [cape])
@@ -469,9 +487,17 @@ while True:
                 print("You can't take that.")
                 break
     elif "drop" in command:
-        for item in inventory:
-            if item.name in command:
-                item.drop()
+        if not inventory:
+            print("There nothing in your inventory")
+        else:
+            for item in inventory:
+                if item.name.lower() in command:
+                    item.drop()
+                else:
+                    print("what are you saying there nothing inside your inventory.")
+
+
+
     elif command == "win game":
         print("You won the game")
         break
