@@ -1,5 +1,6 @@
 inventory = []
 invCapacity = 8
+# fix inventory
 
 
 class Item(object):
@@ -30,7 +31,7 @@ class Item(object):
 
 ##
 class Weapon(Item):
-    def __init__(self, name, description, damage_ratio, room ,magazine):
+    def __init__(self, name, description, damage_ratio, room, magazine):
         super(Weapon, self).__init__(name, description, room)
         self.damage = damage_ratio
         self.magazine = magazine
@@ -84,7 +85,7 @@ class Arcade_machine(Item):
 
 class Melee(Weapon):
     def __init__(self, name, description, room, damage_ratio):
-        super(Melee,self).__init__(name, description, damage_ratio, room, None)
+        super(Melee, self).__init__(name, description, damage_ratio, room, None)
 
 
 class Crowbar(Melee):
@@ -495,7 +496,15 @@ while True:
                     item.drop()
                 else:
                     print("what are you saying there nothing inside your inventory.")
-
+    elif "drink" in command:
+        if Consumable in inventory:
+            print("would you want a drink.")
+            for item in inventory:
+                if item.name.lower() in command:
+                    print("You drank the item.")
+    elif "take all" in command:
+        for item in current_node.items:
+            if item.name in command:
 
 
     elif command == "win game":
@@ -508,10 +517,6 @@ while True:
     elif command == "look":
         print(current_node.name and current_node.description)
 
-    elif command == "drink watter bottle":
-        print("you drink the watter bottle nothing happen")
-    elif command == "drink night vision":
-        print("You're able to see for a few second.")
 
 
     else:

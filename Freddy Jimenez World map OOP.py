@@ -54,7 +54,7 @@ BACK_OF_THE_BUILDING = Room('Back of the building',
                             'SECURITY_ROOM', 'STORAGE_ROOM', 'STAFF_ROOM', 'STORAGE_ROOM', None, None)
 SECURITY_ROOM = Room('Security Room',
                      'This is were your going to work.',
-                     None, None, None,'BACK_OF_THE_BUILDING', None, None)
+                     None, None, None, 'BACK_OF_THE_BUILDING', None, None)
 STAFF_ROOM = Room('Staff Room',
                   'Other staff will take a break in here.',
                   'BACK_OF_THE_BUILDING', None, 'ANIMATRONICS', None, None, None)
@@ -72,7 +72,7 @@ ELEVATOR = Room('Elevator',
                 'CONTROL_ROOM', 'BELOW_BUILDING', 'NOTHING', None, 'BATHROOM', 'CONTROL_PANEL')
 NOTHING = Room('Nothing',
                'There nothing here but rocks.',
-               None,'ELEVATOR', None, None, None, None)
+               None, 'ELEVATOR', None, None, None, None)
 CONTROL_PANEL = Room('Control panel',
                      'There seem to be a button that does something.',
                      'CONTROL_PANEL_2', None, 'BALLORA_AUDITORIUM', 'ELEVATOR', None, None)
@@ -112,5 +112,3 @@ while True:
             print("Are you a baka, there is nothing there")
     else:
         print("Command unknown, are you a baka")
-
-
