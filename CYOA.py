@@ -42,15 +42,7 @@ class Consumable(Item):
     def __init__(self, name, description, room):
         super(Consumable, self). __init__(name, description, room)
         self.eaten = False
-
-    def eaten(self):
-        if Consumable in inventory:
-            print("would you want to eat/drink %s" % item.name)
-
-
-        else:
-            if Consumable not in len(inventory):
-                print("you can't eat that")
+# Fix this
 
 
 class Wearable(Item):
@@ -65,11 +57,6 @@ class Wearable(Item):
         else:
             if Wearable not in len(inventory):
                 print("You can't wear that, what is wrong is you ")
-
-        if command == "put on %s" % self.name:
-            print("You put on the %s" % self.name)
-            self.Worn = True
-
 
 class Range(Weapon):
     def __init__(self, name, description, room, damage_ratio, magazine):
@@ -363,15 +350,15 @@ bag_of_holding = Bag_of_holding("bag of holding", "You could hold endless amount
 
 pizza = Pizza("pizza", "this pizza is made from the top chief in the garbage. *Don't eat it*", None)
 
-cupcake = Cupcake("cupcake", "This is a very treat from the most lovable character in the pizzaria death", None)
+cupcake = Cupcake("cupcake", "This is a very treat from the most lovable character in the pizzaia death", None)
 
-water_bottle = Water_bottle("water bottle", "This is the most freshes water bottle you will every see in the world."
-                                            "It's from out very own toilet. ", None)
+water_bottle = Water_bottle("water bottle", "This is the most freshest water bottle you will every see in the world."
+                                            "It's from our very own toilet. ", None)
 hat = Hat("hat", "This hat said to belong to a child who have gone missing for a month. There even a name. *Run*", None)
 
 cape = Cape("cape", "This 'cape' said to give you magical power but there just blood.", None)
 
-bloody_shirt = Bloody_shirt("bloody short", "Who knows where the shirt came from.", None)
+bloody_shirt = Bloody_shirt("bloody shirt", "Who knows where this shirt came from.", None)
 
 telephone = Telephone("telephone", "This telephone is my only way to escape. There seem to be a battery missing.", None)
 
@@ -502,10 +489,14 @@ while True:
             for item in inventory:
                 if item.name.lower() in command:
                     print("You drank the item.")
-    elif "take all" in command:
-        for item in current_node.items:
-            if item.name in command:
-
+    elif "look at" in command:
+        for item in inventory:
+            if item.name.lower() in command:
+                print(item.description)
+    # elif "take all" in command:
+    #     for item in current_node.items:
+    #         if item.name in command:
+    #             print("You took everything.")
 
     elif command == "win game":
         print("You won the game")
@@ -513,11 +504,11 @@ while True:
     elif command == "look up":
         print("Type in win game")
     elif command == "inventory":
-        print(inventory)
+        for item in inventory:
+            print(item.name)
+
     elif command == "look":
         print(current_node.name and current_node.description)
-
-
 
     else:
         print("Command unknown, are you a baka")
