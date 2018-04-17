@@ -50,7 +50,7 @@ while guessTaken < 5:
     if guess == number:
         print("correct")
 
-if guess != number:
-    number = str(number)
-print("Nope. The number I was thinking of was " + number)
+    if guess != number:
+        number = str(number)
+        print("Nope. The number I was thinking of was " + number)
         # generate a number, ask the user for an input(number), does the guess match the number?  #  add "higher" or "lower" , add 5 guesses

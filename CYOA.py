@@ -1,3 +1,4 @@
+import random
 inventory = []
 invCapacity = 8
 # fix inventory
@@ -58,6 +59,7 @@ class Wearable(Item):
             if Wearable not in len(inventory):
                 print("You can't wear that, what is wrong is you ")
 
+
 class Range(Weapon):
     def __init__(self, name, description, room, damage_ratio, magazine):
         super(Range, self).__init__(name, description, damage_ratio, room, magazine)
@@ -82,6 +84,10 @@ class Crowbar(Melee):
     def open_hatch(self):
         print("You have open the hatch. You hesitate to go down")
 
+    def cr_attack(self):
+        if crow_bar in command:
+            print(crow_bar.damage)
+
 
 class Knife(Melee):
     def __init__(self, name, description, room, damage_ratio):
@@ -89,6 +95,10 @@ class Knife(Melee):
 
     def action(self):
         print("You use the knife to defend yourself but failed. You lost your will to live.")
+
+    def kn_attack(self):
+        if knife in command:
+            print(crow_bar.damage)
 
 
 class Flare_gun(Range):
@@ -448,9 +458,10 @@ current_node = ENTRANCE
 direction = ['north', 'south', 'east', 'west', 'up', 'down']
 short_direction = ['n', 's', 'e', 'w', 'u', 'd']
 print(person1.description)
+print(current_node.name)
+print(current_node.description)
 while True:
-    print(current_node.name)
-    print(current_node.description)
+    random_number = random.randint(1, 3)
     print(person1.stats)
     for list_items in current_node.items:
         if list_items.isTaken is False:
@@ -464,6 +475,8 @@ while True:
     if command in direction:
         try:
             current_node.move(command.lower())
+            print(current_node.name)
+            print(current_node.description)
         except KeyError:
             print("Are you a baka, there is nothing there")
     elif "pick up" in command:
@@ -483,6 +496,7 @@ while True:
                     item.drop()
                 else:
                     print("what are you saying there nothing inside your inventory.")
+# fix the drink, and eat
     elif "drink" in command:
         if Consumable in inventory:
             print("would you want a drink.")
@@ -492,6 +506,7 @@ while True:
     elif "look at" in command:
         for item in inventory:
             if item.name.lower() in command:
+                print(item.name)
                 print(item.description)
     # elif "take all" in command:
     #     for item in current_node.items:
@@ -506,10 +521,21 @@ while True:
     elif command == "inventory":
         for item in inventory:
             print(item.name)
+    elif command == "shoot":
+        print(random_number)
+        if random_number == 2:
+            print("You're able to land a hit.")
+            print("You dealt %s" % flare_gun.damage)
+        elif flare_gun not in inventory:
+            print("you can't fire anything")
+        elif flare_gun.magazine == 0:
+            print("you can't fire anything")
+        else:
+            print("you missed the shot.")
 
     elif command == "look":
-        print(current_node.name and current_node.description)
-
+        print(current_node.name)
+        print(current_node.description)
     else:
         print("Command unknown, are you a baka")
 
