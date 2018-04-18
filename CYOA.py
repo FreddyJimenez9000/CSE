@@ -1,7 +1,10 @@
 import random
 inventory = []
-invCapacity = 8
+invCapacity = 4
 # fix inventory
+head = []
+chest = []
+legs = []
 
 
 class Item(object):
@@ -17,7 +20,7 @@ class Item(object):
             self.isTaken = True
             print("You took the item")
         else:
-            if len(inventory) == 8:
+            if len(inventory) == 4:
                 print("You are holding too much stuff")
             else:
                 inventory.append(self)
@@ -46,18 +49,24 @@ class Consumable(Item):
 # Fix this
 
 
+
+
 class Wearable(Item):
     def __init__(self, name, description, room, ):
         super(Wearable, self). __init__(name, description, room)
         self.Worn = False
     # method for wear
-
     def wear(self):
-        if Wearable in inventory:
-            print("would you like to wear %s" % self.name)
-        else:
-            if Wearable not in len(inventory):
-                print("You can't wear that, what is wrong is you ")
+        for item in inventory:
+            if Wearable in inventory:
+                print("Would you want to wear the %s" % item.name)
+            if Wearable not in inventory:
+                print("there nothing you could wear")
+            else:
+                print("Would you want to wear the %s" % item.name)
+            if command == "wear %s" % item.name:
+                print("you wear the item")
+                self.worn = True
 
 
 class Range(Weapon):
@@ -80,6 +89,7 @@ class Melee(Weapon):
 class Crowbar(Melee):
     def __init__(self, name, description, room, damage_ratio):
         super(Crowbar, self).__init__(name, description, room, damage_ratio)
+        self.OpenHatch = False
 
     def open_hatch(self):
         print("You have open the hatch. You hesitate to go down")
@@ -383,7 +393,7 @@ SECURITY_PUPPET_ROOM = Room('security puppet room',
                             'This room will protect children who are trying to leave without their parent.',
                             None, 'ENTRANCE', None, None, None, None, puppet, [flashlight])
 WAITING_ROOM = Room('Waiting Room',
-                    'This place is were people will wait until they could get a bracelet to enter the playhouse.',
+                    'This place is where people will wait until they could get a bracelet to enter the playhouse.',
                     'DINNING_ROOM', 'BATHROOM', 'OFFICE_ROOM', 'ENTRANCE', None, None, None, [water_bottle])
 OFFICE_ROOM = Room('Office Room',
                    'This place is were the manger is going work. maybe',
@@ -479,6 +489,8 @@ while True:
             print(current_node.description)
         except KeyError:
             print("Are you a baka, there is nothing there")
+    # if command == "d" or "down" in BATHROOM:
+    #
     elif "pick up" in command:
         for item in current_node.items:
             if item.name in command:
@@ -508,10 +520,16 @@ while True:
             if item.name.lower() in command:
                 print(item.name)
                 print(item.description)
-    # elif "take all" in command:
-    #     for item in current_node.items:
-    #         if item.name in command:
-    #             print("You took everything.")
+    elif "take all" in command:
+        print("You took everything")
+        for item in current_node.items:
+            inventory.append(item)
+            item.isTaken = True
+    # elif "wear" in command:
+    #     for item in inventory:
+    #         if Wearable in inventory:
+    #
+
 
     elif command == "win game":
         print("You won the game")
@@ -526,6 +544,8 @@ while True:
         if random_number == 2:
             print("You're able to land a hit.")
             print("You dealt %s" % flare_gun.damage)
+            print(flare_gun.magazine)
+            flare_gun.magazine = -1
         elif flare_gun not in inventory:
             print("you can't fire anything")
         elif flare_gun.magazine == 0:
