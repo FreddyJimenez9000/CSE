@@ -341,7 +341,7 @@ crow_bar = Crowbar("crow bar", "You can use this to fight off thing, or open a h
 
 knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", None, '25')
 
-flare_gun = Flare_gun("flare gun", "You can signal for help or light the way up.", None, '15', '4')
+flare_gun = Flare_gun("flare gun", "You can signal for help or light the way up.", None, '15', 4)
 
 flare_ammo = Flare_ammo("flare ammo", "You can use this to reload your flare gun, There nothing else you can do woth it"
                                       ".", None,)
@@ -530,7 +530,6 @@ while True:
     #         if Wearable in inventory:
     #
 
-
     elif command == "win game":
         print("You won the game")
         break
@@ -541,21 +540,21 @@ while True:
             print(item.name)
     elif command == "shoot":
         print(random_number)
-        if random_number == 2:
+        if flare_gun not in inventory:
+            print("you can't fire anything")
+        elif random_number == 2:
             print("You're able to land a hit.")
             print("You dealt %s" % flare_gun.damage)
-            print(flare_gun.magazine)
-            flare_gun.magazine = -1
-        elif flare_gun not in inventory:
-            print("you can't fire anything")
         elif flare_gun.magazine == 0:
-            print("you can't fire anything")
+            print("you ran out of ammo")
         else:
             print("you missed the shot.")
-
     elif command == "look":
         print(current_node.name)
         print(current_node.description)
+    elif person1.stats == 0:
+        print("you died")
+        break
     else:
         print("Command unknown, are you a baka")
 
