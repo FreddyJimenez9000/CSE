@@ -5,6 +5,8 @@ invCapacity = 4
 head = []
 chest = []
 legs = []
+direction = ['north', 'south', 'east', 'west', 'up', 'down']
+short_direction = ['n', 's', 'e', 'w', 'u', 'd']
 
 
 class Item(object):
@@ -49,24 +51,23 @@ class Consumable(Item):
 # Fix this
 
 
-
-
 class Wearable(Item):
     def __init__(self, name, description, room, ):
         super(Wearable, self). __init__(name, description, room)
         self.Worn = False
     # method for wear
+
     def wear(self):
-        for item in inventory:
-            if Wearable in inventory:
+        for Wearable.item in inventory:
+            if Wearable.item in inventory:
                 print("Would you want to wear the %s" % item.name)
-            if Wearable not in inventory:
+            if Wearable.item not in inventory:
                 print("there nothing you could wear")
             else:
                 print("Would you want to wear the %s" % item.name)
             if command == "wear %s" % item.name:
                 print("you wear the item")
-                self.worn = True
+                self.Worn = True
 
 
 class Range(Weapon):
@@ -77,7 +78,7 @@ class Range(Weapon):
 
 class Arcade_machine(Item):
     def __init__(self, name, description, room, action,):
-        super(Arcade_machine, self).__init__(name, description ,room)
+        super(Arcade_machine, self).__init__(name, description, room)
         self.action = action
 
 
@@ -91,9 +92,6 @@ class Crowbar(Melee):
         super(Crowbar, self).__init__(name, description, room, damage_ratio)
         self.OpenHatch = False
 
-    def open_hatch(self):
-        print("You have open the hatch. You hesitate to go down")
-
     def cr_attack(self):
         if crow_bar in command:
             print(crow_bar.damage)
@@ -102,9 +100,6 @@ class Crowbar(Melee):
 class Knife(Melee):
     def __init__(self, name, description, room, damage_ratio):
         super(Knife, self).__init__(name, description, room, damage_ratio)
-
-    def action(self):
-        print("You use the knife to defend yourself but failed. You lost your will to live.")
 
     def kn_attack(self):
         if knife in command:
@@ -123,13 +118,10 @@ class Flare_ammo(Item):
     def __init__(self, name, description, room,):
         super(Flare_ammo, self).__init__(name, description, room)
 
-    def reload(self):
-        print("you inputted a shell")
-
 
 class Ball_pit(Item):
     def __init__(self, name, description, room):
-        super(Ball_pit, self).__init__(name, description , room)
+        super(Ball_pit, self).__init__(name, description, room)
 
 
 class Flashlight(Item):
@@ -158,11 +150,11 @@ class Mic(Item):
 
 class Cupcake_fake(Item):
     def __init__(self, name, description, room):
-        super(Cupcake_fake,self).__init__(name, description, room)
+        super(Cupcake_fake, self).__init__(name, description, room)
 
 
 class Guitar(Item):
-    def __init__(self, name, description, room ):
+    def __init__(self, name, description, room):
         super(Guitar, self).__init__(name, description, room)
 
 
@@ -173,7 +165,7 @@ class Potion(Item):
 
 
 class Strenth_potion(Potion):
-    def __init__(self, name, description ,room , affect):
+    def __init__(self, name, description, room, affect):
         super(Strenth_potion, self).__init__(name, description, room, affect)
 
     def drink(self):
@@ -189,8 +181,8 @@ class Night_vision_potion(Potion):
 
 
 class Bag_of_holding(Wearable):
-    def __init__(self, name, description, room,):
-        super(Bag_of_holding, self).__init__(name, description, room,)
+    def __init__(self, name, description, room):
+        super(Bag_of_holding, self).__init__(name, description, room)
 
 
 class Pizza(Consumable):
@@ -224,12 +216,12 @@ class Water_bottle(Consumable):
 
 
 class Hat(Wearable):
-    def __init__(self, name, description, room,):
-        super(Hat, self).__init__(name, description, room,)
+    def __init__(self, name, description, room):
+        super(Hat, self).__init__(name, description, room)
 
 
 class Cape(Wearable):
-    def __init__(self, name, description, room,):
+    def __init__(self, name, description, room):
         super(Cape, self).__init__(name, description, room)
 
 
@@ -242,8 +234,6 @@ class Telephone(Item):
     def __init__(self, name, description, room):
         super(Telephone, self).__init__(name, description, room)
 
-    def answer(self):
-        print("you'll die in three hours")
 
 class Hook(Melee):
     def __init__(self, name, description, damage_ratio):
@@ -252,7 +242,7 @@ class Hook(Melee):
 
 
 class Character(object):
-    def __init__(self, name, description, inventory, stats, items, action, jump_scare,):
+    def __init__(self, name, description, inventory, stats, items, action, jump_scare, location=None):
         self.name = name
         self.description = description
         self.inventory = inventory
@@ -260,8 +250,31 @@ class Character(object):
         self.items = items
         self.action = action
         self.jump_scare = jump_scare
+        self.location = location
+        
+    def move(self, directions):
+        self.location.character.remove(self)
+        try:
+            self.location = globals()[getattr(self.location, directions)]
+        except KeyError:
+            pass
+        self.location.character.append(self)
 
-person1 = Character('Henry',
+
+class Player(Character):
+    def __init__(self, name, description, inventory, stats, items, action, jump_scare, location=None):
+        super(Player, self).__init__(name, description, inventory, stats, items, action, jump_scare, location)
+
+    def move(self, directions):
+        try:
+            self.location = globals()[getattr(self.location, directions)]
+            print(person1.location.name)
+            print(person1.location.description)
+
+        except KeyError:
+            print("Are you a baka, there is nothing there")
+
+person1 = Player('Henry',
                     "you took this job because you needed money. Your wife and three kids just wanted to have a better "
                     "life."
                     "you found this job on ebay? what, What wrong with you ",
@@ -269,15 +282,15 @@ person1 = Character('Henry',
                     ' H = 100',
                     None, None, None)
 Bonnie = Character('Bonnie',
-                    "Bonnie is a fun bunny which bring joy around the pizzeria. But then again it smell like a dead bod-"
-                    "something",
-                    None, ', H = 100', 'guitar',
-                    'play the guitar', "you become blind and paralyzed")
+                   "Bonnie is a fun bunny which bring joy around the pizzeria. But then again it smell like a dead bod-"
+                   "something",
+                   None, ', H = 100', 'guitar',
+                   'play the guitar', "you become blind and paralyzed")
 Freddy = Character('Freddy Fazbear',
                    "Freddy is the most lovable bear in the whole pizzeria. He liked the star of the band. But every"
                    "time he sing it sound like a dead man crying, trying to get out. but who knows.",
                    None, 'H = 100', 'Mic', 'Sing', "you become blind and paralyzed")
-Chica = Character('Chica', "Chica is a duck like animatronic who soul purpose is to give out cupcake. but we don't "
+Chica = Character('Chica', "Chica is a duck like Animatronics who soul purpose is to give out cupcake. but we don't "
                   "know what inside of those cupcake maybe bloo-. its made organic.)",
                   None, 'H = 100', 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
 Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he's shy. His fur is always red but it"
@@ -298,11 +311,13 @@ Baby = Character("Baby",
                  "and play with Baby.", None, "H = 100", None,
                  "dance and sing", "you become blind and paralyzed.")
 Puppet = Character("Puppet", "she going to protect all the children from harm, and from you", None, "H = 100", None,
-                   "roams around",None)
+                   "roams around", None)
 
 ####
+
+
 class Room(object):
-    def __init__(self, name, description, north, west, east, south, up, down, character, items=None):
+    def __init__(self, name, description, north, west, east, south, up, down, items=None):
         if items is None:
             items = []
         self.name = name
@@ -314,14 +329,7 @@ class Room(object):
         self.up = up
         self.down = down
         self.items = items
-        self.character = character
-
-
-
-
-    def move(self, directions):
-        global current_node
-        current_node = globals()[getattr(self, directions)]
+        self.character = []
 
 
 ####
@@ -335,6 +343,23 @@ fun_time_freddy = Fun_time_Freddy
 fun_time_foxy = Fun_time_Foxy
 baby = Baby
 puppet = Puppet
+
+list_of_chars = [bonnie, freddy, chica, foxy, ballora, fun_time_freddy, fun_time_foxy, baby, puppet]
+
+
+def move_chars():
+    for char in list_of_chars:
+        rand_direction = random.choice(direction)
+        try:
+            char.move(rand_direction)
+        except ValueError:
+            print(char.name)
+            print(char.location.name)
+            print(char.location.character)
+            print(rand_direction)
+            quit(2)
+
+
 arcade_machine = Arcade_machine("arcade machine", "This machine is out of order", None, "explode")
 
 crow_bar = Crowbar("crow bar", "You can use this to fight off thing, or open a hatch", None, '25')
@@ -354,13 +379,13 @@ battery = Battery("battery", "It a battery what else can you use it for", None)
 
 mic = Mic("mic", "Property of Freddy", None)
 
-cupcake_fake= Cupcake_fake("the plastic cupcake", "This is one of the missing cupcake of Chika collection. If you give "
-                                                  "it to her then you get a prized of dea-, of good things.", None)
+cupcake_fake = Cupcake_fake("the plastic cupcake", "This is one of the missing cupcake of Chica collection."
+                            "If you give it to her then you get a prized of dea-, of good things.", None)
 
 guitar = Guitar("guitar", "This guitar have something on it like blo- red paint.", None)
 
 strength_potion = Strenth_potion("strength potion", "This potion is one of a kind very rare very useless.", None, "you "
-                                 "got stronger. ")
+                                 "got stronger.")
 
 night_vision_potion = Night_vision_potion("night vision potions", "You will be able to see in the dark once you drank "
                                                                   "the potion.", None, "you can see in the dark")
@@ -387,95 +412,111 @@ hook = Hook("hook", "The hook was made from the dead bodies of children, what.",
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
                 'Freddy Fazbear pizzaera',
-                'WAITING_ROOM', None, 'SECURITY_PUPPET_ROOM', None, None, None, person1 ,None )
+                'WAITING_ROOM', None, 'SECURITY_PUPPET_ROOM', None, None, None, None)
 
 SECURITY_PUPPET_ROOM = Room('security puppet room',
                             'This room will protect children who are trying to leave without their parent.',
-                            None, 'ENTRANCE', None, None, None, None, puppet, [flashlight])
+                            None, 'ENTRANCE', None, None, None, None, [flashlight])
 WAITING_ROOM = Room('Waiting Room',
                     'This place is where people will wait until they could get a bracelet to enter the playhouse.',
-                    'DINNING_ROOM', 'BATHROOM', 'OFFICE_ROOM', 'ENTRANCE', None, None, None, [water_bottle])
+                    'DINNING_ROOM', 'BATHROOM', 'OFFICE_ROOM', 'ENTRANCE', None, None, [water_bottle])
 OFFICE_ROOM = Room('Office Room',
                    'This place is were the manger is going work. maybe',
-                   None, 'WAITING_ROOM', 'DATA_BASE', None, None, None, freddy,[knife])
+                   None, 'WAITING_ROOM', 'DATA_BASE', None, None, None, [knife])
 BATHROOM = Room('Bathroom',
                 "You know why you're here. There seem to be a hatch in one of the stalls. would you like to open it?",
-                None, None, 'WAITING_ROOM', None, None, 'BELOW_BUILDING', None, [flare_gun])
+                None, None, 'WAITING_ROOM', None, None, 'BELOW_BUILDING', [flare_gun])
 DINNING_ROOM = Room('Dinning Room',
                     'Here were your going to eat after or before you go into the buffet.',
-                    'STAGE', 'GAME_ROOM', 'FOOD_ROOM', 'WAITING_ROOM', None, None, chica, [pizza, cupcake])
+                    'STAGE', 'GAME_ROOM', 'FOOD_ROOM', 'WAITING_ROOM', None, None, [pizza, cupcake])
 GAME_ROOM = Room('Game Room',
                  'This place is were your children going to play games.',
-                 None, 'FOXY_ROOM', 'DINNING_ROOM', None, None, None, None, [arcade_machine])
+                 None, 'FOXY_ROOM', 'DINNING_ROOM', None, None, None, [arcade_machine])
 FOXY_ROOM = Room('Foxy Room',
                  'Foxy is the most lovable character.',
-                 None, None, 'GAME_ROOM', None, None, None, foxy, [strength_potion])
+                 None, None, 'GAME_ROOM', None, None, None, [strength_potion])
 FOOD_ROOM = Room('Food Room',
                  'Do you not known why we use this place.',
-                 None, 'DINNING_ROOM', None, None, None, None, None, [water_bottle, cupcake_fake])
+                 None, 'DINNING_ROOM', None, None, None, None, [water_bottle, cupcake_fake])
 STAGE = Room('Stage',
              'This is were the animatronic is going to perform. We have Freddy, Bonnie, and chika. there a hat on the '
              'ground',
-             'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, [freddy, bonnie, chica], [hat])
+             'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, [hat])
 STORAGE_ROOM = Room('Storage Room',
                     'This is were we keep extras stuff. Like a dead bo- dead battery.',
-                    'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, None, [crow_bar])
+                    'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, [crow_bar])
 BACK_OF_THE_BUILDING = Room('Back of the building',
                             'There nothing here but blo- balloons.',
-                            'SECURITY_ROOM', 'STORAGE_ROOM', 'STAFF_ROOM', 'STORAGE_ROOM', None, None, None,
+                            'SECURITY_ROOM', 'STORAGE_ROOM', 'STAFF_ROOM', 'STORAGE_ROOM', None, None,
                             [bloody_shirt])
 SECURITY_ROOM = Room('Security Room',
                      'This is were your going to work.',
-                     None, None, None,'BACK_OF_THE_BUILDING', None, None, None,[flashlight, flare_gun])
+                     None, None, None, 'BACK_OF_THE_BUILDING', None, None, [flashlight, flare_gun])
 STAFF_ROOM = Room('Staff Room',
                   'Other staff will take a break in here.',
-                  'BACK_OF_THE_BUILDING', None, 'ANIMATRONICS', None, None, None, None, [flare_ammo])
+                  'BACK_OF_THE_BUILDING', None, 'ANIMATRONICS', None, None, None, [flare_ammo])
 ANIMATRONICS = Room('Animatronics room',
                     "There are 4 animatronics that are a work in progress.",
-                    None, 'STAFF_ROOM', None, 'DATA_BASE', None, None, None, [mic, battery])
+                    None, 'STAFF_ROOM', None, 'DATA_BASE', None, None, [mic, battery])
 DATA_BASE = Room('Data base',
                  'This is were we controlled the animatronics.',
-                 'ANIMATRONICS', 'OFFICE', None, None, None, None, None, [hook])
+                 'ANIMATRONICS', 'OFFICE', None, None, None, None, [hook])
 BELOW_BUILDING = Room('Below building',
                       'You fell and found a strange place. it dark.',
-                      None, None, 'ELEVATOR', None, 'BATHROOM', None, None, None)
+                      None, None, 'ELEVATOR', None, 'BATHROOM', None, None)
 ELEVATOR = Room('Elevator',
                 'It seem the elevator take you below or up. Would you like to go up or down?',
-                'CONTROL_ROOM', 'BELOW_BUILDING', 'NOTHING', None, 'BATHROOM', 'CONTROL_PANEL', None, None)
+                'CONTROL_ROOM', 'BELOW_BUILDING', 'NOTHING', None, 'BATHROOM', 'CONTROL_PANEL', None)
 NOTHING = Room('Nothing',
                'There nothing here but rocks.',
-               None, 'ELEVATOR', None, None, None, None, None, [bag_of_holding])
+               None, 'ELEVATOR', None, None, None, None, [bag_of_holding])
 CONTROL_PANEL = Room('Control panel',
                      'There seem to be a button that does something.',
-                     'CONTROL_PANEL_2', None, 'BALLORA_AUDITORIUM', 'ELEVATOR', None, None, None, [cape])
+                     'CONTROL_PANEL_2', None, 'BALLORA_AUDITORIUM', 'ELEVATOR', None, None, [cape])
 BALLORA_AUDITORIUM = Room('Ballora Auditorium',
                           "'There seem to be something there but can't make out what it is.",
-                          'FUN_TIME_AUDITORIUM', 'CONTROL_PANEL', None, None, None, None, ballora, None)
+                          'FUN_TIME_AUDITORIUM', 'CONTROL_PANEL', None, None, None, None, None)
 FUN_TIME_AUDITORIUM = Room('Fun time Auditorium',
                            "There also something there but can't make out what it is",
-                           None, 'FOXY_AUDITORIUM', None, 'BALLORA_AUDITORIUM', None, None, fun_time_freddy, [guitar])
+                           None, 'FOXY_AUDITORIUM', None, 'BALLORA_AUDITORIUM', None, None, [guitar])
 FOXY_AUDITORIUM = Room('Foxy Auditorium',
                        'You hear something but was to fainted to figure out.',
-                       None, None, 'FUN_TIME_AUDITORIUM', None, None, None, fun_time_foxy, None)
+                       None, None, 'FUN_TIME_AUDITORIUM', None, None, None, None)
 CONTROL_PANEL_2 = Room('Control Panel for Baby',
                        'There are a lot of button that does something. but what?',
                        None, None, None, 'CONTROL_PANEL', None, None, None)
 BABY_AUDITORIUM = Room('Baby Auditorium',
                        'you find something very odd, familiar, but    there something     very     disturbing.',
-                       None, None, None, 'CONTROL_PANEL_2', None, None, baby, [telephone])
+                       None, None, None, 'CONTROL_PANEL_2', None, None, [telephone])
 
-current_node = ENTRANCE
-direction = ['north', 'south', 'east', 'west', 'up', 'down']
-short_direction = ['n', 's', 'e', 'w', 'u', 'd']
+person1.location = ENTRANCE
+
+list_of_rooms = [ELEVATOR, ENTRANCE, WAITING_ROOM, OFFICE_ROOM, ANIMATRONICS, SECURITY_PUPPET_ROOM, SECURITY_ROOM,
+                 STAFF_ROOM, STAGE, STORAGE_ROOM, DATA_BASE, DINNING_ROOM, FOOD_ROOM, GAME_ROOM, FOXY_AUDITORIUM,
+                 FOXY_ROOM, BATHROOM, BABY_AUDITORIUM, BALLORA_AUDITORIUM, BACK_OF_THE_BUILDING, BELOW_BUILDING,
+                 CONTROL_PANEL_2, FUN_TIME_AUDITORIUM, CONTROL_PANEL, NOTHING]
+
+
+def place_chars():
+    for char in list_of_chars:
+        room = random.choice(list_of_rooms)
+        char.location = room
+        room.character.append(char)
+
+
 print(person1.description)
-print(current_node.name)
-print(current_node.description)
+print(person1.location.name)
+print(person1.location.description)
+place_chars()
 while True:
     random_number = random.randint(1, 3)
     print(person1.stats)
-    for list_items in current_node.items:
+    for list_items in person1.location.items:
         if list_items.isTaken is False:
             print(list_items.name)
+    if person1.location.character is not None:
+        for character in person1.location.character:
+            print(character.name)
     command = input(':').lower().strip()
     if command == 'quit':
         quit(0)
@@ -483,16 +524,13 @@ while True:
         pos = short_direction.index(command)
         command = direction[pos]
     if command in direction:
-        try:
-            current_node.move(command.lower())
-            print(current_node.name)
-            print(current_node.description)
-        except KeyError:
-            print("Are you a baka, there is nothing there")
+        person1.move(command.lower())
+
     # if command == "d" or "down" in BATHROOM:
     #
+
     elif "pick up" in command:
-        for item in current_node.items:
+        for item in person1.location.items:
             if item.name in command:
                 item.take()
                 break
@@ -522,7 +560,7 @@ while True:
                 print(item.description)
     elif "take all" in command:
         print("You took everything")
-        for item in current_node.items:
+        for item in person1.location.items:
             inventory.append(item)
             item.isTaken = True
     # elif "wear" in command:
@@ -550,16 +588,11 @@ while True:
         else:
             print("you missed the shot.")
     elif command == "look":
-        print(current_node.name)
-        print(current_node.description)
+        print(person1.location.name)
+        print(person1.location.description)
     elif person1.stats == 0:
         print("you died")
         break
     else:
         print("Command unknown, are you a baka")
-
-
-
-
-
-
+    move_chars()
