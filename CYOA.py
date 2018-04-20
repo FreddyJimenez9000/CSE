@@ -274,13 +274,14 @@ class Player(Character):
         except KeyError:
             print("Are you a baka, there is nothing there")
 
+
 person1 = Player('Henry',
-                    "you took this job because you needed money. Your wife and three kids just wanted to have a better "
-                    "life."
-                    "you found this job on ebay? what, What wrong with you ",
-                    'Flashlight',
-                    ' H = 100',
-                    None, None, None)
+                 "you took this job because you needed money. Your wife and three kids just wanted to have a better "
+                 "life."
+                 "you found this job on ebay? what, What wrong with you ",
+                 'Flashlight',
+                 ' H = 100',
+                 None, None, None)
 Bonnie = Character('Bonnie',
                    "Bonnie is a fun bunny which bring joy around the pizzeria. But then again it smell like a dead bod-"
                    "something",
@@ -528,7 +529,6 @@ while True:
 
     # if command == "d" or "down" in BATHROOM:
     #
-
     elif "pick up" in command:
         for item in person1.location.items:
             if item.name in command:
@@ -548,11 +548,11 @@ while True:
                     print("what are you saying there nothing inside your inventory.")
 # fix the drink, and eat
     elif "drink" in command:
-        if Consumable in inventory:
-            print("would you want a drink.")
+        for Consumable.item in person1.location.items:
             for item in inventory:
                 if item.name.lower() in command:
                     print("You drank the item.")
+                    print(Consumable.item.description)
     elif "look at" in command:
         for item in inventory:
             if item.name.lower() in command:
@@ -587,6 +587,11 @@ while True:
             print("you ran out of ammo")
         else:
             print("you missed the shot.")
+    # elif command == "attack":
+    #     for name in person1.location.items:
+    #         if Melee.name not in inventory:
+    #             print("You don't have anything to attack with")
+    #
     elif command == "look":
         print(person1.location.name)
         print(person1.location.description)
