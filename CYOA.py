@@ -445,10 +445,10 @@ STAGE = Room('Stage',
              'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, [hat])
 STORAGE_ROOM = Room('Storage Room',
                     'This is were we keep extras stuff. Like a dead bo- dead battery.',
-                    'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, [crow_bar])
+                    'BACK_OF_THE_BUILDING', None, None, 'DINNING_ROOM', None, None, [crow_bar])
 BACK_OF_THE_BUILDING = Room('Back of the building',
                             'There nothing here but blo- balloons.',
-                            'SECURITY_ROOM', 'STORAGE_ROOM', 'STAFF_ROOM', 'STORAGE_ROOM', None, None,
+                            'SECURITY_ROOM', None, 'STAFF_ROOM', 'STORAGE_ROOM', None, None,
                             [bloody_shirt])
 SECURITY_ROOM = Room('Security Room',
                      'This is were your going to work.',
@@ -464,7 +464,7 @@ DATA_BASE = Room('Data base',
                  'ANIMATRONICS', 'OFFICE', None, None, None, None, [hook])
 BELOW_BUILDING = Room('Below building',
                       'You fell and found a strange place. it dark.',
-                      None, None, 'ELEVATOR', None, 'BATHROOM', None, None)
+                      None, None, 'ELEVATOR', None, 'BATHROOM', None, [flare_ammo])
 ELEVATOR = Room('Elevator',
                 'It seem the elevator take you below or up. Would you like to go up or down?',
                 'CONTROL_ROOM', 'BELOW_BUILDING', 'NOTHING', None, 'BATHROOM', 'CONTROL_PANEL', None)
@@ -515,6 +515,12 @@ while True:
     for list_items in person1.location.items:
         if list_items.isTaken is False:
             print(list_items.name)
+    for character in list_of_chars:
+        if character.location != person1.location:
+            pass
+        else:
+            print("you have come across with %s" % character.name)
+
     if person1.location.character is not None:
         for character in person1.location.character:
             print(character.name)
@@ -587,6 +593,10 @@ while True:
             print("you ran out of ammo")
         else:
             print("you missed the shot.")
+    elif command == "attack":
+        for item in person1.location.items:
+            if item == Melee in inventory:
+
     # elif command == "attack":
     #     for name in person1.location.items:
     #         if Melee.name not in inventory:
