@@ -93,8 +93,8 @@ class Crowbar(Melee):
         self.OpenHatch = False
 
     def cr_attack(self):
-        if crow_bar in command:
-            print(crow_bar.damage)
+        if crowbar in command:
+            print(crowbar.damage)
 
 
 class Knife(Melee):
@@ -103,7 +103,7 @@ class Knife(Melee):
 
     def kn_attack(self):
         if knife in command:
-            print(crow_bar.damage)
+            print(crowbar.damage)
 
 
 class Flare_gun(Range):
@@ -363,7 +363,7 @@ def move_chars():
 
 arcade_machine = Arcade_machine("arcade machine", "This machine is out of order", None, "explode")
 
-crow_bar = Crowbar("crow bar", "You can use this to fight off thing, or open a hatch", None, '25')
+crowbar = Crowbar("crow bar", "You can use this to fight off thing, or open a hatch", None, '25')
 
 knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", None, '25')
 
@@ -410,6 +410,7 @@ telephone = Telephone("telephone", "This telephone is my only way to escape. The
 
 hook = Hook("hook", "The hook was made from the dead bodies of children, what.", "you deal 25 damage")
 
+weapon_list = [knife, crowbar, hook]
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
                 'Freddy Fazbear pizzaera',
@@ -445,7 +446,7 @@ STAGE = Room('Stage',
              'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, [hat])
 STORAGE_ROOM = Room('Storage Room',
                     'This is were we keep extras stuff. Like a dead bo- dead battery.',
-                    'BACK_OF_THE_BUILDING', None, None, 'DINNING_ROOM', None, None, [crow_bar])
+                    'BACK_OF_THE_BUILDING', None, None, 'DINNING_ROOM', None, None, [crowbar])
 BACK_OF_THE_BUILDING = Room('Back of the building',
                             'There nothing here but blo- balloons.',
                             'SECURITY_ROOM', None, 'STAFF_ROOM', 'STORAGE_ROOM', None, None,
@@ -510,6 +511,7 @@ print(person1.location.name)
 print(person1.location.description)
 place_chars()
 while True:
+    random_number2 = random.randint(1,2)
     random_number = random.randint(1, 3)
     print(person1.stats)
     for list_items in person1.location.items:
@@ -594,8 +596,18 @@ while True:
         else:
             print("you missed the shot.")
     elif command == "attack":
-        for item in person1.location.items:
-            if item == Melee in inventory:
+            if weapon_list not in inventory:
+                print("you don't have a weapon to attack with")
+            elif "attack" in command:
+                print("what do you want to attack with")
+            elif weapon_list in command:
+                if random_number2 == 2:
+                    print("you're able to land a hit")
+                    print(weapon_list)
+            else:
+                print("you missed")
+
+
 
     # elif command == "attack":
     #     for name in person1.location.items:
