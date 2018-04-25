@@ -15,7 +15,7 @@ class Vehicle(object):
 
 class Car(Vehicle):
     def __init__(self, material, seat, speed, passengers, windows):
-        super(Car,self).__init__('engine', material, seat, speed, passengers)
+        super(Car, self).__init__('engine', material, seat, speed, passengers)
         self.windows = windows
 
     def roll_down_windows(self):
@@ -31,7 +31,7 @@ test_car.change_direction()
 
 class KeylessCar(Car):
     def __init__(self, material, seat, speed, passengers, windows):
-        super(KeylessCar,self).__init__( material, seat, speed, passengers, windows)
+        super(KeylessCar, self).__init__(material, seat, speed, passengers, windows)
 
     def turn_on(self):
         print("You push the button and the car turns on")
@@ -41,8 +41,9 @@ test_car.turn_on()
 cool_car = KeylessCar('Aluminum', 'Driver side', 140, 2, True)
 cool_car.turn_on()
 
+
 class Tesla(KeylessCar):
-    def __init__(self,material, seat, speed, passengers, windows):
+    def __init__(self, material, seat, speed, passengers, windows):
         super(Tesla, self).__init__(material, seat, speed, passengers, windows)
 
     def fly(self):
@@ -50,4 +51,3 @@ class Tesla(KeylessCar):
 
     def turn_on(self):
         Car.turn_on(self)
-

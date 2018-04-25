@@ -409,11 +409,11 @@ bloody_shirt = Bloody_shirt("bloody shirt", "Who knows where this shirt came fro
 telephone = Telephone("telephone", "This telephone is my only way to escape. There seem to be a battery missing.", None)
 
 hook = Hook("hook", "The hook was made from the dead bodies of children, what.", "you deal 25 damage")
-
+food_list = [cupcake, water_bottle, pizza, ]
 weapon_list = [knife, crowbar, hook]
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
-                'Freddy Fazbear pizzaera',
+                'Freddy Fazbear pizzeria',
                 'WAITING_ROOM', None, 'SECURITY_PUPPET_ROOM', None, None, None, None)
 
 SECURITY_PUPPET_ROOM = Room('security puppet room',
@@ -511,7 +511,7 @@ print(person1.location.name)
 print(person1.location.description)
 place_chars()
 while True:
-    random_number2 = random.randint(1,2)
+    random_number2 = random.randint(1, 2)
     random_number = random.randint(1, 3)
     print(person1.stats)
     for list_items in person1.location.items:
@@ -606,8 +606,6 @@ while True:
                     print(weapon_list)
             else:
                 print("you missed")
-
-
 
     # elif command == "attack":
     #     for name in person1.location.items:

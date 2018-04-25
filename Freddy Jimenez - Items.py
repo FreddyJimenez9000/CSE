@@ -23,7 +23,7 @@ class Weapon(Item):
 
 
 class Consumable(Item):
-    def __init__(self, name, description, pick_up ,room):
+    def __init__(self, name, description, pick_up, room):
         super(Consumable, self). __init__(name, description, pick_up, room)
         self.eaten = False
 
@@ -51,7 +51,7 @@ class Arcade_machine(Item):
 
 class Melee(Weapon):
     def __init__(self, name, description, room, damage_ratio, pick_up):
-        super(Melee,self).__init__(name, description, damage_ratio, room, pick_up)
+        super(Melee, self).__init__(name, description, damage_ratio, room, pick_up)
 
 
 class Crowbar(Melee):
@@ -73,7 +73,7 @@ class Knife(Melee):
 
 class Flare_gun(Range):
     def __init__(self, name, description, room, damage_ratio, pick_up):
-        super(Flare_gun, self).__init__(name, description , 'Fire', room, damage_ratio, pick_up)
+        super(Flare_gun, self).__init__(name, description, 'Fire', room, damage_ratio, pick_up)
 
     def signal(self):
         print("You shot at the sky to get signal your position. You're save")
@@ -89,7 +89,7 @@ class Flare_ammo(Item):
 
 class Ball_pit(Item):
     def __init__(self, name, description, room, pick_up):
-        super(Ball_pit, self).__init__(name, description , room, pick_up)
+        super(Ball_pit, self).__init__(name, description, room, pick_up)
 
 
 class Flashlight(Item):
@@ -118,11 +118,11 @@ class Mic(Item):
 
 class Cupcake_fake(Item):
     def __init__(self, name, description, room, pick_up):
-        super(Cupcake_fake,self).__init__(name, description, pick_up, room)
+        super(Cupcake_fake, self).__init__(name, description, pick_up, room)
 
 
 class Guitar(Item):
-    def __init__(self, name, description, pick_up, room ):
+    def __init__(self, name, description, pick_up, room):
         super(Guitar, self).__init__(name, description, pick_up, room)
 
 
@@ -133,7 +133,7 @@ class Potion(Item):
 
 
 class Strenth_potion(Potion):
-    def __init__(self, name, description ,room , pick_up, affect):
+    def __init__(self, name, description, room, pick_up, affect):
         super(Strenth_potion, self).__init__(name, description, room, pick_up, affect)
 
     def drink(self):
@@ -156,7 +156,7 @@ class Bag_of_holding(Wearable):
 class Pizza(Consumable):
     def __init__(self, name, description, pick_up, room):
         self.eaten = False
-        super(Pizza,self).__init__(name, description, pick_up, room)
+        super(Pizza, self).__init__(name, description, pick_up, room)
 
     def eat(self):
         print("You ate the pizza")
@@ -204,9 +204,11 @@ class Telephone(Item):
     def answer(self):
         print("you'll die in three hours")
 
+
 class Hook(Melee):
     def __init__(self, name, description, damage_ratio):
-        super(Hook, self).__init__(name, description, None, damage_ratio)
+        super(Hook, self).__init__(name, description, None, damage_ratio, None)
+
 
 '''
 # further code for future testing 
@@ -224,7 +226,3 @@ while 0 < 10:
     if command == "inventory":
         print(inventory)
 '''
-
-
-
-
