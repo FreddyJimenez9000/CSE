@@ -510,7 +510,13 @@ print(person1.description)
 print(person1.location.name)
 print(person1.location.description)
 place_chars()
+
+stun = False
 while True:
+    command = input(':').lower().strip()
+    if stun:
+        if command in short_direction or direction:
+            print("you can't leave unless %s leave or been defeated" % character.name)
     random_number2 = random.randint(1, 2)
     random_number = random.randint(1, 3)
     print(person1.stats)
@@ -522,11 +528,20 @@ while True:
             pass
         else:
             print("you have come across with %s" % character.name)
+    for character in list_of_chars:
+        if random_number == 2:
+            if character.location != person1.location:
+                pass
+            else:
+                print("it seem you have made %s angry" % character.name)
+                stun = True
+
 
     if person1.location.character is not None:
         for character in person1.location.character:
             print(character.name)
-    command = input(':').lower().strip()
+    # command
+
     if command == 'quit':
         quit(0)
     if command in short_direction:
@@ -556,11 +571,13 @@ while True:
                     print("what are you saying there nothing inside your inventory.")
 # fix the drink, and eat
     elif "drink" in command:
-        for Consumable.item in person1.location.items:
-            for item in inventory:
-                if item.name.lower() in command:
+        for food in food_list:
+            for food in person1.location.items:
+                if food not in inventory:
+                    print("you have nothing to drink.")
+                if food.name.lower() in command:
                     print("You drank the item.")
-                    print(Consumable.item.description)
+                    print(food.item.description)
     elif "look at" in command:
         for item in inventory:
             if item.name.lower() in command:
