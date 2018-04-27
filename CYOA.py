@@ -1,4 +1,5 @@
 import random
+
 inventory = []
 invCapacity = 4
 # fix inventory
@@ -41,20 +42,25 @@ class Weapon(Item):
         super(Weapon, self).__init__(name, description, room)
         self.damage = damage_ratio
         self.magazine = magazine
+
+
 ##
 
 
 class Consumable(Item):
     def __init__(self, name, description, room):
-        super(Consumable, self). __init__(name, description, room)
+        super(Consumable, self).__init__(name, description, room)
         self.eaten = False
+
+
 # Fix this
 
 
 class Wearable(Item):
     def __init__(self, name, description, room, ):
-        super(Wearable, self). __init__(name, description, room)
+        super(Wearable, self).__init__(name, description, room)
         self.Worn = False
+
     # method for wear
 
     def wear(self):
@@ -77,7 +83,7 @@ class Range(Weapon):
 
 
 class Arcade_machine(Item):
-    def __init__(self, name, description, room, action,):
+    def __init__(self, name, description, room, action, ):
         super(Arcade_machine, self).__init__(name, description, room)
         self.action = action
 
@@ -115,7 +121,7 @@ class Flare_gun(Range):
 
 
 class Flare_ammo(Item):
-    def __init__(self, name, description, room,):
+    def __init__(self, name, description, room, ):
         super(Flare_ammo, self).__init__(name, description, room)
 
 
@@ -188,7 +194,7 @@ class Bag_of_holding(Wearable):
 class Pizza(Consumable):
     def __init__(self, name, description, room):
         self.eaten = False
-        super(Pizza,self).__init__(name, description, room)
+        super(Pizza, self).__init__(name, description, room)
 
     def eat(self):
         print("You ate the pizza")
@@ -238,6 +244,8 @@ class Telephone(Item):
 class Hook(Melee):
     def __init__(self, name, description, damage_ratio):
         super(Hook, self).__init__(name, description, None, damage_ratio)
+
+
 ####
 
 
@@ -251,7 +259,7 @@ class Character(object):
         self.action = action
         self.jump_scare = jump_scare
         self.location = location
-        
+
     def move(self, directions):
         self.location.character.remove(self)
         try:
@@ -292,10 +300,10 @@ Freddy = Character('Freddy Fazbear',
                    "time he sing it sound like a dead man crying, trying to get out. but who knows.",
                    None, 'H = 100', 'Mic', 'Sing', "you become blind and paralyzed")
 Chica = Character('Chica', "Chica is a duck like Animatronics who soul purpose is to give out cupcake. but we don't "
-                  "know what inside of those cupcake maybe bloo-. its made organic.)",
+                           "know what inside of those cupcake maybe bloo-. its made organic.)",
                   None, 'H = 100', 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
 Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he's shy. His fur is always red but it"
-                 " used to be white. We think that an employee colored it red. But it started to smell.",
+                         " used to be white. We think that an employee colored it red. But it started to smell.",
                  None, 'H = 100', "a Hook", None, "you become blind and paralyzed.")
 Ballora = Character('Ballora', "She a fun charter, like to sing, dance, and to put on a show",
                     None, "H = 100", None, "dance", "you become blind and paralyzed.")
@@ -304,8 +312,8 @@ Fun_time_Freddy = Character("Fun time Freddy",
                             "business because of a weird smell and a disappearance of children.",
                             None, "H = 100", None, "play with children", "you become blind and paralyzed.")
 Fun_time_Foxy = Character("Fun Time Foxy", "She's the sister of Foxy but have a few improvement over Foxy. But we "
-                          "saw something very strange in the old security camera of a child disappearing and Fun time "
-                          "Foxy came out.", None, "H = 100", None, "Dance",
+                                           "saw something very strange in the old security camera of a child disappearing and Fun time "
+                                           "Foxy came out.", None, "H = 100", None, "Dance",
                           "you become blind and paralyzed.")
 Baby = Character("Baby",
                  "Baby was made to take care and make kids happy. But they started to disappear when they go "
@@ -313,6 +321,7 @@ Baby = Character("Baby",
                  "dance and sing", "you become blind and paralyzed.")
 Puppet = Character("Puppet", "she going to protect all the children from harm, and from you", None, "H = 100", None,
                    "roams around", None)
+
 
 ####
 
@@ -370,7 +379,7 @@ knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", N
 flare_gun = Flare_gun("flare gun", "You can signal for help or light the way up.", None, '15', 4)
 
 flare_ammo = Flare_ammo("flare ammo", "You can use this to reload your flare gun, There nothing else you can do woth it"
-                                      ".", None,)
+                                      ".", None, )
 
 ball_pit = Ball_pit("ball pit", " Kids love this ball pit, but for some reason kids are going missing.", None)
 
@@ -381,12 +390,13 @@ battery = Battery("battery", "It a battery what else can you use it for", None)
 mic = Mic("mic", "Property of Freddy", None)
 
 cupcake_fake = Cupcake_fake("the plastic cupcake", "This is one of the missing cupcake of Chica collection."
-                            "If you give it to her then you get a prized of dea-, of good things.", None)
+                                                   "If you give it to her then you get a prized of dea-, of good things.",
+                            None)
 
 guitar = Guitar("guitar", "This guitar have something on it like blo- red paint.", None)
 
 strength_potion = Strenth_potion("strength potion", "This potion is one of a kind very rare very useless.", None, "you "
-                                 "got stronger.")
+                                                                                                                  "got stronger.")
 
 night_vision_potion = Night_vision_potion("night vision potions", "You will be able to see in the dark once you drank "
                                                                   "the potion.", None, "you can see in the dark")
@@ -516,7 +526,7 @@ while True:
     command = input(':').lower().strip()
     if stun:
         if command in short_direction or direction:
-            print("you can't leave unless %s leave or been defeated" % character.name)
+            print("you can't leave unless %s leave or been defeated" % person1.location.character.name)
     random_number2 = random.randint(1, 2)
     random_number = random.randint(1, 3)
     print(person1.stats)
@@ -535,7 +545,6 @@ while True:
             else:
                 print("it seem you have made %s angry" % character.name)
                 stun = True
-
 
     if person1.location.character is not None:
         for character in person1.location.character:
@@ -569,15 +578,17 @@ while True:
                     item.drop()
                 else:
                     print("what are you saying there nothing inside your inventory.")
-# fix the drink, and eat
-    elif "drink" in command:
-        for food in food_list:
-            for food in person1.location.items:
-                if food not in inventory:
-                    print("you have nothing to drink.")
-                if food.name.lower() in command:
-                    print("You drank the item.")
-                    print(food.item.description)
+                    # fix the drink, and eat
+    elif "eat" in command:
+        for food in inventory:
+            if food.name.lower() in command:
+                if issubclass(type(food), Consumable):
+                    food.eat()
+                    inventory.remove(food)
+                else:
+                    print("You can't eat that.")
+
+
     elif "look at" in command:
         for item in inventory:
             if item.name.lower() in command:
@@ -613,16 +624,16 @@ while True:
         else:
             print("you missed the shot.")
     elif command == "attack":
-            if weapon_list not in inventory:
-                print("you don't have a weapon to attack with")
-            elif "attack" in command:
-                print("what do you want to attack with")
-            elif weapon_list in command:
-                if random_number2 == 2:
-                    print("you're able to land a hit")
-                    print(weapon_list)
-            else:
-                print("you missed")
+        if weapon_list not in inventory:
+            print("you don't have a weapon to attack with")
+        elif "attack" in command:
+            print("what do you want to attack with")
+        elif weapon_list in command:
+            if random_number2 == 2:
+                print("you're able to land a hit")
+                print(weapon_list)
+        else:
+            print("you missed")
 
     # elif command == "attack":
     #     for name in person1.location.items:
