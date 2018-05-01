@@ -312,8 +312,8 @@ Fun_time_Freddy = Character("Fun time Freddy",
                             "business because of a weird smell and a disappearance of children.",
                             None, "H = 100", None, "play with children", "you become blind and paralyzed.")
 Fun_time_Foxy = Character("Fun Time Foxy", "She's the sister of Foxy but have a few improvement over Foxy. But we "
-                                           "saw something very strange in the old security camera of a child disappearing and Fun time "
-                                           "Foxy came out.", None, "H = 100", None, "Dance",
+                          "saw something very strange in the old security camera of a child disappearing and Fun time "
+                          "Foxy came out.", None, "H = 100", None, "Dance",
                           "you become blind and paralyzed.")
 Baby = Character("Baby",
                  "Baby was made to take care and make kids happy. But they started to disappear when they go "
@@ -395,8 +395,9 @@ cupcake_fake = Cupcake_fake("the plastic cupcake", "This is one of the missing c
 
 guitar = Guitar("guitar", "This guitar have something on it like blo- red paint.", None)
 
-strength_potion = Strenth_potion("strength potion", "This potion is one of a kind very rare very useless.", None, "you "
-                                                                                                                  "got stronger.")
+strength_potion = Strenth_potion("strength potion", "This potion is one of a kind very rare very useless.", None,
+                                 "you "
+                                                                                                   "got stronger.")
 
 night_vision_potion = Night_vision_potion("night vision potions", "You will be able to see in the dark once you drank "
                                                                   "the potion.", None, "you can see in the dark")
@@ -423,6 +424,7 @@ food_list = [cupcake, water_bottle, pizza, ]
 weapon_list = [knife, crowbar, hook]
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
+                
                 'Freddy Fazbear pizzeria',
                 'WAITING_ROOM', None, 'SECURITY_PUPPET_ROOM', None, None, None, None)
 
@@ -523,16 +525,18 @@ place_chars()
 
 stun = False
 while True:
+    print(person1.stats)
     command = input(':').lower().strip()
-    if stun:
-        if command in short_direction or direction:
-            print("you can't leave unless %s leave or been defeated" % person1.location.character.name)
+    # if stun:
+    #     if command in short_direction or direction:
+    #         print("you can't leave unless %s leave or been defeated" % person1.location.character.name)
+    #         person1.location.move = False
     random_number2 = random.randint(1, 2)
     random_number = random.randint(1, 3)
-    print(person1.stats)
-    for list_items in person1.location.items:
-        if list_items.isTaken is False:
-            print(list_items.name)
+    for item in person1.location.items:
+        if item is not False:
+            print("There a %s" % item.name)
+
     for character in list_of_chars:
         if character.location != person1.location:
             pass
@@ -544,13 +548,14 @@ while True:
                 pass
             else:
                 print("it seem you have made %s angry" % character.name)
-                stun = True
 
     if person1.location.character is not None:
         for character in person1.location.character:
             print(character.name)
-    # command
 
+    for list_items in person1.location.items:
+        if list_items.isTaken is False:
+            print(list_items.name)
     if command == 'quit':
         quit(0)
     if command in short_direction:
@@ -559,8 +564,6 @@ while True:
     if command in direction:
         person1.move(command.lower())
 
-    # if command == "d" or "down" in BATHROOM:
-    #
     elif "pick up" in command:
         for item in person1.location.items:
             if item.name in command:
@@ -587,7 +590,6 @@ while True:
                     inventory.remove(food)
                 else:
                     print("You can't eat that.")
-
 
     elif "look at" in command:
         for item in inventory:

@@ -35,7 +35,7 @@ Freddy = Character('Freddy Fazbear',
                    "Freddy is the most lovable bear in the whole pizzeria. He liked the star of the band. But every"
                    "time he sing it sound like a dead man crying, trying to get out. but who knows.",
                    None, 'H = 100', 'Mic', 'Sing', "you become blind and paralyzed")
-Chica = Character('Chica', "Chica is a duck like animatronic who soul purpose is to give out cupcake. but we don't "
+Chica = Character('Chica', "Chica is a duck like animatronics who soul purpose is to give out cupcake. but we don't "
                   "know what inside of those cupcake maybe bloo-. its made organic.;)",
                   None, 'H = 100', 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
 Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he's shy. His fur is always red but it"
