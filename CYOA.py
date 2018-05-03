@@ -9,7 +9,6 @@ legs = []
 direction = ['north', 'south', 'east', 'west', 'up', 'down']
 short_direction = ['n', 's', 'e', 'w', 'u', 'd']
 
-
 class Item(object):
     def __init__(self, name, description, room):
         self.name = name
@@ -288,7 +287,7 @@ person1 = Player('Henry',
                  "life."
                  "you found this job on ebay? what, What wrong with you ",
                  'Flashlight',
-                 ' H = 100',
+                  100,
                  None, None, None)
 Bonnie = Character('Bonnie',
                    "Bonnie is a fun bunny which bring joy around the pizzeria. But then again it smell like a dead bod-"
@@ -390,14 +389,13 @@ battery = Battery("battery", "It a battery what else can you use it for", None)
 mic = Mic("mic", "Property of Freddy", None)
 
 cupcake_fake = Cupcake_fake("the plastic cupcake", "This is one of the missing cupcake of Chica collection."
-                                                   "If you give it to her then you get a prized of dea-, of good things.",
+                            "If you give it to her then you get a prized of dea-, of good things.",
                             None)
 
 guitar = Guitar("guitar", "This guitar have something on it like blo- red paint.", None)
 
 strength_potion = Strenth_potion("strength potion", "This potion is one of a kind very rare very useless.", None,
-                                 "you "
-                                                                                                   "got stronger.")
+                                 "you got stronger.")
 
 night_vision_potion = Night_vision_potion("night vision potions", "You will be able to see in the dark once you drank "
                                                                   "the potion.", None, "you can see in the dark")
@@ -422,9 +420,10 @@ telephone = Telephone("telephone", "This telephone is my only way to escape. The
 hook = Hook("hook", "The hook was made from the dead bodies of children, what.", "you deal 25 damage")
 food_list = [cupcake, water_bottle, pizza, ]
 weapon_list = [knife, crowbar, hook]
+wear_list = [bloody_shirt, hat, cape, bag_of_holding, arcade_machine]
+
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
-                
                 'Freddy Fazbear pizzeria',
                 'WAITING_ROOM', None, 'SECURITY_PUPPET_ROOM', None, None, None, None)
 
@@ -523,39 +522,43 @@ print(person1.location.name)
 print(person1.location.description)
 place_chars()
 
-stun = False
+
 while True:
     print(person1.stats)
-    command = input(':').lower().strip()
+
     # if stun:
     #     if command in short_direction or direction:
     #         print("you can't leave unless %s leave or been defeated" % person1.location.character.name)
     #         person1.location.move = False
     random_number2 = random.randint(1, 2)
     random_number = random.randint(1, 3)
-    for item in person1.location.items:
-        if item is not False:
-            print("There a %s" % item.name)
 
     for character in list_of_chars:
         if character.location != person1.location:
             pass
         else:
             print("you have come across with %s" % character.name)
+
     for character in list_of_chars:
         if random_number == 2:
             if character.location != person1.location:
                 pass
             else:
                 print("it seem you have made %s angry" % character.name)
+                print("%s" % character.name,"attack you")
+                print("it dealt 20 damage")
+                person1.stats -= 20
 
     if person1.location.character is not None:
         for character in person1.location.character:
             print(character.name)
-
+    for item in person1.location.items:
+        if item is not False:
+            print("There seem to be a %s" % item.name)
     for list_items in person1.location.items:
         if list_items.isTaken is False:
             print(list_items.name)
+    command = input(':').lower().strip()
     if command == 'quit':
         quit(0)
     if command in short_direction:
@@ -601,11 +604,15 @@ while True:
         for item in person1.location.items:
             inventory.append(item)
             item.isTaken = True
-    # elif "wear" in command:
-    #     for item in inventory:
-    #         if Wearable in inventory:
-    #
 
+    elif command == "wear":
+        for item in person1.location.items:
+            if weapon_list in inventory:
+                print("You wear the item.")
+            else:
+                print("You can't were that.")
+            if weapon_list not in inventory:
+                print("They're nothing to wear")
     elif command == "win game":
         print("You won the game")
         break
@@ -636,7 +643,15 @@ while True:
                 print(weapon_list)
         else:
             print("you missed")
-
+    elif "run" in command:
+        print("You weren't able to escape")
+        print("The animatronics were able to capture you and turn you into one of them.")
+        print("You were able to escape, but when the police came by they shot you down.")
+        print("they burnt the place down, but the police were not able to find anything.")
+        print("People are still questioning what have happen in that place.")
+        print("But for short we know that there still out there")
+        print("Waiting for you to come back  waiting and waiting     but they came to you first. And then")
+        break
     # elif command == "attack":
     #     for name in person1.location.items:
     #         if Melee.name not in inventory:
