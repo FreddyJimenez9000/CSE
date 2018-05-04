@@ -3,9 +3,7 @@ import random
 inventory = []
 invCapacity = 4
 # fix inventory
-head = []
-chest = []
-legs = []
+body = []
 direction = ['north', 'south', 'east', 'west', 'up', 'down']
 short_direction = ['n', 's', 'e', 'w', 'u', 'd']
 
@@ -229,10 +227,18 @@ class Cape(Wearable):
     def __init__(self, name, description, room):
         super(Cape, self).__init__(name, description, room)
 
+    def wear(self):
+        print("You feel invincible, but you hit you head on the roof and past out")
+        print("You woke up second later.")
+
 
 class Bloody_shirt(Item):
     def __init__(self, name, description, room):
         super(Bloody_shirt, self).__init__(name, description, room)
+
+    def wear(self):
+        print("you wear the bloody shirt, now you started to smell very weird")
+
 
 
 class Telephone(Item):
@@ -286,39 +292,37 @@ person1 = Player('Henry',
                  "you took this job because you needed money. Your wife and three kids just wanted to have a better "
                  "life."
                  "you found this job on ebay? what, What wrong with you ",
-                 'Flashlight',
-                  100,
-                 None, None, None)
+                 'Flashlight', 100, None, None, None)
 Bonnie = Character('Bonnie',
                    "Bonnie is a fun bunny which bring joy around the pizzeria. But then again it smell like a dead bod-"
                    "something",
-                   None, ', H = 100', 'guitar',
+                   None, 100, 'guitar',
                    'play the guitar', "you become blind and paralyzed")
 Freddy = Character('Freddy Fazbear',
                    "Freddy is the most lovable bear in the whole pizzeria. He liked the star of the band. But every"
                    "time he sing it sound like a dead man crying, trying to get out. but who knows.",
-                   None, 'H = 100', 'Mic', 'Sing', "you become blind and paralyzed")
+                   None,  100, 'Mic', 'Sing', "you become blind and paralyzed")
 Chica = Character('Chica', "Chica is a duck like Animatronics who soul purpose is to give out cupcake. but we don't "
                            "know what inside of those cupcake maybe bloo-. its made organic.)",
-                  None, 'H = 100', 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
+                  None, 100, 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
 Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he's shy. His fur is always red but it"
                          " used to be white. We think that an employee colored it red. But it started to smell.",
-                 None, 'H = 100', "a Hook", None, "you become blind and paralyzed.")
+                 None, 100, "a Hook", None, "you become blind and paralyzed.")
 Ballora = Character('Ballora', "She a fun charter, like to sing, dance, and to put on a show",
-                    None, "H = 100", None, "dance", "you become blind and paralyzed.")
+                    None, 100, None, "dance", "you become blind and paralyzed.")
 Fun_time_Freddy = Character("Fun time Freddy",
                             "He's a lovable character which was used in the last pizzeria but run out"
                             "business because of a weird smell and a disappearance of children.",
-                            None, "H = 100", None, "play with children", "you become blind and paralyzed.")
+                            None,  100, None, "play with children", "you become blind and paralyzed.")
 Fun_time_Foxy = Character("Fun Time Foxy", "She's the sister of Foxy but have a few improvement over Foxy. But we "
                           "saw something very strange in the old security camera of a child disappearing and Fun time "
-                          "Foxy came out.", None, "H = 100", None, "Dance",
+                          "Foxy came out.", None, 100, None, "Dance",
                           "you become blind and paralyzed.")
 Baby = Character("Baby",
                  "Baby was made to take care and make kids happy. But they started to disappear when they go "
-                 "and play with Baby.", None, "H = 100", None,
+                 "and play with Baby.", None, 100, None,
                  "dance and sing", "you become blind and paralyzed.")
-Puppet = Character("Puppet", "she going to protect all the children from harm, and from you", None, "H = 100", None,
+Puppet = Character("Puppet", "she going to protect all the children from harm, and from you", None, 100, None,
                    "roams around", None)
 
 
@@ -517,11 +521,11 @@ def place_chars():
         room.character.append(char)
 
 
+print("Your health is at the bottom")
 print(person1.description)
 print(person1.location.name)
 print(person1.location.description)
 place_chars()
-
 
 while True:
     print(person1.stats)
@@ -552,9 +556,14 @@ while True:
     if person1.location.character is not None:
         for character in person1.location.character:
             print(character.name)
+
     for item in person1.location.items:
         if item is not False:
-            print("There seem to be a %s" % item.name)
+            if item in inventory:
+                pass
+            else:
+                print("There seem to be a %s" % item.name)
+
     for list_items in person1.location.items:
         if list_items.isTaken is False:
             print(list_items.name)
@@ -567,7 +576,7 @@ while True:
     if command in direction:
         person1.move(command.lower())
 
-    elif "pick up" in command:
+    elif "take" in command:
         for item in person1.location.items:
             if item.name in command:
                 item.take()
@@ -593,7 +602,14 @@ while True:
                     inventory.remove(food)
                 else:
                     print("You can't eat that.")
-
+    elif "drink" in command:
+        for food in inventory:
+            if food.name.lower() in command:
+                if issubclass(type(food), Consumable):
+                    food.eat()
+                    inventory.remove(food)
+                else:
+                    print("You can't drink that.")
     elif "look at" in command:
         for item in inventory:
             if item.name.lower() in command:
@@ -605,13 +621,19 @@ while True:
             inventory.append(item)
             item.isTaken = True
 
-    elif command == "wear":
+    elif "wear" in command:
         for item in person1.location.items:
-            if weapon_list in inventory:
+            item = wear_list
+            if item in command:
                 print("You wear the item.")
+                if issubclass(type(item), Wearable):
+                    item.wear()
+                item.append(body)
             else:
                 print("You can't were that.")
-            if weapon_list not in inventory:
+            if arcade_machine.name in command:
+                print("you turn into a arcade machine")
+            if wear_list not in inventory:
                 print("They're nothing to wear")
     elif command == "win game":
         print("You won the game")
