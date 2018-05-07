@@ -7,6 +7,7 @@ body = []
 direction = ['north', 'south', 'east', 'west', 'up', 'down']
 short_direction = ['n', 's', 'e', 'w', 'u', 'd']
 
+
 class Item(object):
     def __init__(self, name, description, room):
         self.name = name
@@ -60,17 +61,17 @@ class Wearable(Item):
 
     # method for wear
 
-    def wear(self):
-        for Wearable.item in inventory:
-            if Wearable.item in inventory:
-                print("Would you want to wear the %s" % item.name)
-            if Wearable.item not in inventory:
-                print("there nothing you could wear")
-            else:
-                print("Would you want to wear the %s" % item.name)
-            if command == "wear %s" % item.name:
-                print("you wear the item")
-                self.Worn = True
+    # def wear(self):
+    #     for Wearable.item in inventory:
+    #         if Wearable.item in inventory:
+    #             print("Would you want to wear the %s" % item.name)
+    #         if Wearable.item not in inventory:
+    #             print("there nothing you could wear")
+    #         else:
+    #             print("Would you want to wear the %s" % item.name)
+    #         if command == "wear %s" % item.name:
+    #             print("you wear the item")
+    #             self.Worn = True
 
 
 class Range(Weapon):
@@ -83,6 +84,9 @@ class Arcade_machine(Item):
     def __init__(self, name, description, room, action, ):
         super(Arcade_machine, self).__init__(name, description, room)
         self.action = action
+
+    def wear(self):
+        print("you wear the arcade machine and you turn into one. You became Arcade man")
 
 
 class Melee(Weapon):
@@ -187,6 +191,9 @@ class Bag_of_holding(Wearable):
     def __init__(self, name, description, room):
         super(Bag_of_holding, self).__init__(name, description, room)
 
+    def wear(self):
+        print("your able to hold unlimited thing for the cost of your life bw careful.")
+
 
 class Pizza(Consumable):
     def __init__(self, name, description, room):
@@ -221,6 +228,9 @@ class Water_bottle(Consumable):
 class Hat(Wearable):
     def __init__(self, name, description, room):
         super(Hat, self).__init__(name, description, room)
+
+    def wear(self):
+        print("You wore the hat you think your special, but your not, your going to die.")
 
 
 class Cape(Wearable):
@@ -456,15 +466,17 @@ FOOD_ROOM = Room('Food Room',
                  'Do you not known why we use this place.',
                  None, 'DINNING_ROOM', None, None, None, None, [water_bottle, cupcake_fake])
 STAGE = Room('Stage',
-             'This is were the animatronic is going to perform. We have Freddy, Bonnie, and chika. there a hat on the '
+             'This is were the animatronics is going to perform. We have Freddy, Bonnie, and chika. there a hat on the '
              'ground',
              'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, [hat])
 STORAGE_ROOM = Room('Storage Room',
                     'This is were we keep extras stuff. Like a dead bo- dead battery.',
                     'BACK_OF_THE_BUILDING', None, None, 'DINNING_ROOM', None, None, [crowbar])
+CORNER = Room('The corner', 'Your at the corner of the building there nothing here', None, None, 'BACK_OF_THE_BUILDING'
+              ,'STORAGE_ROOM', None, None, None)
 BACK_OF_THE_BUILDING = Room('Back of the building',
                             'There nothing here but blo- balloons.',
-                            'SECURITY_ROOM', None, 'STAFF_ROOM', 'STORAGE_ROOM', None, None,
+                            'SECURITY_ROOM', 'CORNER', 'STAFF_ROOM', 'STAGE', None, None,
                             [bloody_shirt])
 SECURITY_ROOM = Room('Security Room',
                      'This is were your going to work.',
@@ -549,7 +561,7 @@ while True:
                 pass
             else:
                 print("it seem you have made %s angry" % character.name)
-                print("%s" % character.name,"attack you")
+                print("%s" % character.name, "attack you")
                 print("it dealt 20 damage")
                 person1.stats -= 20
 
@@ -623,18 +635,21 @@ while True:
 
     elif "wear" in command:
         for item in person1.location.items:
-            item = wear_list
-            if item in command:
+            wear_list = item
+            if wear_list not in inventory:
+                print("They're nothing to wear")
+                item.isTaken = False
+
+            if wear_list.name in command:
                 print("You wear the item.")
-                if issubclass(type(item), Wearable):
-                    item.wear()
-                item.append(body)
+                if issubclass(type(wear_list), Wearable):
+                    wear_list.wear()
+                    body.append(wear_list)
             else:
                 print("You can't were that.")
             if arcade_machine.name in command:
-                print("you turn into a arcade machine")
-            if wear_list not in inventory:
-                print("They're nothing to wear")
+                arcade_machine.wear()
+
     elif command == "win game":
         print("You won the game")
         break
@@ -643,6 +658,7 @@ while True:
     elif command == "inventory":
         for item in inventory:
             print(item.name)
+
     elif command == "shoot":
         print(random_number)
         if flare_gun not in inventory:
