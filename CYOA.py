@@ -4,6 +4,7 @@ inventory = []
 invCapacity = 4
 # fix inventory
 body = []
+used_item = []
 direction = ['north', 'south', 'east', 'west', 'up', 'down']
 short_direction = ['n', 's', 'e', 'w', 'u', 'd']
 
@@ -18,6 +19,7 @@ class Item(object):
     def take(self):
         if bag_of_holding in inventory:
             inventory.append(self)
+            used_item.append(self)
             self.isTaken = True
             print("You took the item")
         else:
@@ -25,6 +27,7 @@ class Item(object):
                 print("You are holding too much stuff")
             else:
                 inventory.append(self)
+                used_item.append(self)
                 self.isTaken = True
                 print("You took the item")
 
@@ -466,14 +469,14 @@ FOOD_ROOM = Room('Food Room',
                  'Do you not known why we use this place.',
                  None, 'DINNING_ROOM', None, None, None, None, [water_bottle, cupcake_fake])
 STAGE = Room('Stage',
-             'This is were the animatronics is going to perform. We have Freddy, Bonnie, and chika. there a hat on the '
+             'This is were the animatronics is going to perform. We have Freddy, Bonnie, and chica. there a hat on the '
              'ground',
              'BACK_OF_THE_BUILDING', 'STORAGE_ROOM', None, 'DINNING_ROOM', None, None, [hat])
 STORAGE_ROOM = Room('Storage Room',
                     'This is were we keep extras stuff. Like a dead bo- dead battery.',
                     'BACK_OF_THE_BUILDING', None, None, 'DINNING_ROOM', None, None, [crowbar])
-CORNER = Room('The corner', 'Your at the corner of the building there nothing here', None, None, 'BACK_OF_THE_BUILDING'
-              ,'STORAGE_ROOM', None, None, None)
+CORNER = Room('The corner', 'Your at the corner of the building there nothing here', None, None, 'BACK_OF_THE_BUILDING',
+              'STORAGE_ROOM', None, None, None)
 BACK_OF_THE_BUILDING = Room('Back of the building',
                             'There nothing here but blo- balloons.',
                             'SECURITY_ROOM', 'CORNER', 'STAFF_ROOM', 'STAGE', None, None,
@@ -571,6 +574,9 @@ while True:
 
     for item in person1.location.items:
         if item is not False:
+            if item not in inventory:
+                pass
+
             if item in inventory:
                 pass
             else:
@@ -590,12 +596,14 @@ while True:
 
     elif "take" in command:
         for item in person1.location.items:
+
             if item.name in command:
                 item.take()
                 break
             else:
                 print("You can't take that.")
                 break
+
     elif "drop" in command:
         if not inventory:
             print("There nothing in your inventory")
@@ -612,6 +620,7 @@ while True:
                 if issubclass(type(food), Consumable):
                     food.eat()
                     inventory.remove(food)
+                    used_item.append(food)
                 else:
                     print("You can't eat that.")
     elif "drink" in command:
@@ -620,6 +629,7 @@ while True:
                 if issubclass(type(food), Consumable):
                     food.eat()
                     inventory.remove(food)
+                    used_item.append(food)
                 else:
                     print("You can't drink that.")
     elif "look at" in command:
@@ -627,11 +637,6 @@ while True:
             if item.name.lower() in command:
                 print(item.name)
                 print(item.description)
-    elif "take all" in command:
-        print("You took everything")
-        for item in person1.location.items:
-            inventory.append(item)
-            item.isTaken = True
 
     elif "wear" in command:
         for item in person1.location.items:
@@ -644,12 +649,17 @@ while True:
                 print("You wear the item.")
                 if issubclass(type(wear_list), Wearable):
                     wear_list.wear()
+                    inventory.remove(wear_list)
                     body.append(wear_list)
             else:
                 print("You can't were that.")
             if arcade_machine.name in command:
                 arcade_machine.wear()
-
+    elif command == "pick up all":
+        for item in person1.location.items:
+            inventory.append(item)
+            item.isTaken = True
+            print("You took everything")
     elif command == "win game":
         print("You won the game")
         break
@@ -670,7 +680,7 @@ while True:
             print("you ran out of ammo")
         else:
             print("you missed the shot.")
-    elif command == "attack":
+    elif command == "attack %s":
         if weapon_list not in inventory:
             print("you don't have a weapon to attack with")
         elif "attack" in command:
@@ -695,6 +705,8 @@ while True:
     #         if Melee.name not in inventory:
     #             print("You don't have anything to attack with")
     #
+    elif command == "used item":
+        print(used_item)
     elif command == "look":
         print(person1.location.name)
         print(person1.location.description)
