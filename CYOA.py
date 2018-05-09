@@ -388,7 +388,7 @@ def move_chars():
 
 arcade_machine = Arcade_machine("arcade machine", "This machine is out of order", None, "explode")
 
-crowbar = Crowbar("crow bar", "You can use this to fight off thing, or open a hatch", None, '25')
+crowbar = Crowbar("crowbar", "You can use this to fight off thing, or open a hatch", None, '25')
 
 knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", None, '25')
 
@@ -645,7 +645,7 @@ while True:
                 print("They're nothing to wear")
                 item.isTaken = False
 
-            if wear_list.name in command:
+            if wear_list.name.lower() in command:
                 print("You wear the item.")
                 if issubclass(type(wear_list), Wearable):
                     wear_list.wear()
@@ -680,7 +680,7 @@ while True:
             print("you ran out of ammo")
         else:
             print("you missed the shot.")
-    elif command == "attack %s":
+    elif command == "attack":
         if weapon_list not in inventory:
             print("you don't have a weapon to attack with")
         elif "attack" in command:
@@ -691,10 +691,11 @@ while True:
                 print(weapon_list)
         else:
             print("you missed")
+
     elif "run" in command:
         print("You weren't able to escape")
         print("The animatronics were able to capture you and turn you into one of them.")
-        print("You were able to escape, but when the police came by they shot you down.")
+        print("You later escape then the night was over, but when the police came by they shot you down.")
         print("they burnt the place down, but the police were not able to find anything.")
         print("People are still questioning what have happen in that place.")
         print("But for short we know that there still out there")
