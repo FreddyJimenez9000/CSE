@@ -263,6 +263,10 @@ class Hook(Melee):
     def __init__(self, name, description, damage_ratio):
         super(Hook, self).__init__(name, description, None, damage_ratio)
 
+class Medkits(Item):
+    def __init__(self, name, description, health_recover):
+        super(Medkits, self).__init__(name, description, None)
+        self.health_recover = health_recover
 
 ####
 
@@ -435,9 +439,13 @@ bloody_shirt = Bloody_shirt("bloody shirt", "Who knows where this shirt came fro
 telephone = Telephone("telephone", "This telephone is my only way to escape. There seem to be a battery missing.", None)
 
 hook = Hook("hook", "The hook was made from the dead bodies of children, what.", "you deal 25 damage")
+
+medkit = Medkits("medkit", "You use the medkit to refill all of your health bar", 100)
+
 food_list = [cupcake, water_bottle, pizza, ]
 weapon_list = [knife, crowbar, hook]
 wear_list = [bloody_shirt, hat, cape, bag_of_holding, arcade_machine]
+potion_list = [strength_potion, night_vision_potion]
 
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
