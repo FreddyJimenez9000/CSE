@@ -125,8 +125,9 @@ class Flare_gun(Range):
 
 
 class Flare_ammo(Item):
-    def __init__(self, name, description, room, ):
+    def __init__(self, name, description, room, ammo ):
         super(Flare_ammo, self).__init__(name, description, room)
+        self.ammo = ammo
 
 
 class Ball_pit(Item):
@@ -253,7 +254,6 @@ class Bloody_shirt(Item):
         print("you wear the bloody shirt, now you started to smell very weird")
 
 
-
 class Telephone(Item):
     def __init__(self, name, description, room):
         super(Telephone, self).__init__(name, description, room)
@@ -262,6 +262,7 @@ class Telephone(Item):
 class Hook(Melee):
     def __init__(self, name, description, damage_ratio):
         super(Hook, self).__init__(name, description, None, damage_ratio)
+
 
 class Medkits(Item):
     def __init__(self, name, description, health_recover):
@@ -398,8 +399,8 @@ knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", N
 
 flare_gun = Flare_gun("flare gun", "You can signal for help or light the way up.", None, '15', 4)
 
-flare_ammo = Flare_ammo("flare ammo", "You can use this to reload your flare gun, There nothing else you can do woth it"
-                                      ".", None, )
+flare_ammo = Flare_ammo("flare ammo", "You can use this to reload your flare gun, There nothing else you can do with it"
+                                      ".", None, 4 )
 
 ball_pit = Ball_pit("ball pit", " Kids love this ball pit, but for some reason kids are going missing.", None)
 
@@ -446,6 +447,7 @@ food_list = [cupcake, water_bottle, pizza, ]
 weapon_list = [knife, crowbar, hook]
 wear_list = [bloody_shirt, hat, cape, bag_of_holding, arcade_machine]
 potion_list = [strength_potion, night_vision_potion]
+ammo = [flare_ammo, battery]
 
 ENTRANCE = Room('Freddy Fazbear Entrance',
                 'Your at the entrance of the new place where your going to work. The place is called '
@@ -684,10 +686,12 @@ while True:
         elif random_number == 2:
             print("You're able to land a hit.")
             print("You dealt %s" % flare_gun.damage)
+            flare_gun.magazine -= 1
         elif flare_gun.magazine == 0:
             print("you ran out of ammo")
         else:
             print("you missed the shot.")
+            flare_gun.magazine -= 1
     elif command == "attack":
         if weapon_list not in inventory:
             print("you don't have a weapon to attack with")
@@ -699,7 +703,13 @@ while True:
                 print(weapon_list)
         else:
             print("you missed")
-
+    elif command == "reload":
+        for ammo in ammo:
+            if flare_ammo not in inventory:
+                print("You don't have ammo, go find some")
+            if flare_gun.magazine == 0:
+                print("You reloaded")
+                flare_gun.magazine += flare_ammo.ammo
     elif "run" in command:
         print("You weren't able to escape")
         print("The animatronics were able to capture you and turn you into one of them.")
