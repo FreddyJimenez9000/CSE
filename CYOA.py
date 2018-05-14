@@ -393,9 +393,9 @@ def move_chars():
 
 arcade_machine = Arcade_machine("arcade machine", "This machine is out of order", None, "explode")
 
-crowbar = Crowbar("crowbar", "You can use this to fight off thing, or open a hatch", None, '25')
+crowbar = Crowbar("crowbar", "You can use this to fight off thing, or open a hatch", None, 25)
 
-knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", None, '25')
+knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", None, 25)
 
 flare_gun = Flare_gun("flare gun", "You can signal for help or light the way up.", None, '15', 4)
 
@@ -439,7 +439,7 @@ bloody_shirt = Bloody_shirt("bloody shirt", "Who knows where this shirt came fro
 
 telephone = Telephone("telephone", "This telephone is my only way to escape. There seem to be a battery missing.", None)
 
-hook = Hook("hook", "The hook was made from the dead bodies of children, what.", "you deal 25 damage")
+hook = Hook("hook", "The hook was made from the dead bodies of children, what.", 25)
 
 medkit = Medkits("medkit", "You use the medkit to refill all of your health bar", 100)
 
@@ -685,6 +685,7 @@ while True:
             print("you can't fire anything")
         elif random_number == 2:
             print("You're able to land a hit.")
+            print("You hit %s" % person1.location.character.name)
             print("You dealt %s" % flare_gun.damage)
             flare_gun.magazine -= 1
         elif flare_gun.magazine == 0:
@@ -693,16 +694,18 @@ while True:
             print("you missed the shot.")
             flare_gun.magazine -= 1
     elif command == "attack":
-        if weapon_list not in inventory:
-            print("you don't have a weapon to attack with")
-        elif "attack" in command:
-            print("what do you want to attack with")
-        elif weapon_list in command:
-            if random_number2 == 2:
-                print("you're able to land a hit")
-                print(weapon_list)
-        else:
-            print("you missed")
+        if weapon_list in inventory:
+            print("You have a weapon.")
+        for weapon in weapon_list:
+            if "attack with %s" % weapon.name in inventory in command:
+                    for character in list_of_chars:
+                        if random_number == 2:
+                            print("You attack with %s" % weapon.name, "at %s" % character.location.name)
+                            print("You able to hit %s" % character.location.name)
+                            print("you deal %s" % weapon.damage)
+                            character.stats -= weapon.damage
+                        else:
+                            print("you missed")
     elif command == "reload":
         for ammo in ammo:
             if flare_ammo not in inventory:
