@@ -568,6 +568,7 @@ while True:
             pass
         else:
             print("you have come across with %s" % character.name)
+            print(character.stats)
 
     for character in list_of_chars:
         if random_number == 2:
@@ -675,15 +676,16 @@ while True:
             print("you must equip the weapon first")
 
         if random_number2 == 2:
-            if character.location.name not in command.lower():
+            if character.location.name.lower() not in command:
                 print("Who do you want to attack")
-            if character.location.name in command.lower():
-                print("You attack with %s" % item.name, "at %s" % character.location.name)
-                print("You able to hit %s" % character.location.name)
-                print("you deal %s" % item.damage)
-                character.stats -= item.damage
-            else:
-                print("you missed")
+                if character.location.name.lower() in command:
+                    if random_number == 2:
+                        print("You attack with %s" % item.name, "at %s" % character.location.name)
+                        print("You able to hit %s" % character.location.name)
+                        print("you deal %s" % item.damage)
+                        character.stats -= item.damage
+                else:
+                    print("you missed")
 
     elif command == "pick up all":
         for item in person1.location.items:
@@ -702,11 +704,11 @@ while True:
         if person1.location.items not in inventory:
             print("There nothing to equip")
         for item in person1.location.items:
-            if item.name in command:
-                item.append(hand)
+            if item.name.lower() in command:
                 print("You equipped %s" % item.name, "in you hand")
                 print("If you want to unequipped then type unequipped.")
                 print("if you want to check what in your hand then type hand")
+                item.append(hand)
     elif command == "unequipped":
         for item in hand:
             item.remonve(hand)
@@ -721,16 +723,21 @@ while True:
         print(random_number)
         if flare_gun not in inventory:
             print("you can't fire anything")
-        elif random_number == 2:
-            print("You're able to land a hit.")
-            print("You hit %s" % person1.location.character.name)
-            print("You dealt %s" % flare_gun.damage)
-            flare_gun.magazine -= 1
-        elif flare_gun.magazine == 0:
-            print("you ran out of ammo")
-        else:
-            print("you missed the shot.")
-            flare_gun.magazine -= 1
+        for characters in person1.location.character:
+            if random_number == 2:
+                print("You're able to land a hit.")
+                print("You hit %s" % characters.name)
+                print("You dealt %s" % flare_gun.damage)
+                characters.stats -= 15
+                flare_gun.magazine -= 1
+                print(character.stats)
+
+            else:
+                print("you missed the shot.")
+                flare_gun.magazine -= 1
+
+            if flare_gun.magazine == 0:
+                print("you ran out of ammo")
 
     elif command == "reload":
         for ammo in ammo:
