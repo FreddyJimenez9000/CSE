@@ -494,7 +494,7 @@ BACK_OF_THE_BUILDING = Room('Back of the building',
                             [bloody_shirt])
 SECURITY_ROOM = Room('Security Room',
                      'This is were your going to work.',
-                     None, None, None, 'BACK_OF_THE_BUILDING', None, None, [flashlight, flare_gun])
+                     None, None, None, 'BACK_OF_THE_BUILDING', None, None, [flashlight,])
 STAFF_ROOM = Room('Staff Room',
                   'Other staff will take a break in here.',
                   'BACK_OF_THE_BUILDING', None, 'ANIMATRONICS', None, None, None, [flare_ammo])
@@ -554,7 +554,7 @@ print(person1.location.description)
 place_chars()
 
 while True:
-    print(person1.stats)
+    print("Health: %s" % person1.stats)
 
     # if stun:
     #     if command in short_direction or direction:
@@ -568,7 +568,7 @@ while True:
             pass
         else:
             print("you have come across with %s" % character.name)
-            print(character.stats)
+            print("Health: %s" % character.stats)
 
     for character in list_of_chars:
         if random_number == 2:
@@ -587,12 +587,12 @@ while True:
     for item in person1.location.items:
         if item is not False:
             if item not in inventory:
-                pass
+                if item.name in used_item:
+                        pass
 
-            if item in inventory:
-                pass
-            else:
-                print("There seem to be a %s" % item.name)
+                else:
+                    if item not in used_item:
+                        print("There seem to be a %s" % item.name)
 
     for list_items in person1.location.items:
         if list_items.isTaken is False:
@@ -633,6 +633,7 @@ while True:
                     food.eat()
                     inventory.remove(food)
                     used_item.append(food)
+
                 else:
                     print("You can't eat that.")
     elif "drink" in command:
@@ -642,6 +643,7 @@ while True:
                     food.eat()
                     inventory.remove(food)
                     used_item.append(food)
+
                 else:
                     print("You can't drink that.")
     elif "look at" in command:
@@ -670,22 +672,21 @@ while True:
     elif "attack" in command:
         if weapon_list not in inventory:
             print("You don't have a weapon")
-        else:
-            print("You have a weapon")
-        if weapon_list not in hand:
-            print("you must equip the weapon first")
-
-        if random_number2 == 2:
+            if weapon_list in inventory:
+                 print("You have a weapon")
+            if weapon_list not in hand:
+                 print("you must equip the weapon first")
             if character.location.name.lower() not in command:
                 print("Who do you want to attack")
                 if character.location.name.lower() in command:
                     if random_number == 2:
-                        print("You attack with %s" % item.name, "at %s" % character.location.name)
-                        print("You able to hit %s" % character.location.name)
-                        print("you deal %s" % item.damage)
-                        character.stats -= item.damage
-                else:
-                    print("you missed")
+                        for item in weapon_list:
+                            print("You attack with %s" % item.name, "at %s" % character.location.name)
+                            print("You able to hit %s" % character.location.name)
+                            print("you deal %s" % item.damage)
+                            character.stats -= item.damage
+                    else:
+                        print("you missed")
 
     elif command == "pick up all":
         for item in person1.location.items:
@@ -700,15 +701,20 @@ while True:
     elif command == "inventory":
         for item in inventory:
             print(item.name)
-    elif command == "equip":
-        if person1.location.items not in inventory:
-            print("There nothing to equip")
-        for item in person1.location.items:
-            if item.name.lower() in command:
-                print("You equipped %s" % item.name, "in you hand")
-                print("If you want to unequipped then type unequipped.")
-                print("if you want to check what in your hand then type hand")
-                item.append(hand)
+    elif command == "equip item":
+        print("what do you want to equip")
+
+        print("You equipped %s" % item.name, "in you hand")
+        print("If you want to unequipped then type unequipped.")
+        print("if you want to check what in your hand then type hand")
+        hand.append(item.name)
+        #
+        #     if item in inventory:
+        #         pass
+        #     else:
+        #         if item not in inventory:
+        #             print("There nothing to equip")
+
     elif command == "unequipped":
         for item in hand:
             item.remonve(hand)
@@ -760,8 +766,7 @@ while True:
     #         if Melee.name not in inventory:
     #             print("You don't have anything to attack with")
     #
-    elif command == "used item":
-        print(used_item)
+
     elif command == "look":
         print(person1.location.name)
         print(person1.location.description)
