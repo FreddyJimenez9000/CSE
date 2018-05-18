@@ -494,7 +494,7 @@ BACK_OF_THE_BUILDING = Room('Back of the building',
                             [bloody_shirt])
 SECURITY_ROOM = Room('Security Room',
                      'This is were your going to work.',
-                     None, None, None, 'BACK_OF_THE_BUILDING', None, None, [flashlight,])
+                     None, None, None, 'BACK_OF_THE_BUILDING', None, None, [flashlight])
 STAFF_ROOM = Room('Staff Room',
                   'Other staff will take a break in here.',
                   'BACK_OF_THE_BUILDING', None, 'ANIMATRONICS', None, None, None, [flare_ammo])
@@ -588,8 +588,7 @@ while True:
         if item is not False:
             if item not in inventory:
                 if item.name in used_item:
-                        pass
-
+                    pass
                 else:
                     if item not in used_item:
                         print("There seem to be a %s" % item.name)
@@ -673,9 +672,9 @@ while True:
         if weapon_list not in inventory:
             print("You don't have a weapon")
             if weapon_list in inventory:
-                 print("You have a weapon")
+                print("You have a weapon")
             if weapon_list not in hand:
-                 print("you must equip the weapon first")
+                print("you must equip the weapon first")
             if character.location.name.lower() not in command:
                 print("Who do you want to attack")
                 if character.location.name.lower() in command:
@@ -701,13 +700,19 @@ while True:
     elif command == "inventory":
         for item in inventory:
             print(item.name)
-    elif command == "equip item":
-        print("what do you want to equip")
-
-        print("You equipped %s" % item.name, "in you hand")
-        print("If you want to unequipped then type unequipped.")
-        print("if you want to check what in your hand then type hand")
-        hand.append(item.name)
+    elif command == "equip":
+        for item in person1.location.items:
+            if item not in inventory:
+                print("there nothing to equip")
+            else:
+                if item in inventory:
+                    print("what do you want to equip, check your inventory")
+        for items in inventory:
+            if items.name in command:
+                print("You equipped %s" % items.name, "in you hand")
+                print("If you want to unequipped then type unequipped.")
+                print("if you want to check what in your hand then type hand")
+                items.append(hand)
         #
         #     if item in inventory:
         #         pass
