@@ -8,7 +8,7 @@ hand = []
 used_item = []
 direction = ['north', 'south', 'east', 'west', 'up', 'down']
 short_direction = ['n', 's', 'e', 'w', 'u', 'd']
-
+dead_body = []
 
 class Item(object):
     def __init__(self, name, description, room):
@@ -270,6 +270,13 @@ class Medkits(Item):
         super(Medkits, self).__init__(name, description, None)
         self.health_recover = health_recover
 
+class Sercret_Key(Item):
+    def __init__(self, name, description):
+        super(Sercret_Key, self).__init__(name, description, None)
+
+    def key(self):
+        print("You found me!")
+        print("You could used me to open the door at the front entrance")
 ####
 
 
@@ -323,7 +330,7 @@ Freddy = Character('Freddy Fazbear',
                    None,  100, 'Mic', 'Sing', "you become blind and paralyzed")
 Chica = Character('Chica', "Chica is a duck like Animatronics who soul purpose is to give out cupcake. but we don't "
                            "know what inside of those cupcake maybe bloo-. its made organic.)",
-                  None, 100, 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
+                  Sercret_Key, 100, 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
 Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he's shy. His fur is always red but it"
                          " used to be white. We think that an employee colored it red. But it started to smell.",
                  None, 100, "a Hook", None, "you become blind and paralyzed.")
@@ -444,6 +451,8 @@ hook = Hook("hook", "The hook was made from the dead bodies of children, what.",
 
 medkit = Medkits("medkit", "You use the medkit to refill all of your health bar", 100)
 
+the_key = Sercret_Key("the key", "You could used this to open some kind of door")
+
 food_list = [cupcake, water_bottle, pizza, ]
 weapon_list = [knife, crowbar, hook]
 wear_list = [bloody_shirt, hat, cape, bag_of_holding, arcade_machine]
@@ -562,6 +571,7 @@ while True:
     #         person1.location.move = False
     random_number2 = random.randint(1, 2)
     random_number = random.randint(1, 3)
+    random_number3 = (0, 2)
 
     for character in list_of_chars:
         if character.location != person1.location:
@@ -569,20 +579,22 @@ while True:
         else:
             print("you have come across with %s" % character.name)
             print("Health: %s" % character.stats)
+            print("hello there")
 
     for character in list_of_chars:
         if random_number == 2:
             if character.location != person1.location:
                 pass
             else:
+                #
                 print("it seem you have made %s angry" % character.name)
                 print("%s" % character.name, "attack you")
                 print("it dealt 20 damage")
                 person1.stats -= 20
 
-    if person1.location.character is not None:
-        for character in person1.location.character:
-            print(character.name)
+    # if person1.location.character is not None:
+    #     for character in person1.location.character:
+    #         print(character.name)
 
     for item in person1.location.items:
         if item is not False:
@@ -593,9 +605,6 @@ while True:
                     if item not in used_item:
                         print("There seem to be a %s" % item.name)
 
-    for list_items in person1.location.items:
-        if list_items.isTaken is False:
-            print(list_items.name)
     command = input(':').lower().strip()
     if command == 'quit':
         quit(0)
@@ -647,7 +656,7 @@ while True:
                     print("You can't drink that.")
     elif "look at" in command:
         for item in inventory:
-            if item.name.lower() in command:
+            if item.name in command:
                 print(item.name)
                 print(item.description)
 
@@ -657,17 +666,19 @@ while True:
             if wear_list not in inventory:
                 print("They're nothing to wear")
                 item.isTaken = False
-
-            if wear_list.name.lower() in command:
-                print("You wear the item.")
-                if issubclass(type(wear_list), Wearable):
-                    wear_list.wear()
-                    inventory.remove(wear_list)
-                    body.append(wear_list)
-            else:
-                print("You can't were that.")
-            if arcade_machine.name in command:
-                arcade_machine.wear()
+            for items in person1.location.items:
+                if wear_list.name != items.name in command:
+                    print("you can't wear that")
+                else:
+                    if wear_list.name.lower() in command:
+                        print("You wear the item.")
+                        if issubclass(type(wear_list), Wearable):
+                            wear_list.wear()
+                            inventory.remove(wear_list)
+                            body.append(wear_list)
+                        if arcade_machine.name in command:
+                            arcade_machine.wear()
+    #
     elif "attack" in command:
         if weapon_list not in inventory:
             print("You don't have a weapon")
@@ -679,7 +690,7 @@ while True:
                 print("Who do you want to attack")
                 if character.location.name.lower() in command:
                     if random_number == 2:
-                        for item in weapon_list:
+                        for item in hand:
                             print("You attack with %s" % item.name, "at %s" % character.location.name)
                             print("You able to hit %s" % character.location.name)
                             print("you deal %s" % item.damage)
@@ -702,18 +713,16 @@ while True:
             print(item.name)
     elif command == "equip":
         for item in person1.location.items:
-            if item not in inventory:
+            if item not in inventory :
                 print("there nothing to equip")
             else:
-                if item in inventory:
-                    print("what do you want to equip, check your inventory")
-        for items in inventory:
-            if items.name in command:
-                print("You equipped %s" % items.name, "in you hand")
-                print("If you want to unequipped then type unequipped.")
-                print("if you want to check what in your hand then type hand")
-                items.append(hand)
-        #
+                for items in inventory:
+                    if items.name.lower() in command:
+                        print("You equipped %s" % items.name, "in you hand")
+                        print("If you want to unequipped then type unequipped.")
+                        print("if you want to check what in your hand then type hand")
+                        items.append(hand)
+
         #     if item in inventory:
         #         pass
         #     else:
@@ -725,6 +734,12 @@ while True:
             item.remonve(hand)
             item.append(inventory)
             print("You unequip the item")
+#
+    elif command == "heal":
+        if medkit.name not in inventory:
+            print("there nothing you could heal with")
+        if person1.stats == 100:
+            print("you're already at full hp")
 
     elif command == "hand":
         for item in hand:
@@ -757,6 +772,9 @@ while True:
             if flare_gun.magazine == 0:
                 print("You reloaded")
                 flare_gun.magazine += flare_ammo.ammo
+    elif command == "body":
+        for item in body:
+            print(item.name)
     elif "run" in command:
         print("You weren't able to escape")
         print("The animatronics were able to capture you and turn you into one of them.")
@@ -765,12 +783,59 @@ while True:
         print("People are still questioning what have happen in that place.")
         print("But for short we know that there still out there")
         print("Waiting for you to come back  waiting and waiting     but they came to you first. And then")
-        break
+        quit(0)
     # elif command == "attack":
     #     for name in person1.location.items:
     #         if Melee.name not in inventory:
     #             print("You don't have anything to attack with")
     #
+
+    elif freddy.stats == 0:
+        print("you killed Freddy Fazbear")
+        print("How could you, just kidding")
+        list_of_chars.remove(freddy)
+        dead_body.append(freddy)
+    elif bonnie.stats == 0:
+        print("you killed Bonnie the most lovable character of all")
+        print("lovable my ass she must dieeeeee")
+        list_of_chars.remove(bonnie)
+        dead_body.append(bonnie)
+    elif chica.stats == 0:
+        print("You killed me how dd d dd ddd  dddare you ")
+        print("I cannot end thissssssssss")
+        print("*dead*")
+        list_of_chars.remove(chica)
+        dead_body.append(chica)
+    elif foxy.stats == 0:
+        print("you killed foxy.")
+        print("I'll come back for you u u u uuuu u u  uu u u u")
+        print("You feel uneasy")
+        list_of_chars.remove(foxy)
+        dead_body.append(foxy)
+    elif ballora.stats == 0:
+        print("I will survivvveeee eevevev eeve e")
+        list_of_chars.remove(ballora)
+        dead_body.append(ballora)
+    elif fun_time_freddy.stats == 0:
+        print("bhaaaaaaaaaaa  aaaaa aaaaa ")
+        print("you think this is the end ")
+        print("just you wait and seeeee e i- *dead*")
+        list_of_chars.remove(fun_time_freddy)
+        dead_body.append(fun_time_freddy)
+    elif fun_time_foxy.stats == 0:
+        print("i wiilll find youuuu")
+        print("AND I WILL KILL YOU! BHAAAAAAAAAAAA A AAA A AA A  *dead*")
+        list_of_chars.remove(fun_time_foxy)
+        dead_body.append(fun_time_foxy)
+    elif baby.stats == 0:
+        print("i thought you loved me *sob*")
+        print("but your time is coming up as well")
+        list_of_chars.remove(baby)
+        dead_body.append(baby)
+    elif puppet.stats == 0:
+        print("why do I still live. just to suffer")
+        print("omae wa mou shindeiru")
+        print("*translate*", "you're already dead")
 
     elif command == "look":
         print(person1.location.name)
