@@ -37,7 +37,6 @@ class Item(object):
         self.isTaken = False
         print("You drop the item")
 
-
 ##
 class Weapon(Item):
     def __init__(self, name, description, damage_ratio, room, magazine):
@@ -484,7 +483,7 @@ GAME_ROOM = Room('Game Room',
                  None, 'FOXY_ROOM', 'DINNING_ROOM', None, None, None, [arcade_machine])
 FOXY_ROOM = Room('Foxy Room',
                  'Foxy is the most lovable character.',
-                 None, None, 'GAME_ROOM', None, None, None, [strength_potion])
+                 None, None, 'GAME_ROOM', None, None, None, [strength_potion , medkit])
 FOOD_ROOM = Room('Food Room',
                  'Do you not known why we use this place.',
                  None, 'DINNING_ROOM', None, None, None, None, [water_bottle, cupcake_fake])
@@ -515,7 +514,7 @@ DATA_BASE = Room('Data base',
                  'ANIMATRONICS', 'OFFICE', None, None, None, None, [hook])
 BELOW_BUILDING = Room('Below building',
                       'You fell and found a strange place. it dark.',
-                      None, None, 'ELEVATOR', None, 'BATHROOM', None, [flare_ammo])
+                      None, None, 'ELEVATOR', None, 'BATHROOM', None, [flare_ammo, medkit])
 ELEVATOR = Room('Elevator',
                 'It seem the elevator take you below or up. Would you like to go up or down?',
                 'CONTROL_ROOM', 'BELOW_BUILDING', 'NOTHING', None, 'BATHROOM', 'CONTROL_PANEL', None)
@@ -555,7 +554,7 @@ def place_chars():
         char.location = room
         room.character.append(char)
 
-
+ii = isinstance
 print("Your health is at the bottom")
 print(person1.description)
 print(person1.location.name)
@@ -632,7 +631,9 @@ while True:
                 if item.name.lower() in command:
                     item.drop()
                 else:
-                    print("what are you saying there nothing inside your inventory.")
+                    if item not in inventory:
+                        print("what are you saying there nothing inside your inventory.")
+
                     # fix the drink, and eat
     elif "eat" in command:
         for food in inventory:
@@ -680,23 +681,39 @@ while True:
                             arcade_machine.wear()
     #
     elif "attack" in command:
-        if weapon_list not in inventory:
-            print("You don't have a weapon")
-            if weapon_list in inventory:
-                print("You have a weapon")
-            if weapon_list not in hand:
-                print("you must equip the weapon first")
-            if character.location.name.lower() not in command:
-                print("Who do you want to attack")
-                if character.location.name.lower() in command:
+        for item in inventory:
+            if str.lower(item.name) in command and item.isTaken:
+                if ii(item, Knife) or ii(item, Crowbar) or ii(item, Hook):
                     if random_number == 2:
-                        for item in hand:
-                            print("You attack with %s" % item.name, "at %s" % character.location.name)
+                        for items in hand:
+                            print("You attack with %s" % items.name, "at %s" % character.location.name)
                             print("You able to hit %s" % character.location.name)
-                            print("you deal %s" % item.damage)
-                            character.stats -= item.damage
+                            print("you deal %s" % items.damage)
+                            character.stats -= items.damage
                     else:
                         print("you missed")
+            # if character.location.name.lower() not in command:
+            #     print("Who do you want to attack")
+            #     if character.location.name.lower() in command:
+                        #     if item not in inventory:
+                        #         print("You don't have a weapon")
+                        #         if item not in hand:
+                        #             print("you must equip the weapon first")
+
+    elif "equip" in command:
+        for item in inventory:
+            if str.lower(item.name) in command and item.isTaken:
+                kn = Knife
+                cr = Crowbar
+                k = Hook
+
+                if ii(item, kn) or ii(item, cr):
+                    if hand is not None:
+                        hand = None
+                        hand = item
+                    else:
+                        hand = item
+                    print("You equipped the %s" % str.lower(item.name))
 
     elif command == "pick up all":
         for item in person1.location.items:
@@ -711,17 +728,18 @@ while True:
     elif command == "inventory":
         for item in inventory:
             print(item.name)
-    elif command == "equip":
-        for item in person1.location.items:
-            if item not in inventory :
-                print("there nothing to equip")
-            else:
-                for items in inventory:
-                    if items.name.lower() in command:
-                        print("You equipped %s" % items.name, "in you hand")
-                        print("If you want to unequipped then type unequipped.")
-                        print("if you want to check what in your hand then type hand")
-                        items.append(hand)
+
+
+        # for item in person1.location.items:
+        #     if item not in inventory :
+        #         print("there nothing to equip")
+        #     else:
+        #         for items in inventory:
+        #             if items.name.lower() in command:
+        #                 print("You equipped %s" % items.name, "in you hand")
+        #                 print("If you want to unequipped then type unequipped.")
+        #                 print("if you want to check what in your hand then type hand")
+        #                 items.append(hand)
 
         #     if item in inventory:
         #         pass
@@ -737,13 +755,13 @@ while True:
 #
     elif command == "heal":
         if medkit.name not in inventory:
+            pass
+        else:
             print("there nothing you could heal with")
         if person1.stats == 100:
             print("you're already at full hp")
-
-    elif command == "hand":
-        for item in hand:
-            print(item.name)
+        if "heal" in command:
+            medkit.health_recover += person1.stats == 100
 
     elif command == "shoot":
         print(random_number)
@@ -776,14 +794,17 @@ while True:
         for item in body:
             print(item.name)
     elif "run" in command:
-        print("You weren't able to escape")
-        print("The animatronics were able to capture you and turn you into one of them.")
-        print("You later escape then the night was over, but when the police came by they shot you down.")
-        print("they burnt the place down, but the police were not able to find anything.")
-        print("People are still questioning what have happen in that place.")
-        print("But for short we know that there still out there")
-        print("Waiting for you to come back  waiting and waiting     but they came to you first. And then")
-        quit(0)
+        if random_number == 2:
+            print("You weren't able to escape")
+            print("The animatronics were able to capture you and turn you into one of them.")
+            print("You later barley escape, but war enable to move.")
+            print("You couldn't escape and now you never escape.")
+            print("")
+
+            quit(0)
+        else:
+            if random_number == 1 or 3:
+                print("You successfully got away ")
     # elif command == "attack":
     #     for name in person1.location.items:
     #         if Melee.name not in inventory:
@@ -840,7 +861,7 @@ while True:
     elif command == "look":
         print(person1.location.name)
         print(person1.location.description)
-    elif person1.stats == 0:
+    elif person1.stats <= 0:
         print("you died")
         quit(0)
     else:
