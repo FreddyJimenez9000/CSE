@@ -9,6 +9,8 @@ used_item = []
 direction = ['north', 'south', 'east', 'west', 'up', 'down']
 short_direction = ['n', 's', 'e', 'w', 'u', 'd']
 dead_body = []
+open_door = []
+
 
 class Item(object):
     def __init__(self, name, description, room):
@@ -38,6 +40,8 @@ class Item(object):
         print("You drop the item")
 
 ##
+
+
 class Weapon(Item):
     def __init__(self, name, description, damage_ratio, room, magazine):
         super(Weapon, self).__init__(name, description, room)
@@ -111,10 +115,6 @@ class Knife(Melee):
     def __init__(self, name, description, room, damage_ratio):
         super(Knife, self).__init__(name, description, room, damage_ratio)
 
-    def kn_attack(self):
-        if knife in command:
-            print(crowbar.damage)
-
 
 class Flare_gun(Range):
     def __init__(self, name, description, room, damage_ratio, magazine):
@@ -125,7 +125,7 @@ class Flare_gun(Range):
 
 
 class Flare_ammo(Item):
-    def __init__(self, name, description, room, ammo ):
+    def __init__(self, name, description, room, ammo):
         super(Flare_ammo, self).__init__(name, description, room)
         self.ammo = ammo
 
@@ -167,28 +167,6 @@ class Cupcake_fake(Item):
 class Guitar(Item):
     def __init__(self, name, description, room):
         super(Guitar, self).__init__(name, description, room)
-
-
-class Potion(Item):
-    def __init__(self, name, description, room, affect):
-        super(Potion, self).__init__(name, description, room)
-        self.affect = affect
-
-
-class Strenth_potion(Potion):
-    def __init__(self, name, description, room, affect):
-        super(Strenth_potion, self).__init__(name, description, room, affect)
-
-    def drink(self):
-        print("Your strength increase dramatically")
-
-
-class Night_vision_potion(Potion):
-    def __init__(self, name, description, room, affect):
-        super(Night_vision_potion, self).__init__(name, description, room, affect)
-
-    def drink(self):
-        print("You're able to see the dark for a brief time")
 
 
 class Bag_of_holding(Wearable):
@@ -269,13 +247,7 @@ class Medkits(Item):
         super(Medkits, self).__init__(name, description, None)
         self.health_recover = health_recover
 
-class Sercret_Key(Item):
-    def __init__(self, name, description):
-        super(Sercret_Key, self).__init__(name, description, None)
 
-    def key(self):
-        print("You found me!")
-        print("You could used me to open the door at the front entrance")
 ####
 
 
@@ -321,33 +293,33 @@ person1 = Player('Henry',
 Bonnie = Character('Bonnie',
                    "Bonnie is a fun bunny which bring joy around the pizzeria. But then again it smell like a dead bod-"
                    "something",
-                   None, 100, 'guitar',
+                   None, 50, 'guitar',
                    'play the guitar', "you become blind and paralyzed")
 Freddy = Character('Freddy Fazbear',
                    "Freddy is the most lovable bear in the whole pizzeria. He liked the star of the band. But every"
                    "time he sing it sound like a dead man crying, trying to get out. but who knows.",
-                   None,  100, 'Mic', 'Sing', "you become blind and paralyzed")
+                   None,  50, 'Mic', 'Sing', "you become blind and paralyzed")
 Chica = Character('Chica', "Chica is a duck like Animatronics who soul purpose is to give out cupcake. but we don't "
                            "know what inside of those cupcake maybe bloo-. its made organic.)",
-                  Sercret_Key, 100, 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
+                  None, 50, 'Cupcake', "give out cupcakes", "you become blind and paralyzed.")
 Foxy = Character('Foxy', "Foxy is in the back stage most of the time because he's shy. His fur is always red but it"
                          " used to be white. We think that an employee colored it red. But it started to smell.",
-                 None, 100, "a Hook", None, "you become blind and paralyzed.")
+                 None, 50, "a Hook", None, "you become blind and paralyzed.")
 Ballora = Character('Ballora', "She a fun charter, like to sing, dance, and to put on a show",
-                    None, 100, None, "dance", "you become blind and paralyzed.")
+                    None, 50, None, "dance", "you become blind and paralyzed.")
 Fun_time_Freddy = Character("Fun time Freddy",
                             "He's a lovable character which was used in the last pizzeria but run out"
                             "business because of a weird smell and a disappearance of children.",
-                            None,  100, None, "play with children", "you become blind and paralyzed.")
+                            None,  50, None, "play with children", "you become blind and paralyzed.")
 Fun_time_Foxy = Character("Fun Time Foxy", "She's the sister of Foxy but have a few improvement over Foxy. But we "
                           "saw something very strange in the old security camera of a child disappearing and Fun time "
-                          "Foxy came out.", None, 100, None, "Dance",
+                          "Foxy came out.", None, 50, None, "Dance",
                           "you become blind and paralyzed.")
 Baby = Character("Baby",
                  "Baby was made to take care and make kids happy. But they started to disappear when they go "
-                 "and play with Baby.", None, 100, None,
+                 "and play with Baby.", None, 50, None,
                  "dance and sing", "you become blind and paralyzed.")
-Puppet = Character("Puppet", "she going to protect all the children from harm, and from you", None, 100, None,
+Puppet = Character("Puppet", "she going to protect all the children from harm, and from you", None, 50, None,
                    "roams around", None)
 
 
@@ -407,7 +379,7 @@ knife = Knife("knife", "You use the knife to fight of thing or cook. tee-hee", N
 flare_gun = Flare_gun("flare gun", "You can signal for help or light the way up.", None, '15', 4)
 
 flare_ammo = Flare_ammo("flare ammo", "You can use this to reload your flare gun, There nothing else you can do with it"
-                                      ".", None, 4 )
+                                      ".", None, 4)
 
 ball_pit = Ball_pit("ball pit", " Kids love this ball pit, but for some reason kids are going missing.", None)
 
@@ -423,18 +395,13 @@ cupcake_fake = Cupcake_fake("the plastic cupcake", "This is one of the missing c
 
 guitar = Guitar("guitar", "This guitar have something on it like blo- red paint.", None)
 
-strength_potion = Strenth_potion("strength potion", "This potion is one of a kind very rare very useless.", None,
-                                 "you got stronger.")
-
-night_vision_potion = Night_vision_potion("night vision potions", "You will be able to see in the dark once you drank "
-                                                                  "the potion.", None, "you can see in the dark")
 
 bag_of_holding = Bag_of_holding("bag of holding", "You could hold endless amount of item but at a cost of 10 health.",
                                 None)
 
 pizza = Pizza("pizza", "this pizza is made from the top chief in the garbage. *Don't eat it*", None)
 
-cupcake = Cupcake("cupcake", "This is a very treat from the most lovable character in the pizzaia death", None)
+cupcake = Cupcake("cupcake", "This is a very treat from the most lovable character in the pizzeria death", None)
 
 water_bottle = Water_bottle("water bottle", "This is the most freshest water bottle you will every see in the world."
                                             "It's from our very own toilet. ", None)
@@ -450,12 +417,10 @@ hook = Hook("hook", "The hook was made from the dead bodies of children, what.",
 
 medkit = Medkits("medkit", "You use the medkit to refill all of your health bar", 20)
 
-the_key = Sercret_Key("the key", "You could used this to open some kind of door")
 
 food_list = [cupcake, water_bottle, pizza, ]
 weapon_list = [knife, crowbar, hook]
 wear_list = [bloody_shirt, hat, cape, bag_of_holding, arcade_machine]
-potion_list = [strength_potion, night_vision_potion]
 ammo = [flare_ammo, battery]
 
 ENTRANCE = Room('Freddy Fazbear Entrance',
@@ -467,13 +432,15 @@ SECURITY_PUPPET_ROOM = Room('security puppet room',
                             'This room will protect children who are trying to leave without their parent.',
                             None, 'ENTRANCE', None, None, None, None, [flashlight])
 WAITING_ROOM = Room('Waiting Room',
-                    'This place is where people will wait until they could get a bracelet to enter the playhouse.',
+                    'This place is where people will wait until they could get a bracelet to enter the playhouse.'
+                    'the door closes behind you and its locked, find the key',
                     'DINNING_ROOM', 'BATHROOM', 'OFFICE_ROOM', 'ENTRANCE', None, None, [water_bottle])
 OFFICE_ROOM = Room('Office Room',
                    'This place is were the manger is going work. maybe',
                    None, 'WAITING_ROOM', 'DATA_BASE', None, None, None, [knife])
 BATHROOM = Room('Bathroom',
-                "You know why you're here. There seem to be a hatch in one of the stalls. would you like to open it?",
+                "You know why you're here. There seem to be a open hatch in one of the stalls. would you like to go "
+                "down?",
                 None, None, 'WAITING_ROOM', None, None, 'BELOW_BUILDING', [flare_gun])
 DINNING_ROOM = Room('Dinning Room',
                     'Here were your going to eat after or before you go into the buffet.',
@@ -483,7 +450,7 @@ GAME_ROOM = Room('Game Room',
                  None, 'FOXY_ROOM', 'DINNING_ROOM', None, None, None, [arcade_machine])
 FOXY_ROOM = Room('Foxy Room',
                  'Foxy is the most lovable character.',
-                 None, None, 'GAME_ROOM', None, None, None, [strength_potion , medkit])
+                 None, None, 'GAME_ROOM', None, None, None, [medkit])
 FOOD_ROOM = Room('Food Room',
                  'Do you not known why we use this place.',
                  None, 'DINNING_ROOM', None, None, None, None, [water_bottle, cupcake_fake])
@@ -513,7 +480,7 @@ DATA_BASE = Room('Data base',
                  'This is were we controlled the animatronics.',
                  'ANIMATRONICS', 'OFFICE', None, None, None, None, [hook])
 BELOW_BUILDING = Room('Below building',
-                      'You fell and found a strange place. it dark.',
+                      'You fell and found a strange place. its dark.',
                       None, None, 'ELEVATOR', None, 'BATHROOM', None, [flare_ammo, medkit])
 ELEVATOR = Room('Elevator',
                 'It seem the elevator take you below or up. Would you like to go up or down?',
@@ -565,10 +532,6 @@ place_chars()
 while True:
     print("Health: %s" % person1.stats)
 
-    # if stun:
-    #     if command in short_direction or direction:
-    #         print("you can't leave unless %s leave or been defeated" % person1.location.character.name)
-    #         person1.location.move = False
     random_number2 = random.randint(1, 2)
     random_number = random.randint(1, 3)
     random_number3 = (0, 2)
@@ -613,6 +576,18 @@ while True:
     if command in direction:
         person1.move(command.lower())
 
+    elif "turn on" in command:
+        for item in person1.location.items:
+            if item.name in command:
+                item.turn_on()
+                break
+
+    elif "turn off" in command:
+        for item in person1.location.items:
+            if item.name in command:
+                item.turn_off()
+                break
+
     elif "take" in command:
         for item in person1.location.items:
             if item.name in command:
@@ -654,6 +629,7 @@ while True:
 
                 else:
                     print("You can't drink that.")
+
     elif "look at" in command:
         for item in inventory:
             if item.name in command:
@@ -689,16 +665,6 @@ while True:
                     character.stats -= items.damage
                 else:
                     print("you missed")
-        #     if str.lower(item.name) in command and item.isTaken:
-        #         if ii(item, Knife) or ii(item, Crowbar) or ii(item, Hook):
-
-            # if character.location.name.lower() not in command:
-            #     print("Who do you want to attack")
-            #     if character.location.name.lower() in command:
-                        #     if item not in inventory:
-                        #         print("You don't have a weapon")
-                        #         if item not in hand:
-                        #             print("you must equip the weapon first")
 
     elif "equip" in command:
         for item in inventory:
@@ -710,25 +676,22 @@ while True:
                 if ii(item, kn) or ii(item, cr) or ii(item, k):
                     if hand is not None:
                         hand = None
-                        hand = item
                     else:
-                        hand = item
+                        hand = item.name
                     print("You equipped the %s" % str.lower(item.name))
 
-    elif "unequip" in command:
-        for item in inventory:
-            if str.lower(item.name) in command:
-                kn = Knife
-                cr = Crowbar
-                k = Hook
-
-                if ii(item, kn) or ii(item, cr) or ii(item, k):
-                    if hand is not None:
-                        hand = item
-                    else:
-                        hand = None
-                    print("You unequip the %s" % str.lower(item.name))
-                    hand.remove(item)
+    # not sure if this needed
+    # elif "unequipped" in command:
+    #     for item in inventory:
+    #         if str.lower(item.name) in command:
+    #             kn = Knife
+    #             cr = Crowbar
+    #             k = Hook
+    #
+    #             if ii(item, kn) or ii(item, cr) or ii(item, k):
+    #                 hand = None
+    #             else:
+    #                 print("You unequip the %s" % str.lower(item.name))
 
     elif command == "pick up all":
         for item in person1.location.items:
@@ -744,24 +707,6 @@ while True:
         for item in inventory:
             print(item.name)
 
-
-        # for item in person1.location.items:
-        #     if item not in inventory :
-        #         print("there nothing to equip")
-        #     else:
-        #         for items in inventory:
-        #             if items.name.lower() in command:
-        #                 print("You equipped %s" % items.name, "in you hand")
-        #                 print("If you want to unequipped then type unequipped.")
-        #                 print("if you want to check what in your hand then type hand")
-        #                 items.append(hand)
-
-        #     if item in inventory:
-        #         pass
-        #     else:
-        #         if item not in inventory:
-        #             print("There nothing to equip")
-
     elif command == "heal":
         if medkit.name not in inventory:
             pass
@@ -770,8 +715,12 @@ while True:
         if person1.stats == 100:
             print("you're already at full hp")
         if person1.stats != 100:
-            medkit.health_recover += person1.stats
-
+            person1.stats += medkit.health_recover
+            print("You heal yourself.")
+            inventory.remove(medkit)
+            used_item.append(medkit)
+            if medkit.name in used_item:
+                pass
     elif command == "shoot":
         if flare_gun not in inventory:
             print("you can't fire anything")
@@ -790,6 +739,11 @@ while True:
             if flare_gun.magazine == 0:
                 print("you ran out of ammo")
 
+    elif command == "thanos":
+        print("You snap you finger and all the animatronics had died.")
+        print("you escape like nothing happen and started to have the feeling to destroy the universe")
+        quit(0)
+
     elif command == "reload":
         for ammo in ammo:
             if flare_ammo not in inventory:
@@ -806,17 +760,11 @@ while True:
             print("The animatronics were able to capture you and turn you into one of them.")
             print("You later barley escape, but war enable to move.")
             print("You couldn't escape and now you never escape.")
-            print("")
 
             quit(0)
         else:
             if random_number == 1 or 3:
                 print("You successfully got away ")
-    # elif command == "attack":
-    #     for name in person1.location.items:
-    #         if Melee.name not in inventory:
-    #             print("You don't have anything to attack with")
-    #
 
     elif freddy.stats == 0:
         print("you killed Freddy Fazbear")
@@ -834,6 +782,9 @@ while True:
         print("*dead*")
         list_of_chars.remove(chica)
         dead_body.append(chica)
+        for item in chica.inventory:
+            inventory.remove(item)
+            print("There seem to be a key that drop from Chica")
     elif foxy.stats == 0:
         print("you killed foxy.")
         print("I'll come back for you u u u uuuu u u  uu u u u")
