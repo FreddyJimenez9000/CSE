@@ -2,7 +2,6 @@ import random
 
 inventory = []
 invCapacity = 4
-# fix inventory
 body = []
 hand = []
 used_item = []
